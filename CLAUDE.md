@@ -1,0 +1,32 @@
+# CLAUDE.md
+
+Anweisungen für Claude Code in diesem Repo.
+
+## Workflow-Regel: sofort committen & pushen
+
+**Jede Änderung an einer Datei in diesem Repo wird sofort committed und gepusht — kein Sammeln mehrerer Änderungen in einem Commit, keine offenen/uncommitteten Stände am Ende einer Session.**
+
+Konkret:
+
+- Nach jedem abgeschlossenen Edit-Schritt (egal ob Template, `build.js`, README, o. ä.): `git add`, aussagekräftige Commit-Message, `git commit`, danach sofort `git push`.
+- Gilt auch für kleine/triviale Änderungen (Typo-Fix, Copy-Anpassung, einzelne Farbe) — nicht auf "später sammeln" warten.
+- Ausnahme: Der Nutzer sagt explizit, dass mehrere Schritte in einem Commit zusammengefasst werden sollen.
+- Wenn `git push` fehlschlägt (z. B. Remote hat neue Commits): nicht stillschweigend überspringen, sondern rebasen/mergen und erneut pushen, oder den Nutzer informieren, falls das nicht sauber möglich ist.
+- Commit-Messages kurz und auf Deutsch oder Englisch (konsistent mit vorherigen Commits), beschreiben **was** sich geändert hat, nicht nur "update".
+
+## Build-Workflow
+
+`index.html` und `spiele.html` im Root sind **generierte** Dateien (siehe `build.js`), keine Quelldateien. Nach jeder Änderung an `src/*.template.html` vor dem Commit neu bauen:
+
+```bash
+node build.js
+```
+
+Beide (Quelltemplate **und** das neu gebaute `index.html`/`spiele.html`) gehören in denselben Commit — nie nur die Quelle oder nur das Build-Ergebnis committen.
+
+## Projektkontext
+
+- Gestyltes Bootstrap-5-Redesign von [einseitensprung.at/cl/](https://einseitensprung.at/cl/), einer privaten Champions-League-Tipprunde ("Feelochamp", seit 2002).
+- Reine Design-Demo ohne echtes Backend — Login/Tipp-Abgabe lösen nur Bestätigungs-Toasts aus.
+- Keine echten Vereinswappen oder das Original-Hintergrundfoto verwenden (UEFA-Bildmaterial/Marken sind geschützt) — stattdessen eigene Initialen-Badges/Grafiken, siehe README.
+- Bootstrap wird lokal vendored (`vendor/`) und beim Build inline eingebettet, damit die Seiten als eigenständige HTML-Dateien (z. B. für Claude Artifacts) funktionieren, ohne externe CDN-Requests.

@@ -1,0 +1,495 @@
+<meta charset="utf-8">
+<title>Feelochamp – Spiele</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== Bootstrap 5.3.3 (vendored, self-contained) ===== */
+/*__BOOTSTRAP_CSS__*/
+</style>
+
+<style>
+  :root{
+    --ink:#050b1a;
+    --ink-2:#0a1730;
+    --panel: rgba(6,16,36,0.66);
+    --panel-strong: rgba(6,16,36,0.85);
+    --cyan:#22d3ee;
+    --cyan-soft:#8fe9f7;
+    --blue:#3b82f6;
+    --white:#f3f7ff;
+    --slate:#a8b7d6;
+    --green:#22c55e;
+    --green-dark:#16a34a;
+    --line: rgba(243,247,255,0.12);
+    --line-cyan: rgba(34,211,238,0.4);
+    --shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    background: var(--ink);
+    color: var(--white);
+    font-family:'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{ text-decoration:none; }
+  .mono{ font-family:'JetBrains Mono', ui-monospace, Menlo, monospace; }
+  .eyebrow{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+    color: var(--cyan-soft);
+  }
+  .text-slate{ color:var(--slate) !important; }
+  a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible, .nav-link:focus-visible, .form-check-input:focus-visible{
+    outline: 2px solid var(--cyan); outline-offset:3px; border-radius:3px;
+  }
+
+  /* ---------- Navbar (shared language with homepage) ---------- */
+  .navbar-feelo{
+    background: rgba(5,11,26,0.9);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  .navbar-feelo .navbar-brand{
+    font-family:'Bebas Neue', sans-serif; font-size:1.5rem; letter-spacing:.06em;
+    color: var(--white); display:flex; align-items:center; gap:.55rem;
+  }
+  .navbar-feelo .nav-link{
+    color: var(--slate); font-size:.85rem; font-weight:600; letter-spacing:.02em;
+    padding:.5rem .85rem !important; transition: color .15s ease;
+  }
+  .navbar-feelo .nav-link:hover, .navbar-feelo .nav-link:focus{ color: var(--cyan-soft); }
+  .navbar-feelo .nav-link.active-mark{ color: var(--white); position:relative; }
+  .navbar-feelo .nav-link.active-mark::after{
+    content:""; position:absolute; left:.85rem; right:.85rem; bottom:.1rem;
+    height:2px; background: var(--cyan); border-radius:2px;
+  }
+  .dropdown-menu-feelo{
+    background: var(--ink-2); border:1px solid var(--line); box-shadow: var(--shadow); padding:.4rem;
+  }
+  .dropdown-menu-feelo .dropdown-item{ color:var(--white); font-size:.88rem; border-radius:.4rem; padding:.5rem .75rem; }
+  .dropdown-menu-feelo .dropdown-item:hover, .dropdown-menu-feelo .dropdown-item:focus{
+    background: rgba(34,211,238,0.12); color: var(--cyan-soft);
+  }
+  .user-chip{
+    display:flex; align-items:center; gap:.5rem;
+    color: var(--white); font-weight:600; font-size:.86rem;
+  }
+  .user-avatar{
+    width:1.9rem; height:1.9rem; border-radius:50%;
+    background: linear-gradient(160deg, var(--cyan), var(--blue));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.72rem; color:#04131c;
+  }
+
+  /* ---------- Page header strip ---------- */
+  .page-header{
+    position:relative; overflow:hidden; isolation:isolate;
+    padding: 2.6rem 0 3rem;
+    background:
+      radial-gradient(ellipse 900px 460px at 15% -10%, rgba(34,211,238,0.28), transparent 60%),
+      radial-gradient(ellipse 800px 500px at 100% -10%, rgba(59,130,246,0.24), transparent 58%),
+      linear-gradient(180deg, #050b1a 0%, #081428 60%, #0a1a34 100%);
+  }
+  .page-header-rays{ position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5; }
+  .page-header-rays .twinkle{ animation: twinkle 3.4s ease-in-out infinite; }
+  @keyframes twinkle{ 0%,100%{opacity:.9;} 50%{opacity:.2;} }
+  @media (prefers-reduced-motion: reduce){ .page-header-rays .twinkle{ animation:none; } }
+  .page-header-content{ position:relative; z-index:1; }
+  .hero-panel{
+    display:inline-block; background: var(--panel); border:1px solid var(--line);
+    border-radius:.6rem; padding:.55rem 1rem; backdrop-filter: blur(6px);
+  }
+  .page-header h1{
+    font-family:'Bebas Neue', sans-serif; font-size: clamp(2rem, 4.4vw, 3rem);
+    letter-spacing:.02em; margin:0; color: var(--white);
+  }
+  .page-header h1 .accent{ color: var(--cyan); }
+
+  .md-select .btn{
+    background: var(--panel-strong); border:1px solid var(--line-cyan); color: var(--white);
+    font-family:'JetBrains Mono', monospace; font-weight:600; font-size:.85rem;
+    padding:.5rem 1rem; border-radius:.6rem;
+  }
+  .md-select .btn:hover, .md-select .btn:focus{ background: rgba(34,211,238,0.14); color:var(--white); }
+  .md-select .dropdown-menu{ min-width: 7rem; }
+
+  /* ---------- Content card (light, like the login card) ---------- */
+  .content-card{
+    background: linear-gradient(180deg, #fbfdff, #eef3fb);
+    border-radius: 1rem;
+    box-shadow: var(--shadow), 0 0 0 1px rgba(34,211,238,0.2);
+    color:#0c1930;
+    margin-top: -2.2rem;
+    position:relative; z-index:2;
+    overflow:hidden;
+  }
+  .content-card-toolbar{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;
+    padding: 1.1rem 1.3rem;
+    border-bottom: 1px solid rgba(12,25,48,0.08);
+  }
+  .search-feelo{
+    display:flex; align-items:center; gap:.6rem;
+  }
+  .search-feelo label{
+    font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#4a5b7c;
+  }
+  .search-feelo input{
+    border:1px solid rgba(12,25,48,0.16); border-radius:.55rem; padding:.4rem .75rem;
+    font-size:.88rem; min-width: 12rem; color:#0c1930;
+  }
+  .search-feelo input:focus{ outline:none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.16); }
+
+  .table-feelo{ width:100%; border-collapse:separate; border-spacing:0; }
+  .table-feelo thead th{
+    font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:#5a6c8c;
+    font-weight:700; padding:.85rem 1.3rem; border-bottom:1px solid rgba(12,25,48,0.1);
+    text-align:left; background:#f6f9fd;
+  }
+  .table-feelo thead th.col-res{ text-align:center; }
+  .table-feelo tbody tr{ border-bottom:1px solid rgba(12,25,48,0.06); transition: background .15s ease; }
+  .table-feelo tbody tr:nth-child(even){ background: rgba(12,25,48,0.02); }
+  .table-feelo tbody tr:hover{ background: rgba(59,130,246,0.06); }
+  .table-feelo tbody tr.is-hidden{ display:none; }
+  .table-feelo td{ padding: .9rem 1.3rem; vertical-align:middle; }
+
+  .kickoff-date{ font-weight:700; font-size:.88rem; color:#0c1930; }
+  .kickoff-time{ font-family:'JetBrains Mono', monospace; font-size:.78rem; color:#5a6c8c; }
+  .status-row{ display:flex; align-items:center; gap:.4rem; margin-top:.3rem; }
+  .status-chip{
+    width:1.05rem; height:1.05rem; border-radius:50%;
+    background: var(--green); color:#04220f;
+    display:flex; align-items:center; justify-content:center; font-size:.6rem; font-weight:900;
+  }
+  .info-btn{
+    width:1.35rem; height:1.35rem; border-radius:50%;
+    border:1px solid rgba(12,25,48,0.18); background:#fff; color:#5a6c8c;
+    display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700;
+    cursor:pointer; padding:0;
+  }
+  .info-btn:hover{ background:#eef3fb; color:#0c1930; }
+
+  .team-cell{ display:flex; align-items:center; gap:.7rem; }
+  .team-cell.reverse{ flex-direction:row-reverse; text-align:right; }
+  .crest{
+    width:2.1rem; height:2.1rem; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex:none;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.62rem;
+    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.5), 0 1px 3px rgba(12,25,48,0.25);
+  }
+  .team-name{ font-weight:600; font-size:.94rem; color:#0c1930; }
+
+  /* segmented 1 / X / 2 pick control */
+  .pick-group{
+    display:inline-flex; border:1px solid rgba(12,25,48,0.14); border-radius:.6rem; overflow:hidden;
+  }
+  .pick-group input{ position:absolute; opacity:0; pointer-events:none; }
+  .pick-group label{
+    margin:0; padding:.4rem .75rem; font-size:.82rem; font-weight:700; color:#5a6c8c;
+    cursor:pointer; transition: all .15s ease; min-width:2.4rem; text-align:center;
+  }
+  .pick-group label + label{ border-left:1px solid rgba(12,25,48,0.14); }
+  .pick-group input:checked + label{ background: var(--blue); color:#fff; }
+  .pick-group input:focus-visible + label{ outline:2px solid var(--blue); outline-offset:-2px; }
+  .pick-group label:hover{ background: rgba(59,130,246,0.1); }
+
+  .table-footbar{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    padding: 1.1rem 1.3rem;
+  }
+  .row-count{ font-size:.82rem; color:#5a6c8c; font-weight:600; }
+
+  .btn-kickoff{
+    background: linear-gradient(180deg, #34d167, var(--green-dark));
+    color:#04220f; font-weight:700; letter-spacing:.03em; border:none;
+    border-radius:.6rem; padding:.65rem 1.6rem; transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-kickoff:hover{ color:#04220f; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(34,197,94,0.35); }
+
+  .footer-feelo{ background: var(--ink); padding: 1.8rem 0; font-size:.85rem; }
+  .footer-feelo a{ color: var(--slate); }
+  .footer-feelo a:hover{ color: var(--cyan-soft); }
+
+  .toast-feelo{ background: var(--ink-2); border:1px solid var(--line-cyan); color: var(--white); }
+
+  @media (max-width: 575.98px){
+    .table-feelo thead{ display:none; }
+    .table-feelo td{ display:block; padding:.4rem 1rem; }
+    .table-feelo tbody tr{ display:block; padding:.9rem 0; border-bottom:1px solid rgba(12,25,48,0.1); }
+    .team-cell.reverse{ flex-direction:row; text-align:left; }
+    .col-res{ text-align:left !important; }
+  }
+</style>
+
+<!-- ================= NAVBAR (logged in) ================= -->
+<nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
+  <div class="container">
+    <a class="navbar-brand" href="{{HOME_URL}}">
+      <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#22d3ee" stroke-width="4"/>
+        <g fill="#22d3ee">
+          <polygon points="50,26 61,34 57,47 43,47 39,34"/>
+          <polygon points="24,44 33,38 37,50 29,60 19,57"/>
+          <polygon points="76,44 67,38 63,50 71,60 81,57"/>
+          <polygon points="40,68 50,63 60,68 57,80 43,80"/>
+        </g>
+      </svg>
+      FEELOCHAMP
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Navigation umschalten" style="border-color: var(--line-cyan);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="#" aria-current="page">Spiele</a></li>
+            <li><a class="dropdown-item demo-link" href="#">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Alle Tipps</a></li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Spielstand</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item demo-link" href="#">Regeln</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Playoffs</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Turnierbaum</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Teams</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Kalender</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item demo-link" href="#">Statistik</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Punkten</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Positionen</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Quoten der Spiele</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Admin</a></li>
+      </ul>
+      <div class="dropdown">
+        <a class="user-chip dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="user-avatar">sTe</span> sTe
+        </a>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end">
+          <li><a class="dropdown-item demo-link" href="#">Einstellungen</a></li>
+          <li><a class="dropdown-item demo-link" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= PAGE HEADER ================= -->
+<header class="page-header">
+  <svg class="page-header-rays" viewBox="0 0 1600 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="#eef4ee">
+      <circle class="twinkle" cx="180" cy="60" r="1.6"/>
+      <circle class="twinkle" cx="520" cy="40" r="1.4" style="animation-delay:.5s"/>
+      <circle class="twinkle" cx="900" cy="70" r="1.8"/>
+      <circle class="twinkle" cx="1250" cy="45" r="1.3" style="animation-delay:1s"/>
+      <circle class="twinkle" cx="1450" cy="90" r="1.5" style="animation-delay:1.4s"/>
+    </g>
+    <g stroke="#7fe3f5" stroke-width="1.2" opacity=".25">
+      <line x1="0" y1="300" x2="500" y2="0"/>
+      <line x1="1600" y1="280" x2="1050" y2="0"/>
+    </g>
+  </svg>
+  <div class="container page-header-content">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="hero-panel">
+        <span class="eyebrow d-block mb-1">Matchday 1 &middot; Champions League</span>
+        <h1>Spiele f&uuml;r <span class="accent">Matchday: 1</span></h1>
+      </div>
+      <div class="dropdown md-select">
+        <button class="btn dropdown-toggle" type="button" id="mdSelect" data-bs-toggle="dropdown" aria-expanded="false">MD 1</button>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end" aria-labelledby="mdSelect">
+          <li><a class="dropdown-item md-option" href="#" data-md="alle">Alle</a></li>
+          <li><a class="dropdown-item md-option active" href="#" data-md="1">MD1</a></li>
+          <li><a class="dropdown-item md-option" href="#" data-md="2">MD2</a></li>
+          <li><a class="dropdown-item md-option" href="#" data-md="3">MD3</a></li>
+          <li><a class="dropdown-item md-option" href="#" data-md="4">MD4</a></li>
+          <li><a class="dropdown-item md-option" href="#" data-md="5">MD5</a></li>
+          <li><a class="dropdown-item md-option" href="#" data-md="6">MD6</a></li>
+          <li><a class="dropdown-item md-option" href="#" data-md="7">MD7</a></li>
+          <li><a class="dropdown-item md-option" href="#" data-md="8">MD8</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= CONTENT ================= -->
+<main>
+  <div class="container">
+    <div class="content-card">
+      <div class="content-card-toolbar">
+        <span class="text-slate" style="color:#5a6c8c !important; font-size:.85rem;">18 Spiele in dieser Runde</span>
+        <div class="search-feelo">
+          <label for="teamSearch">Suchen</label>
+          <input type="search" id="teamSearch" placeholder="Team suchen&hellip;" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table-feelo">
+          <thead>
+            <tr>
+              <th style="width:9rem;">Datum</th>
+              <th>Team 1</th>
+              <th>Team 2</th>
+              <th class="col-res" style="width:11rem;">Res</th>
+            </tr>
+          </thead>
+          <tbody id="matchRows">
+            <!-- rows injected by JS from MATCH_DATA -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footbar">
+        <span class="row-count"><span id="visibleCount">18</span> Spiele</span>
+        <button type="button" class="btn btn-kickoff" id="submitPicks">Absenden</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-feelo mt-5">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <span class="text-slate">FEELOCHAMP 2026/2027 &nbsp;|&nbsp; gegr. 2002 von Soizbuaga Wettkaiser</span>
+    <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></span>
+  </div>
+</footer>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
+  <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="demoToastText">Tipps gespeichert! Das ist eine Design-Demo &ndash; kein echtes Backend.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Schließen"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Bootstrap 5.3.3 bundle (vendored, self-contained) ===== */
+/*__BOOTSTRAP_JS__*/
+</script>
+
+<script>
+  // Matchday 1 fixture demo data. Crest = generic initials badge (no club logos used).
+  var MATCHES = [
+    ["8.9.2026","18:45","Club Brügge","CLB","#123a8f","Aston Villa","AVL","#7a1f3d","X"],
+    ["8.9.2026","18:45","AEK Athen","AEK","#c9a227","LASK","LSK","#1a1a1a","X"],
+    ["8.9.2026","21:00","Real Madrid","RMA","#1b3a6b","Inter","INT","#1c2b6b","1"],
+    ["8.9.2026","21:00","Dortmund","BVB","#f4d117","Villareal","VIL","#f2c14e","1"],
+    ["8.9.2026","21:00","Porto","POR","#1f4e8c","Man City","MCI","#6cabdd","2"],
+    ["8.9.2026","21:00","Lille","LIL","#c8102e","Real Betis","BET","#0b6a3d","X"],
+    ["9.9.2026","18:45","Barcelona","BAR","#a50044","Feyenoord","FEY","#c8102e","1"],
+    ["9.9.2026","18:45","Stuttgart","VFB","#e30613","Viking","VIK","#b71c2b","2"],
+    ["9.9.2026","21:00","PSG","PSG","#0a2240","Slovan Bratislava","SLB","#1e88c7","1"],
+    ["9.9.2026","21:00","Liverpool","LIV","#c8102e","Atletico","ATM","#d71920","X"],
+    ["9.9.2026","21:00","Sporting","SCP","#007a3d","Galatasaray","GAL","#a90432","2"],
+    ["9.9.2026","21:00","Napoli","NAP","#1c6dd0","Arsenal","ARS","#d71920","2"],
+    ["10.9.2026","18:45","PSV","PSV","#d2122e","Shakhtar","SHK","#e2711d","1"],
+    ["10.9.2026","18:45","Fenerbahce","FEN","#14226b","Roma","ROM","#8e1b3a","X"],
+    ["10.9.2026","21:00","Bayern","FCB","#dc052d","Bodö/Glimt","BOD","#f4c300","1"],
+    ["10.9.2026","21:00","Man Utd","MUN","#da291c","Sabah","SAB","#d6336c","1"],
+    ["10.9.2026","21:00","Slavia Prag","SLA","#c8102e","Lens","LEN","#ffcc00","2"],
+    ["10.9.2026","21:00","Como","COM","#003c7d","Leipzig","RBL","#d0011b","2"]
+  ];
+
+  function crestTextColor(hex){
+    var c = hex.replace('#','');
+    var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
+    var lum = (0.299*r + 0.587*g + 0.114*b) / 255;
+    return lum > 0.62 ? '#111' : '#fff';
+  }
+
+  function renderMatches(){
+    var tbody = document.getElementById('matchRows');
+    var html = '';
+    MATCHES.forEach(function(m, i){
+      var date=m[0], time=m[1], t1=m[2], i1=m[3], c1=m[4], t2=m[5], i2=m[6], c2=m[7], pick=m[8];
+      var name = 'pick-'+i;
+      function opt(val, label){
+        var checked = (val === pick) ? 'checked' : '';
+        return '<input type="radio" name="'+name+'" id="'+name+'-'+val+'" value="'+val+'" '+checked+'>' +
+               '<label for="'+name+'-'+val+'">'+label+'</label>';
+      }
+      html += '<tr data-teams="'+ (t1+' '+t2).toLowerCase() +'">' +
+        '<td><div class="kickoff-date">'+date+'</div><div class="kickoff-time">'+time+' Uhr</div>' +
+          '<div class="status-row"><span class="status-chip" title="Tipp gespeichert">&#10003;</span>' +
+          '<button type="button" class="info-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Kickoff '+date+', '+time+' Uhr &middot; Gruppenphase">i</button></div>' +
+        '</td>' +
+        '<td><div class="team-cell"><span class="crest" style="background:'+c1+'; color:'+crestTextColor(c1)+';">'+i1+'</span><span class="team-name">'+t1+'</span></div></td>' +
+        '<td><div class="team-cell reverse"><span class="crest" style="background:'+c2+'; color:'+crestTextColor(c2)+';">'+i2+'</span><span class="team-name">'+t2+'</span></div></td>' +
+        '<td class="col-res"><div class="pick-group">' + opt('1','1') + opt('X','X') + opt('2','2') + '</div></td>' +
+      '</tr>';
+    });
+    tbody.innerHTML = html;
+
+    var tooltipEls = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipEls.forEach(function(el){ new bootstrap.Tooltip(el); });
+  }
+  renderMatches();
+
+  function showToast(text){
+    var toastEl = document.getElementById('demoToast');
+    document.getElementById('demoToastText').textContent = text;
+    bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000 }).show();
+  }
+
+  document.getElementById('submitPicks').addEventListener('click', function(){
+    showToast('Tipps gespeichert! Das ist eine Design-Demo – kein echtes Backend.');
+  });
+
+  document.querySelectorAll('.md-option').forEach(function(opt){
+    opt.addEventListener('click', function(e){
+      e.preventDefault();
+      var md = this.getAttribute('data-md');
+      document.querySelectorAll('.md-option').forEach(function(o){ o.classList.remove('active'); });
+      this.classList.add('active');
+      document.getElementById('mdSelect').textContent = md === 'alle' ? 'Alle' : ('MD'+md);
+      if (md === '1' || md === 'alle'){
+        document.querySelector('.page-header h1').innerHTML = 'Spiele für <span class="accent">Matchday: 1</span>';
+      } else {
+        showToast('Demo: nur Matchday 1 hat hier Spieldaten hinterlegt.');
+      }
+    });
+  });
+
+  document.querySelectorAll('.demo-link').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      showToast('Diese Unterseite ist in der Demo nicht verknüpft.');
+    });
+  });
+
+  var searchInput = document.getElementById('teamSearch');
+  searchInput.addEventListener('input', function(){
+    var q = this.value.trim().toLowerCase();
+    var rows = document.querySelectorAll('#matchRows tr');
+    var visible = 0;
+    rows.forEach(function(row){
+      var match = row.getAttribute('data-teams').indexOf(q) !== -1;
+      row.classList.toggle('is-hidden', !match);
+      if (match) visible++;
+    });
+    document.getElementById('visibleCount').textContent = visible;
+  });
+</script>

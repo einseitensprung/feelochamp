@@ -1,0 +1,622 @@
+<meta charset="utf-8">
+<title>Feelochamp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== Bootstrap 5.3.3 (vendored, self-contained) ===== */
+/*__BOOTSTRAP_CSS__*/
+</style>
+
+<style>
+  :root{
+    --ink:#050b1a;
+    --ink-2:#0a1730;
+    --panel: rgba(6,16,36,0.66);
+    --panel-strong: rgba(6,16,36,0.82);
+    --cyan:#22d3ee;
+    --cyan-soft:#8fe9f7;
+    --blue:#3b82f6;
+    --white:#f3f7ff;
+    --slate:#a8b7d6;
+    --green:#22c55e;
+    --green-dark:#16a34a;
+    --line: rgba(243,247,255,0.12);
+    --line-cyan: rgba(34,211,238,0.4);
+    --shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a{ text-decoration:none; }
+
+  .mono{ font-family:'JetBrains Mono', ui-monospace, Menlo, monospace; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:.72rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color: var(--cyan-soft);
+  }
+
+  .text-slate{ color: var(--slate) !important; }
+  .text-cyan{ color: var(--cyan) !important; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible, .nav-link:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* ---------- Navbar ---------- */
+  .navbar-feelo{
+    background: rgba(5,11,26,0.85);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  .navbar-feelo .navbar-brand{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:1.55rem;
+    letter-spacing:.06em;
+    color: var(--white);
+    display:flex; align-items:center; gap:.55rem;
+  }
+  .navbar-feelo .nav-link{
+    color: var(--slate);
+    font-size:.86rem;
+    font-weight:600;
+    letter-spacing:.02em;
+    padding: .5rem .9rem !important;
+    transition: color .15s ease;
+  }
+  .navbar-feelo .nav-link:hover,
+  .navbar-feelo .nav-link:focus{ color: var(--cyan-soft); }
+  .dropdown-menu-feelo{
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    padding: .4rem;
+  }
+  .dropdown-menu-feelo .dropdown-item{
+    color: var(--white);
+    font-size:.88rem;
+    border-radius:.4rem;
+    padding: .5rem .75rem;
+  }
+  .dropdown-menu-feelo .dropdown-item:hover,
+  .dropdown-menu-feelo .dropdown-item:focus{
+    background: rgba(34,211,238,0.12);
+    color: var(--cyan-soft);
+  }
+  .btn-ghost-cyan{
+    border:1px solid var(--line-cyan);
+    color: var(--cyan-soft);
+    font-size:.82rem;
+    font-weight:600;
+    letter-spacing:.03em;
+    padding:.4rem 1.1rem;
+    border-radius: 999px;
+    transition: all .18s ease;
+  }
+  .btn-ghost-cyan:hover{
+    background: var(--cyan);
+    color:#031018;
+    border-color: var(--cyan);
+  }
+
+  /* ---------- Hero: Champions-League night glow ---------- */
+  .hero{
+    position:relative;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+    overflow:hidden;
+    isolation:isolate;
+    background:
+      radial-gradient(ellipse 1100px 680px at 18% 6%, rgba(34,211,238,0.32), transparent 60%),
+      radial-gradient(ellipse 950px 720px at 88% -4%, rgba(59,130,246,0.30), transparent 58%),
+      radial-gradient(ellipse 1300px 800px at 50% 118%, rgba(34,211,238,0.16), transparent 62%),
+      linear-gradient(180deg, #050b1a 0%, #081428 45%, #0a1a34 100%);
+  }
+  .hero-rays{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+    opacity:.5;
+  }
+  .hero-rays .twinkle{ animation: twinkle 3.4s ease-in-out infinite; }
+  @keyframes twinkle{ 0%,100%{ opacity:.9; } 50%{ opacity:.2; } }
+  @media (prefers-reduced-motion: reduce){ .hero-rays .twinkle{ animation:none; } }
+
+  .hero-content{ position:relative; z-index:1; }
+
+  .hero-panel{
+    display:inline-block;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius:.6rem;
+    padding: .55rem 1rem;
+    backdrop-filter: blur(6px);
+  }
+  .kicker-badge{
+    display:inline-flex; align-items:center; gap:.5rem;
+    border:1px solid var(--line-cyan);
+    border-radius:999px;
+    padding:.35rem .9rem;
+    background: rgba(34,211,238,0.08);
+  }
+
+  .hero h1{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: clamp(3.2rem, 8.4vw, 6rem);
+    line-height:.95;
+    letter-spacing:.01em;
+    margin:0;
+    color: var(--white);
+  }
+  .hero h1 .accent{ color: var(--cyan); }
+
+  .hero-lede{
+    max-width: 32rem;
+    color: var(--slate);
+    font-size: 1.02rem;
+    line-height:1.6;
+    margin:0;
+  }
+
+  /* ---------- Scoreboard countdown ---------- */
+  .scoreboard-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color: var(--slate);
+  }
+  .scoreboard{
+    display:flex; gap:.6rem; margin-top:.6rem; flex-wrap:wrap;
+  }
+  .scoreboard .cell{
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+    border-radius: .55rem;
+    min-width: 4.4rem;
+    padding: .65rem .4rem .5rem;
+    text-align:center;
+  }
+  .scoreboard .cell .val{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:1.65rem;
+    color: var(--cyan-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  .scoreboard .cell .lbl{
+    display:block;
+    margin-top:.15rem;
+    font-size:.6rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color: var(--slate);
+  }
+
+  /* ---------- Login card (light, like the original) ---------- */
+  .login-card{
+    background: linear-gradient(180deg, #fbfdff, #eef3fb);
+    border-radius: 1rem;
+    box-shadow: var(--shadow), 0 0 0 1px rgba(34,211,238,0.25);
+    overflow:hidden;
+    color:#0c1930;
+  }
+  .login-card-head{
+    padding: 1.3rem 1.6rem 1rem;
+    display:flex; align-items:center; gap:.6rem;
+    border-bottom: 1px solid rgba(12,25,48,0.08);
+  }
+  .login-card-head svg{ flex:none; }
+  .login-card-head h2{
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:.04em;
+    font-size:1.3rem;
+    margin:0;
+    color:#0c1930;
+  }
+  .login-card-body{ padding: 1.4rem 1.6rem 1.7rem; }
+
+  .form-label-feelo{
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#4a5b7c;
+    margin-bottom:.35rem;
+  }
+  .input-feelo{
+    background:#fff;
+    border: 1px solid rgba(12,25,48,0.14);
+    color:#0c1930;
+    padding: .65rem .85rem;
+    border-radius:.55rem;
+  }
+  .input-feelo::placeholder{ color: rgba(74,91,124,0.55); }
+  .input-feelo:focus{
+    background:#fff;
+    border-color: var(--blue);
+    color:#0c1930;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+  }
+
+  .btn-kickoff{
+    background: linear-gradient(180deg, #34d167, var(--green-dark));
+    color:#04220f;
+    font-weight:700;
+    letter-spacing:.03em;
+    border:none;
+    border-radius:.6rem;
+    padding:.75rem 1rem;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-kickoff:hover{
+    color:#04220f;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(34,197,94,0.35);
+  }
+
+  /* ---------- section divider ---------- */
+  .hero-divider{
+    height:1px;
+    background: linear-gradient(90deg, transparent, var(--line-cyan) 25%, var(--line-cyan) 75%, transparent);
+  }
+
+  /* ---------- Matchday programme (sitemap) ---------- */
+  .section-programme{
+    background: linear-gradient(180deg, var(--ink-2) 0%, #0a1626 100%);
+    border-bottom: 1px solid var(--line);
+    padding: 4.5rem 0;
+  }
+  .programme-head h2{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    letter-spacing:.02em;
+    margin-bottom:.3rem;
+    color: var(--white);
+  }
+
+  .card-feelo{
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--cyan);
+    border-radius: .8rem;
+    padding: 1.5rem 1.4rem;
+    height:100%;
+    opacity:0; transform: translateY(14px);
+    transition: opacity .5s ease, transform .5s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card-feelo.in-view{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .card-feelo{ opacity:1; transform:none; transition:none; }
+  }
+  .card-feelo:hover{
+    border-color: var(--line-cyan);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.35);
+  }
+  .card-feelo .icon-wrap{
+    width:2.6rem; height:2.6rem;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:.6rem;
+    background: rgba(34,211,238,0.12);
+    color: var(--cyan-soft);
+    margin-bottom:1rem;
+  }
+  .card-feelo h3{
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:.05em;
+    font-size:1.15rem;
+    margin-bottom:.75rem;
+    color: var(--white);
+  }
+  .card-feelo ul{ margin:0; padding:0; list-style:none; }
+  .card-feelo li + li{ margin-top:.5rem; }
+  .card-feelo a{
+    color: var(--slate);
+    font-size:.92rem;
+    display:inline-flex; align-items:center; gap:.4rem;
+    transition: color .15s ease, gap .15s ease;
+  }
+  .card-feelo a:hover{ color: var(--white); }
+  .card-feelo a svg{ flex:none; opacity:.5; transition: transform .15s ease, opacity .15s ease; }
+  .card-feelo a:hover svg{ transform: translateX(3px); opacity:1; }
+
+  /* ---------- Footer ---------- */
+  .footer-feelo{
+    background: var(--ink);
+    padding: 1.8rem 0;
+    font-size:.85rem;
+  }
+  .footer-feelo a{ color: var(--slate); }
+  .footer-feelo a:hover{ color: var(--cyan-soft); }
+
+  .toast-feelo{
+    background: var(--ink-2);
+    border: 1px solid var(--line-cyan);
+    color: var(--white);
+  }
+</style>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
+  <div class="container">
+    <a class="navbar-brand" href="#top">
+      <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#22d3ee" stroke-width="4"/>
+        <g fill="#22d3ee">
+          <polygon points="50,26 61,34 57,47 43,47 39,34"/>
+          <polygon points="24,44 33,38 37,50 29,60 19,57"/>
+          <polygon points="76,44 67,38 63,50 71,60 81,57"/>
+          <polygon points="40,68 50,63 60,68 57,80 43,80"/>
+        </g>
+      </svg>
+      FEELOCHAMP
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Navigation umschalten" style="border-color: var(--line-cyan);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#programm-tippen">Tippen</a></li>
+        <li class="nav-item"><a class="nav-link" href="#programm-ergebnisse">Alle Tipps</a></li>
+        <li class="nav-item"><a class="nav-link" href="#programm-ergebnisse">Spielstand</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="#programm-infos">Regeln</a></li>
+            <li><a class="dropdown-item" href="#programm-infos">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item" href="#programm-infos">Playoffs</a></li>
+            <li><a class="dropdown-item" href="#programm-infos">Turnierbaum</a></li>
+            <li><a class="dropdown-item" href="#programm-infos">Teams</a></li>
+            <li><a class="dropdown-item" href="#programm-infos">Kalender</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="#programm-statistik">Statistik</a></li>
+            <li><a class="dropdown-item" href="#programm-statistik">Verlauf nach Punkten</a></li>
+            <li><a class="dropdown-item" href="#programm-statistik">Verlauf nach Positionen</a></li>
+            <li><a class="dropdown-item" href="#programm-statistik">Quoten der Spiele</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="#login" class="btn btn-ghost-cyan">Login</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <svg class="hero-rays" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="#eef4ee">
+      <circle class="twinkle" cx="180" cy="90" r="2"/>
+      <circle class="twinkle" cx="340" cy="150" r="1.4" style="animation-delay:.6s"/>
+      <circle class="twinkle" cx="520" cy="70" r="1.8"/>
+      <circle class="twinkle" cx="700" cy="130" r="1.3" style="animation-delay:1.1s"/>
+      <circle class="twinkle" cx="880" cy="60" r="1.6"/>
+      <circle class="twinkle" cx="1040" cy="120" r="1.4" style="animation-delay:.3s"/>
+      <circle class="twinkle" cx="1230" cy="80" r="1.9"/>
+      <circle class="twinkle" cx="1380" cy="160" r="1.3" style="animation-delay:1.4s"/>
+      <circle class="twinkle" cx="90" cy="220" r="1.3"/>
+      <circle class="twinkle" cx="1480" cy="260" r="1.5" style="animation-delay:1.7s"/>
+    </g>
+    <g stroke="#7fe3f5" stroke-width="1.4" opacity=".28">
+      <line x1="0" y1="620" x2="640" y2="120"/>
+      <line x1="1600" y1="600" x2="980" y2="80"/>
+      <line x1="200" y1="900" x2="760" y2="300"/>
+      <line x1="1400" y1="900" x2="900" y2="340"/>
+    </g>
+  </svg>
+
+  <div class="container hero-content">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7">
+        <span class="kicker-badge eyebrow">Saison 2026/27 &middot; est. 2002</span>
+        <div class="mt-3">
+          <div class="hero-panel">
+            <h1>FEELO<span class="accent">CHAMP</span></h1>
+          </div>
+        </div>
+        <div class="hero-panel mt-3">
+          <p class="hero-lede">Der inoffizielle Tippbewerb zur Champions&nbsp;League &mdash; von Freunden für Freunde, seit mehr als zwei Jahrzehnten. Gegründet von Soizbuaga Wettkaiser.</p>
+        </div>
+
+        <div class="mt-4 hero-panel">
+          <span class="scoreboard-label">Anpfiff in</span>
+          <div class="scoreboard" role="timer" aria-live="polite" aria-label="Countdown bis zum Anpfiff">
+            <div class="cell"><span class="val" id="cd-days">00</span><span class="lbl">Tage</span></div>
+            <div class="cell"><span class="val" id="cd-hours">00</span><span class="lbl">Std</span></div>
+            <div class="cell"><span class="val" id="cd-mins">00</span><span class="lbl">Min</span></div>
+            <div class="cell"><span class="val" id="cd-secs">00</span><span class="lbl">Sek</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5" id="login">
+        <div class="login-card">
+          <div class="login-card-head">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            <h2>Login</h2>
+          </div>
+          <div class="login-card-body">
+            <form id="loginForm" novalidate>
+              <div class="mb-3">
+                <label for="feelo-user" class="form-label-feelo">Benutzer</label>
+                <input type="text" class="form-control input-feelo" id="feelo-user" placeholder="dein Kürzel" autocomplete="username">
+              </div>
+              <div class="mb-4">
+                <label for="feelo-pass" class="form-label-feelo">Passwort</label>
+                <input type="password" class="form-control input-feelo" id="feelo-pass" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password">
+              </div>
+              <button type="submit" class="btn btn-kickoff w-100">Log in</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="hero-divider" role="presentation"></div>
+
+<!-- ================= MATCHDAY PROGRAMME (sitemap) ================= -->
+<section class="section-programme">
+  <div class="container">
+    <div class="programme-head mb-5">
+      <span class="eyebrow">Rund um den Tippbewerb</span>
+      <h2>Matchday&nbsp;Programm</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" id="programm-tippen">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/><path d="M12 7.2V4.3M15.4 9.7l2.7-1.6M14.1 13.7l1.7 2.8M9.9 13.7l-1.7 2.8M8.6 9.7l-2.7-1.6"/></svg>
+          </div>
+          <h3>Tippen</h3>
+          <ul>
+            <li><a href="{{SPIELE_URL}}">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Champion <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" id="programm-ergebnisse">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1.5"/><line x1="12" y1="5" x2="12" y2="19"/><path d="M7 10h2M15 10h2M7 14h2M15 14h2"/></svg>
+          </div>
+          <h3>Ergebnisse</h3>
+          <ul>
+            <li><a href="#">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" id="programm-infos">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+          </div>
+          <h3>Infos</h3>
+          <ul>
+            <li><a href="#">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Teams <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Kalender <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" id="programm-statistik">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18M8 17V10M13 17V6M18 17v-4"/></svg>
+          </div>
+          <h3>Statistik</h3>
+          <ul>
+            <li><a href="#">Statistik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Verlauf nach Punkten <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Verlauf nach Positionen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#">Quoten der Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-feelo">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <span class="text-slate">FEELOCHAMP 2026/2027 &nbsp;|&nbsp; gegr. 2002 von Soizbuaga Wettkaiser</span>
+    <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></span>
+  </div>
+</footer>
+
+<!-- toast host -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
+  <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">Los geht's, Champion! Das ist eine Design-Demo &ndash; kein echtes Login.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Schließen"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Bootstrap 5.3.3 bundle (vendored, self-contained) ===== */
+/*__BOOTSTRAP_JS__*/
+</script>
+
+<script>
+  // Countdown to next illustrative kickoff
+  (function(){
+    var target = new Date("2026-09-16T18:45:00+02:00").getTime();
+    var d = document.getElementById('cd-days'),
+        h = document.getElementById('cd-hours'),
+        m = document.getElementById('cd-mins'),
+        s = document.getElementById('cd-secs');
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function tick(){
+      var diff = target - Date.now();
+      if (diff < 0) diff = 0;
+      var days = Math.floor(diff / 86400000);
+      var hours = Math.floor((diff % 86400000) / 3600000);
+      var mins = Math.floor((diff % 3600000) / 60000);
+      var secs = Math.floor((diff % 60000) / 1000);
+      d.textContent = pad(days); h.textContent = pad(hours);
+      m.textContent = pad(mins); s.textContent = pad(secs);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // Demo login: no backend here, just a friendly confirmation
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var toastEl = document.getElementById('demoToast');
+    var toast = bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3200 });
+    toast.show();
+  });
+
+  // Scroll-reveal for programme cards
+  (function(){
+    var cards = document.querySelectorAll('.card-feelo');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      cards.forEach(function(c){ c.classList.add('in-view'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry, i){
+        if (entry.isIntersecting){
+          setTimeout(function(){ entry.target.classList.add('in-view'); }, i * 70);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    cards.forEach(function(c){ io.observe(c); });
+  })();
+</script>
