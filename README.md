@@ -4,12 +4,12 @@ Ein gestyltes Bootstrap-5-Redesign der [Feelochamp](https://einseitensprung.at/c
 
 ## 🔗 Live-Vorschau
 
-| Seite | Link |
-|---|---|
-| Startseite / Login | **[Preview ansehen](https://claude.ai/code/artifact/37760093-ef79-47f2-8f58-d1f4152b59b4)** |
-| Spiele (Matchday-Tipps) | **[Preview ansehen](https://claude.ai/code/artifact/6f9f5e88-003d-46ad-a0ec-49276b67a568)** |
+| Seite | GitHub Pages (öffentlich) | Claude-Artifact-Preview |
+|---|---|---|
+| Startseite / Login | **[einseitensprung.github.io/feelochamp](https://einseitensprung.github.io/feelochamp/)** | [Preview ansehen](https://claude.ai/code/artifact/37760093-ef79-47f2-8f58-d1f4152b59b4) |
+| Spiele (Matchday-Tipps) | **[einseitensprung.github.io/feelochamp/spiele.html](https://einseitensprung.github.io/feelochamp/spiele.html)** | [Preview ansehen](https://claude.ai/code/artifact/6f9f5e88-003d-46ad-a0ec-49276b67a568) |
 
-Die Previews sind private Claude-Artifacts (nur mit diesem Account/Link aufrufbar). Alternativ lässt sich `index.html` bzw. `spiele.html` direkt lokal im Browser öffnen — beide Dateien sind vollständig eigenständig (Bootstrap ist inline eingebettet, kein Build-Schritt nötig zum Ansehen).
+Die GitHub-Pages-Links sind die dauerhafte, öffentliche Vorschau (direkt aus diesem Repo deployed). Die Claude-Artifact-Links sind nur mit diesem Account aufrufbar. Alternativ lässt sich `index.html` bzw. `spiele.html` auch direkt lokal im Browser öffnen — beide Dateien sind vollständig eigenständig (Bootstrap ist inline eingebettet, kein Build-Schritt nötig zum Ansehen).
 
 ## Was ist das
 
