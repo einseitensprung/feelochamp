@@ -16,17 +16,17 @@ Konkret:
 
 ## Build-Workflow
 
-`index.html` und `spiele.html` im Root sind **generierte** Dateien (siehe `build.js`), keine Quelldateien. Nach jeder Änderung an `src/*.template.html` vor dem Commit neu bauen:
+`index.html`, `spiele.html` und `aufsteiger.html` im Root sind **generierte** Dateien (siehe `build.js`), keine Quelldateien. Nach jeder Änderung an `src/*.template.html` vor dem Commit neu bauen:
 
 ```bash
 node build.js
 ```
 
-Beide (Quelltemplate **und** das neu gebaute `index.html`/`spiele.html`) gehören in denselben Commit — nie nur die Quelle oder nur das Build-Ergebnis committen.
+Quelltemplate **und** das neu gebaute HTML gehören in denselben Commit — nie nur die Quelle oder nur das Build-Ergebnis committen.
 
 ## Projektkontext
 
 - Gestyltes Bootstrap-5-Redesign von [einseitensprung.at/cl/](https://einseitensprung.at/cl/), einer privaten Champions-League-Tipprunde ("Feelochamp", seit 2002).
 - Reine Design-Demo ohne echtes Backend — Login/Tipp-Abgabe lösen nur Bestätigungs-Toasts aus.
 - Keine echten Vereinswappen oder das Original-Hintergrundfoto verwenden (UEFA-Bildmaterial/Marken sind geschützt) — stattdessen eigene Initialen-Badges/Grafiken, siehe README.
-- Bootstrap wird lokal vendored (`vendor/`) und beim Build inline eingebettet, damit die Seiten als eigenständige HTML-Dateien (z. B. für Claude Artifacts) funktionieren, ohne externe CDN-Requests.
+- Bootstrap wird lokal vendored (`assets/bootstrap.min.css`, `assets/bootstrap.bundle.min.js`) und von jeder Seite per `<link>`/`<script src>` verlinkt (nicht inline eingebettet) — keine externen CDN-Requests, aber die Seiten sind dadurch nicht mehr einzeln eigenständig: `assets/` muss immer mitkopiert werden.

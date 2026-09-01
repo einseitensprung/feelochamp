@@ -2,8 +2,9 @@
 /**
  * Build script for the Feelochamp static site.
  *
- * Merges the page templates in src/ with the vendored Bootstrap 5
- * bundle (vendor/) into self-contained, deployable HTML files.
+ * Resolves the page templates in src/ into deployable HTML files.
+ * Bootstrap 5 (assets/) is linked, not inlined, so it loads once and
+ * is shared/cached across all pages.
  *
  * Usage:
  *   node build.js            -> relative links (index.html / spiele.html)
@@ -25,14 +26,8 @@ const SPIELE_URL = mode === "artifact" ? ARTIFACT_SPIELE_URL : "spiele.html";
 // Not yet published as its own Claude Artifact, so always relative.
 const AUFSTEIGER_URL = "aufsteiger.html";
 
-const css = fs.readFileSync(path.join(dir, "vendor/bootstrap.min.css"), "utf8");
-const js = fs.readFileSync(path.join(dir, "vendor/bootstrap.bundle.min.js"), "utf8");
-
 function build(templateFile, outFile, replacements) {
   let tpl = fs.readFileSync(path.join(dir, "src", templateFile), "utf8");
-  tpl = tpl
-    .replace("/*__BOOTSTRAP_CSS__*/", () => css)
-    .replace("/*__BOOTSTRAP_JS__*/", () => js);
   for (const [token, value] of Object.entries(replacements)) {
     tpl = tpl.split(token).join(value);
   }
