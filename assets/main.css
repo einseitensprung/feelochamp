@@ -316,7 +316,10 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
 
 /* ---------- Page header strip (Unterseiten) ---------- */
 .page-header{
-  position:relative; overflow:hidden; isolation:isolate;
+  /* Kein overflow:hidden/isolation:isolate hier: das Rays-SVG clippt sich
+     selbst (SVG-Default), aber overflow:hidden würde ein offenes Dropdown
+     im Header abschneiden. */
+  position:relative;
   padding: 2.6rem 0 3rem;
   background:
     radial-gradient(ellipse 900px 460px at 15% -10%, rgba(34,211,238,0.28), transparent 60%),
@@ -325,7 +328,11 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
 }
 .page-header-rays{ position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5; }
 .page-header-rays .twinkle{ animation: twinkle 3.4s ease-in-out infinite; }
-.page-header-content{ position:relative; z-index:1; }
+/* z-index:3, nicht 1: .page-header selbst bildet keine eigene Stacking-Context
+   (position:relative ohne z-index), darum konkurriert .page-header-content direkt
+   mit .content-card (z-index:2) auf Body-Ebene. Mit z-index:1 verlor es dagegen und
+   das MD-Dropdown (Spiele-Seite) landete unter der content-card statt darüber. */
+.page-header-content{ position:relative; z-index:3; }
 .page-header h1{
   font-family:'Bebas Neue', sans-serif; font-size: clamp(2rem, 4.4vw, 3rem);
   letter-spacing:.02em; margin:0; color: var(--white);
