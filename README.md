@@ -9,7 +9,7 @@ Ein gestyltes Bootstrap-5-Redesign der [Feelochamp](https://einseitensprung.at/c
 | Startseite / Login | **[einseitensprung.github.io/feelochamp](https://einseitensprung.github.io/feelochamp/)** | [Preview ansehen](https://claude.ai/code/artifact/37760093-ef79-47f2-8f58-d1f4152b59b4) |
 | Spiele (Matchday-Tipps) | **[einseitensprung.github.io/feelochamp/spiele.html](https://einseitensprung.github.io/feelochamp/spiele.html)** | [Preview ansehen](https://claude.ai/code/artifact/6f9f5e88-003d-46ad-a0ec-49276b67a568) |
 
-Die GitHub-Pages-Links sind die dauerhafte, öffentliche Vorschau (direkt aus diesem Repo deployed). Die Claude-Artifact-Links sind nur mit diesem Account aufrufbar. Alternativ lassen sich `index.html`, `spiele.html` und `aufsteiger.html` auch direkt lokal im Browser öffnen — sie laden Bootstrap gemeinsam aus dem `assets/`-Ordner, der dafür einfach neben den HTML-Dateien liegen bleiben muss.
+Die GitHub-Pages-Links sind die dauerhafte, öffentliche Vorschau (direkt aus diesem Repo deployed). Die Claude-Artifact-Links sind nur mit diesem Account aufrufbar. Alternativ lassen sich `index.html`, `spiele.html` und `aufsteiger.html` auch direkt lokal im Browser öffnen — sie laden Bootstrap und die gemeinsamen Styles aus dem `assets/`-Ordner, der dafür einfach neben den HTML-Dateien liegen bleiben muss.
 
 ## Was ist das
 
@@ -31,8 +31,9 @@ Alle Seiten sind reine Design-Demos ohne echtes Backend (Login, Tipp-Abgabe etc.
 │   ├── spiele.template.html     # Quelltext Spiele-Unterseite
 │   └── aufsteiger.template.html # Quelltext 8-Fix-Aufsteiger-Unterseite
 ├── assets/
-│   ├── bootstrap.min.css      # Bootstrap 5.3.3 (vendored, von allen Seiten verlinkt)
-│   └── bootstrap.bundle.min.js
+│   ├── bootstrap.min.css        # Bootstrap 5.3.3 (vendored, von allen Seiten verlinkt)
+│   ├── bootstrap.bundle.min.js
+│   └── main.css                 # gemeinsames Stylesheet aller drei Seiten
 ├── build.js                     # löst Templates zu index.html/spiele.html/aufsteiger.html auf
 ├── index.html                   # gebaute Startseite
 ├── spiele.html                  # gebaute Spiele-Seite
@@ -41,7 +42,9 @@ Alle Seiten sind reine Design-Demos ohne echtes Backend (Login, Tipp-Abgabe etc.
 
 ## Build
 
-Die `.template.html`-Dateien in `src/` sind die eigentlichen Quelldateien. `index.html`, `spiele.html` und `aufsteiger.html` im Root sind das Build-Ergebnis (nur Seiten-Links aufgelöst) und werden direkt ausgeliefert/committed. Bootstrap wird dabei **nicht** mehr inline eingebettet, sondern per `<link>`/`<script src>` aus `assets/` geladen — einmal im Browser-Cache, für alle drei Seiten gemeinsam.
+Die `.template.html`-Dateien in `src/` sind die eigentlichen Quelldateien. `index.html`, `spiele.html` und `aufsteiger.html` im Root sind das Build-Ergebnis (nur Seiten-Links aufgelöst) und werden direkt ausgeliefert/committed. Bootstrap und das gemeinsame Stylesheet werden dabei **nicht** inline eingebettet, sondern per `<link>`/`<script src>` aus `assets/bootstrap.min.css`, `assets/bootstrap.bundle.min.js` und `assets/main.css` geladen — einmal im Browser-Cache, für alle drei Seiten gemeinsam.
+
+`assets/main.css` fasst die früher pro Seite duplizierten `<style>`-Blöcke zusammen. Ein paar Klassen sehen je Seite leicht anders aus (z. B. `.content-card`-Abstand, `.btn-kickoff`-Padding, `.crest`-Größe) — diese Regeln sind unter `body.page-home` / `body.page-spiele` / `body.page-aufsteiger` gescoped, damit sich am Ergebnis nichts ändert. Jedes Template setzt die passende Klasse selbst auf sein `<body>`.
 
 Nach jeder Änderung an `src/*.template.html` neu bauen:
 
