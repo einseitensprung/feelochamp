@@ -315,8 +315,33 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
 .card-feelo a:hover svg{ transform: translateX(3px); opacity:1; }
 
 /* ---------- Login-Dashboard (Start-Seite nach dem Login) ---------- */
+/* Mobile: einfache Stapelreihenfolge, Champ-Karte ganz am Ende.
+   Ab lg: Champ-Karte rückt neben Titel/Countdown (Grid-Areas), der Rest bleibt volle Breite. */
+.dash-layout{
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "title" "tippen" "ergebnisse" "infos" "statistik" "champ";
+}
+@media (min-width: 992px){
+  .dash-layout{
+    grid-template-columns: 7fr 5fr;
+    column-gap: 2rem;
+    grid-template-areas:
+      "title      champ"
+      "tippen     champ"
+      "ergebnisse ergebnisse"
+      "infos      infos"
+      "statistik  statistik";
+  }
+}
+.dash-title{ grid-area: title; }
+.dash-tippen{ grid-area: tippen; }
+.dash-ergebnisse{ grid-area: ergebnisse; }
+.dash-infos{ grid-area: infos; }
+.dash-statistik{ grid-area: statistik; }
+.champ-card{ grid-area: champ; }
+
 .dash-group{ margin-top: 2.2rem; }
-.dash-group:first-child{ margin-top:0; }
 .dash-heading{
   display:inline-block;
   background: var(--panel);

@@ -99,25 +99,28 @@
   </svg>
 
   <div class="container hero-content">
-    <span class="eyebrow d-block mb-1">Saison 2026/27 &middot; est. 2002</span>
-    <div class="hero-panel d-block" style="margin-top:.4rem; width:fit-content;">
-      <h1 style="font-size: clamp(2rem, 4.4vw, 3rem);">Feelochamp <span class="accent">2026/2027</span></h1>
-    </div>
-    <div class="hero-panel d-block mt-3" style="width:fit-content;">
-      <p class="hero-lede mb-0">est. 2002 von Soizbuaga Wettkaiser</p>
-    </div>
+   <div class="dash-layout">
+    <div class="dash-title">
+      <span class="eyebrow d-block mb-1">Saison 2026/27 &middot; est. 2002</span>
+      <div class="hero-panel d-block" style="margin-top:.4rem; width:fit-content;">
+        <h1 style="font-size: clamp(2rem, 4.4vw, 3rem);">Feelochamp <span class="accent">2026/2027</span></h1>
+      </div>
+      <div class="hero-panel d-block mt-3" style="width:fit-content;">
+        <p class="hero-lede mb-0">est. 2002 von Soizbuaga Wettkaiser</p>
+      </div>
 
-    <div class="hero-panel d-block mt-4" style="width:fit-content;">
-      <span class="scoreboard-label">Anpfiff in</span>
-      <div class="scoreboard" role="timer" aria-live="polite" aria-label="Countdown bis zum Anpfiff">
-        <div class="cell"><span class="val" id="cd-days">00</span><span class="lbl">Tage</span></div>
-        <div class="cell"><span class="val" id="cd-hours">00</span><span class="lbl">Std</span></div>
-        <div class="cell"><span class="val" id="cd-mins">00</span><span class="lbl">Min</span></div>
-        <div class="cell"><span class="val" id="cd-secs">00</span><span class="lbl">Sek</span></div>
+      <div class="hero-panel d-block mt-4" style="width:fit-content;">
+        <span class="scoreboard-label">Anpfiff in</span>
+        <div class="scoreboard" role="timer" aria-live="polite" aria-label="Countdown bis zum Anpfiff">
+          <div class="cell"><span class="val" id="cd-days">00</span><span class="lbl">Tage</span></div>
+          <div class="cell"><span class="val" id="cd-hours">00</span><span class="lbl">Std</span></div>
+          <div class="cell"><span class="val" id="cd-mins">00</span><span class="lbl">Min</span></div>
+          <div class="cell"><span class="val" id="cd-secs">00</span><span class="lbl">Sek</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="dash-group mt-1">
+    <div class="dash-group dash-tippen">
       <div class="dash-heading"><h2>Tippen</h2></div>
       <div class="dash-pills">
         <a class="dash-pill variant-green" href="{{SPIELE_URL}}">
@@ -138,7 +141,7 @@
       </div>
     </div>
 
-    <div class="dash-group">
+    <div class="dash-group dash-ergebnisse">
       <div class="dash-heading"><h2>Ergebnisse</h2></div>
       <div class="dash-pills">
         <a class="dash-pill variant-amber demo-link" href="#">
@@ -152,7 +155,7 @@
       </div>
     </div>
 
-    <div class="dash-group">
+    <div class="dash-group dash-infos">
       <div class="dash-heading"><h2>Infos</h2></div>
       <div class="dash-pills">
         <a class="dash-pill variant-slate demo-link" href="#">
@@ -174,7 +177,7 @@
       </div>
     </div>
 
-    <div class="dash-group">
+    <div class="dash-group dash-statistik">
       <div class="dash-heading"><h2>Statistik</h2></div>
       <div class="dash-pills">
         <a class="dash-pill variant-cyan demo-link" href="#">
@@ -192,11 +195,12 @@
       </div>
     </div>
 
-    <div class="champ-card mt-5 mb-5 mx-auto" style="max-width:22rem;">
+    <div class="champ-card mt-4 mt-lg-0">
       <span class="eyebrow">Aktueller Champ</span>
       <div class="champ-avatar">BO</div>
       <h2>Bono</h2>
     </div>
+   </div>
   </div>
 </header>
 
