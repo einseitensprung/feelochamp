@@ -111,7 +111,7 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.72rem; color:#04131c;
 }
 
-/* ---------- Hero: Champions-League night glow (Startseite) ---------- */
+/* ---------- Hero: Champions-League night glow (Startseite + Start-Dashboard) ---------- */
 .hero{
   position:relative;
   padding-top: 7rem;
@@ -313,6 +313,69 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
 .card-feelo a:hover{ color: var(--white); }
 .card-feelo a svg{ flex:none; opacity:.5; transition: transform .15s ease, opacity .15s ease; }
 .card-feelo a:hover svg{ transform: translateX(3px); opacity:1; }
+
+/* ---------- Login-Dashboard (Start-Seite nach dem Login) ---------- */
+.dash-group{ margin-top: 2.2rem; }
+.dash-group:first-child{ margin-top:0; }
+.dash-heading{
+  display:inline-block;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius:.6rem;
+  padding:.6rem 1.1rem;
+  margin-bottom:.9rem;
+}
+.dash-heading h2{
+  font-family:'Bebas Neue', sans-serif;
+  font-size:1.3rem;
+  letter-spacing:.03em;
+  margin:0;
+  color: var(--white);
+}
+.dash-pills{ display:flex; flex-wrap:wrap; gap:.7rem; }
+.dash-pill{
+  display:inline-flex; align-items:center; gap:.55rem;
+  padding:.6rem 1.1rem;
+  border-radius:.6rem;
+  font-weight:700; font-size:.92rem;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.dash-pill:hover{ transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0,0,0,0.3); }
+.dash-pill svg{ flex:none; }
+.dash-pill.variant-green{ background: linear-gradient(180deg, #34d167, var(--green-dark)); color:#04220f; }
+.dash-pill.variant-amber{ background: linear-gradient(180deg, #ffcf5c, #e8a72e); color:#3a2600; }
+.dash-pill.variant-slate{ background: linear-gradient(180deg, #cbd5e8, #97a7c9); color:#1c2740; }
+.dash-pill.variant-cyan{ background: linear-gradient(180deg, var(--cyan-soft), var(--cyan)); color:#04303a; }
+
+.stat-chip{
+  display:inline-flex; align-items:center; gap:.25rem;
+  background: rgba(4,20,10,0.16);
+  border-radius:999px;
+  padding:.18rem .55rem;
+  font-family:'JetBrains Mono', monospace;
+  font-weight:700; font-size:.7rem;
+}
+.stat-chip svg{ flex:none; }
+
+.champ-card{
+  background: var(--panel-strong);
+  border:1px solid var(--line-cyan);
+  border-radius:.8rem;
+  padding:1.4rem;
+  height:100%;
+  display:flex; flex-direction:column; align-items:center; text-align:center; gap:.7rem;
+  backdrop-filter: blur(6px);
+}
+.champ-avatar{
+  width:4.6rem; height:4.6rem; border-radius:50%;
+  background: linear-gradient(160deg, var(--cyan), var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:1.3rem; color:#04131c;
+}
+.champ-card h2{
+  font-family:'Bebas Neue', sans-serif;
+  font-size:1.4rem; letter-spacing:.03em; margin:0; color: var(--white);
+}
 
 /* ---------- Page header strip (Unterseiten) ---------- */
 .page-header{

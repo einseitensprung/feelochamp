@@ -247,12 +247,13 @@
     setInterval(tick, 1000);
   })();
 
-  // Demo login: no backend here, just a friendly confirmation
+  // Demo login: no backend here, just a friendly confirmation, then on to the dashboard
   document.getElementById('loginForm').addEventListener('submit', function(e){
     e.preventDefault();
     var toastEl = document.getElementById('demoToast');
-    var toast = bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3200 });
+    var toast = bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 1600 });
     toast.show();
+    setTimeout(function(){ window.location.href = '{{START_URL}}'; }, 900);
   });
 
   // Scroll-reveal for programme cards
