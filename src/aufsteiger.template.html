@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Feelochamp – Spiele</title>
+<title>Feelochamp – 8 Fix Aufsteiger</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -77,6 +77,7 @@
   .dropdown-menu-feelo .dropdown-item:hover, .dropdown-menu-feelo .dropdown-item:focus{
     background: rgba(34,211,238,0.12); color: var(--cyan-soft);
   }
+  .dropdown-menu-feelo .dropdown-item.active-mark{ color: var(--cyan-soft); }
   .user-chip{
     display:flex; align-items:center; gap:.5rem;
     color: var(--white); font-weight:600; font-size:.86rem;
@@ -112,13 +113,16 @@
   }
   .page-header h1 .accent{ color: var(--cyan); }
 
-  .md-select .btn{
-    background: var(--panel-strong); border:1px solid var(--line-cyan); color: var(--white);
-    font-family:'JetBrains Mono', monospace; font-weight:600; font-size:.85rem;
-    padding:.5rem 1rem; border-radius:.6rem;
+  /* ---------- Info notice (deselect-first hint) ---------- */
+  .notice-feelo{
+    position:relative; z-index:2;
+    display:flex; align-items:center; gap:.6rem;
+    background: linear-gradient(90deg, #0c8f9a, #17a8b5);
+    color:#eafdff; font-size:.86rem; font-weight:600;
+    border-radius:.6rem; padding:.75rem 1.1rem;
+    margin-top:-1.4rem; box-shadow: 0 10px 26px rgba(12,143,154,0.35);
   }
-  .md-select .btn:hover, .md-select .btn:focus{ background: rgba(34,211,238,0.14); color:var(--white); }
-  .md-select .dropdown-menu{ min-width: 7rem; }
+  .notice-feelo svg{ flex:none; }
 
   /* ---------- Content card (light, like the login card) ---------- */
   .content-card{
@@ -126,79 +130,18 @@
     border-radius: 1rem;
     box-shadow: var(--shadow), 0 0 0 1px rgba(34,211,238,0.2);
     color:#0c1930;
-    margin-top: -2.2rem;
+    margin-top: 1.4rem;
     position:relative; z-index:2;
-    overflow:hidden;
+    overflow:visible;
   }
   .content-card-toolbar{
     display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;
     padding: 1.1rem 1.3rem;
     border-bottom: 1px solid rgba(12,25,48,0.08);
   }
-  .search-feelo{
-    display:flex; align-items:center; gap:.6rem;
+  .content-card-toolbar .toolbar-title{
+    font-family:'Bebas Neue', sans-serif; letter-spacing:.03em; font-size:1.2rem; color:#0c1930;
   }
-  .search-feelo label{
-    font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#4a5b7c;
-  }
-  .search-feelo input{
-    border:1px solid rgba(12,25,48,0.16); border-radius:.55rem; padding:.4rem .75rem;
-    font-size:.88rem; min-width: 12rem; color:#0c1930;
-  }
-  .search-feelo input:focus{ outline:none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.16); }
-
-  .table-feelo{ width:100%; border-collapse:separate; border-spacing:0; }
-  .table-feelo thead th{
-    font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:#5a6c8c;
-    font-weight:700; padding:.85rem 1.3rem; border-bottom:1px solid rgba(12,25,48,0.1);
-    text-align:left; background:#f6f9fd;
-  }
-  .table-feelo thead th.col-res{ text-align:center; }
-  .table-feelo tbody tr{ border-bottom:1px solid rgba(12,25,48,0.06); transition: background .15s ease; }
-  .table-feelo tbody tr:nth-child(even){ background: rgba(12,25,48,0.02); }
-  .table-feelo tbody tr:hover{ background: rgba(59,130,246,0.06); }
-  .table-feelo tbody tr.is-hidden{ display:none; }
-  .table-feelo td{ padding: .9rem 1.3rem; vertical-align:middle; }
-
-  .kickoff-date{ font-weight:700; font-size:.88rem; color:#0c1930; }
-  .kickoff-time{ font-family:'JetBrains Mono', monospace; font-size:.78rem; color:#5a6c8c; }
-  .status-row{ display:flex; align-items:center; gap:.4rem; margin-top:.3rem; }
-  .status-chip{
-    width:1.05rem; height:1.05rem; border-radius:50%;
-    background: var(--green); color:#04220f;
-    display:flex; align-items:center; justify-content:center; font-size:.6rem; font-weight:900;
-  }
-  .info-btn{
-    width:1.35rem; height:1.35rem; border-radius:50%;
-    border:1px solid rgba(12,25,48,0.18); background:#fff; color:#5a6c8c;
-    display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700;
-    cursor:pointer; padding:0;
-  }
-  .info-btn:hover{ background:#eef3fb; color:#0c1930; }
-
-  .team-cell{ display:flex; align-items:center; gap:.7rem; }
-  .team-cell.reverse{ flex-direction:row-reverse; text-align:right; }
-  .crest{
-    width:2.1rem; height:2.1rem; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; flex:none;
-    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.62rem;
-    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.5), 0 1px 3px rgba(12,25,48,0.25);
-  }
-  .team-name{ font-weight:600; font-size:.94rem; color:#0c1930; }
-
-  /* segmented 1 / X / 2 pick control */
-  .pick-group{
-    display:inline-flex; border:1px solid rgba(12,25,48,0.14); border-radius:.6rem; overflow:hidden;
-  }
-  .pick-group input{ position:absolute; opacity:0; pointer-events:none; }
-  .pick-group label{
-    margin:0; padding:.4rem .75rem; font-size:.82rem; font-weight:700; color:#5a6c8c;
-    cursor:pointer; transition: all .15s ease; min-width:2.4rem; text-align:center;
-  }
-  .pick-group label + label{ border-left:1px solid rgba(12,25,48,0.14); }
-  .pick-group input:checked + label{ background: var(--blue); color:#fff; }
-  .pick-group input:focus-visible + label{ outline:2px solid var(--blue); outline-offset:-2px; }
-  .pick-group label:hover{ background: rgba(59,130,246,0.1); }
 
   .table-footbar{
     display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
@@ -206,12 +149,75 @@
   }
   .row-count{ font-size:.82rem; color:#5a6c8c; font-weight:600; }
 
+  .crest{
+    width:2rem; height:2rem; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex:none;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.58rem;
+    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.5), 0 1px 3px rgba(12,25,48,0.25);
+  }
+  .crest-sm{ width:1.5rem; height:1.5rem; font-size:.5rem; }
+
   .btn-kickoff{
     background: linear-gradient(180deg, #34d167, var(--green-dark));
     color:#04220f; font-weight:700; letter-spacing:.03em; border:none;
-    border-radius:.6rem; padding:.65rem 1.6rem; transition: transform .15s ease, box-shadow .15s ease;
+    border-radius:.6rem; padding:.7rem 2.2rem; transition: transform .15s ease, box-shadow .15s ease;
   }
   .btn-kickoff:hover{ color:#04220f; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(34,197,94,0.35); }
+  .btn-kickoff:disabled{ opacity:.55; transform:none; box-shadow:none; cursor:not-allowed; }
+
+  /* ---------- pick badge (n / 8) ---------- */
+  .pick-badge{
+    display:inline-flex; align-items:center; gap:.4rem;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.8rem;
+    padding:.3rem .75rem; border-radius:999px;
+    background: rgba(90,108,140,0.12); color:#5a6c8c;
+    border:1px solid rgba(90,108,140,0.22);
+    transition: all .18s ease;
+  }
+  .pick-badge .chk{ display:none; }
+  .pick-badge.is-complete{
+    background: rgba(34,197,94,0.14); color: var(--green-dark);
+    border-color: rgba(34,197,94,0.35);
+  }
+  .pick-badge.is-complete .chk{ display:inline; }
+
+  /* ---------- custom multiselect ---------- */
+  .team-select{ position:relative; padding: 1.3rem; }
+  .team-select-toggle{
+    width:100%; text-align:left; cursor:pointer;
+    background:#fff; border:1px solid rgba(12,25,48,0.16); border-radius:.6rem;
+    padding:.6rem .9rem; min-height:3rem;
+    display:flex; align-items:center; gap:.6rem; flex-wrap:wrap;
+    color:#0c1930; font-size:.9rem;
+  }
+  .team-select-toggle:hover{ border-color: rgba(59,130,246,0.4); }
+  .team-select-toggle.is-open{ border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.16); }
+  .team-select-toggle .placeholder-text{ color:#8092b3; }
+  .team-select-summary{ display:flex; align-items:center; flex-wrap:wrap; gap:.45rem; flex:1; }
+  .team-select-summary .team-tag{ display:inline-flex; align-items:center; gap:.4rem; font-weight:600; font-size:.85rem; }
+  .team-select-summary .team-tag:not(:last-child)::after{ content:","; color:#8092b3; font-weight:400; margin-left:.05rem; }
+  .team-select-caret{ margin-left:auto; flex:none; color:#5a6c8c; transition: transform .18s ease; }
+  .team-select-toggle.is-open .team-select-caret{ transform: rotate(180deg); }
+
+  .team-select-panel{
+    position:absolute; left:1.3rem; right:1.3rem; top:calc(100% - .3rem);
+    background:#fff; border:1px solid rgba(12,25,48,0.14); border-radius:.7rem;
+    box-shadow: 0 18px 40px rgba(12,25,48,0.22);
+    max-height: 20rem; overflow-y:auto; z-index:5;
+    padding:.4rem;
+    display:none;
+  }
+  .team-select-panel.is-open{ display:block; }
+  .team-option{
+    display:flex; align-items:center; gap:.65rem;
+    padding:.5rem .6rem; border-radius:.5rem; cursor:pointer;
+    font-size:.88rem; font-weight:600; color:#0c1930;
+  }
+  .team-option:hover{ background: rgba(59,130,246,0.08); }
+  .team-option input{ flex:none; width:1.05rem; height:1.05rem; accent-color: var(--blue); cursor:pointer; }
+  .team-option.is-disabled{ opacity:.4; cursor:not-allowed; }
+  .team-option.is-disabled:hover{ background:none; }
+  .team-option.is-disabled input{ cursor:not-allowed; }
 
   .footer-feelo{ background: var(--ink); padding: 1.8rem 0; font-size:.85rem; }
   .footer-feelo a{ color: var(--slate); }
@@ -220,11 +226,7 @@
   .toast-feelo{ background: var(--ink-2); border:1px solid var(--line-cyan); color: var(--white); }
 
   @media (max-width: 575.98px){
-    .table-feelo thead{ display:none; }
-    .table-feelo td{ display:block; padding:.4rem 1rem; }
-    .table-feelo tbody tr{ display:block; padding:.9rem 0; border-bottom:1px solid rgba(12,25,48,0.1); }
-    .team-cell.reverse{ flex-direction:row; text-align:left; }
-    .col-res{ text-align:left !important; }
+    .team-select-panel{ left:.6rem; right:.6rem; }
   }
 </style>
 
@@ -251,8 +253,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item" href="#" aria-current="page">Spiele</a></li>
-            <li><a class="dropdown-item" href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item" href="{{SPIELE_URL}}">Spiele</a></li>
+            <li><a class="dropdown-item active-mark" href="#" aria-current="page">8 Fix Aufsteiger</a></li>
             <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
           </ul>
         </li>
@@ -309,25 +311,9 @@
     </g>
   </svg>
   <div class="container page-header-content">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-      <div class="hero-panel">
-        <span class="eyebrow d-block mb-1">Matchday 1 &middot; Champions League</span>
-        <h1>Spiele f&uuml;r <span class="accent">Matchday: 1</span></h1>
-      </div>
-      <div class="dropdown md-select">
-        <button class="btn dropdown-toggle" type="button" id="mdSelect" data-bs-toggle="dropdown" aria-expanded="false">MD 1</button>
-        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end" aria-labelledby="mdSelect">
-          <li><a class="dropdown-item md-option" href="#" data-md="alle">Alle</a></li>
-          <li><a class="dropdown-item md-option active" href="#" data-md="1">MD1</a></li>
-          <li><a class="dropdown-item md-option" href="#" data-md="2">MD2</a></li>
-          <li><a class="dropdown-item md-option" href="#" data-md="3">MD3</a></li>
-          <li><a class="dropdown-item md-option" href="#" data-md="4">MD4</a></li>
-          <li><a class="dropdown-item md-option" href="#" data-md="5">MD5</a></li>
-          <li><a class="dropdown-item md-option" href="#" data-md="6">MD6</a></li>
-          <li><a class="dropdown-item md-option" href="#" data-md="7">MD7</a></li>
-          <li><a class="dropdown-item md-option" href="#" data-md="8">MD8</a></li>
-        </ul>
-      </div>
+    <div class="hero-panel">
+      <span class="eyebrow d-block mb-1">Ligaphase &middot; Champions League</span>
+      <h1>Die 8 <span class="accent">Fixaufsteiger</span> der Ligaphase</h1>
     </div>
   </div>
 </header>
@@ -335,41 +321,43 @@
 <!-- ================= CONTENT ================= -->
 <main>
   <div class="container">
+    <div class="notice-feelo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      Um bereits abgegebene Aufsteiger zu &auml;ndern, bitte einen der bisher gew&auml;hlten zuerst abw&auml;hlen&hellip;
+    </div>
+
     <div class="content-card">
       <div class="content-card-toolbar">
-        <span class="text-slate" style="color:#5a6c8c !important; font-size:.85rem;">18 Spiele in dieser Runde</span>
-        <div class="search-feelo">
-          <label for="teamSearch">Suchen</label>
-          <input type="search" id="teamSearch" placeholder="Team suchen&hellip;" autocomplete="off">
+        <span class="toolbar-title">8 Fixaufsteiger der Ligaphase w&auml;hlen</span>
+      </div>
+
+      <div class="team-select">
+        <button type="button" class="team-select-toggle" id="teamToggle" aria-haspopup="listbox" aria-expanded="false">
+          <span class="team-select-summary" id="teamSummary"></span>
+          <svg class="team-select-caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="team-select-panel" id="teamPanel" role="listbox" aria-multiselectable="true" aria-label="Team ausw&auml;hlen">
+          <!-- options injected by JS from TEAMS -->
         </div>
       </div>
 
-      <div class="table-responsive">
-        <table class="table-feelo">
-          <thead>
-            <tr>
-              <th style="width:9rem;">Datum</th>
-              <th>Team 1</th>
-              <th>Team 2</th>
-              <th class="col-res" style="width:11rem;">Res</th>
-            </tr>
-          </thead>
-          <tbody id="matchRows">
-            <!-- rows injected by JS from MATCH_DATA -->
-          </tbody>
-        </table>
-      </div>
-
       <div class="table-footbar">
-        <span class="row-count"><span id="visibleCount">18</span> Spiele</span>
-        <button type="button" class="btn btn-kickoff" id="submitPicks">Absenden</button>
+        <span class="row-count">bitte jeweils 8 Aufsteiger w&auml;hlen</span>
+        <span class="pick-badge" id="pickBadge">
+          <svg class="chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+          <span id="pickCount">0</span> / 8
+        </span>
       </div>
+    </div>
+
+    <div class="text-center my-4">
+      <button type="button" class="btn btn-kickoff" id="submitPicks">Absenden</button>
     </div>
   </div>
 </main>
 
 <!-- ================= FOOTER ================= -->
-<footer class="footer-feelo mt-5">
+<footer class="footer-feelo mt-4">
   <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
     <span class="text-slate">FEELOCHAMP 2026/2027 &nbsp;|&nbsp; gegr. 2002 von Soizbuaga Wettkaiser</span>
     <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></span>
@@ -391,27 +379,48 @@
 </script>
 
 <script>
-  // Matchday 1 fixture demo data. Crest = generic initials badge (no club logos used).
-  var MATCHES = [
-    ["8.9.2026","18:45","Club Brügge","CLB","#123a8f","Aston Villa","AVL","#7a1f3d","X"],
-    ["8.9.2026","18:45","AEK Athen","AEK","#c9a227","LASK","LSK","#1a1a1a","X"],
-    ["8.9.2026","21:00","Real Madrid","RMA","#1b3a6b","Inter","INT","#1c2b6b","1"],
-    ["8.9.2026","21:00","Dortmund","BVB","#f4d117","Villareal","VIL","#f2c14e","1"],
-    ["8.9.2026","21:00","Porto","POR","#1f4e8c","Man City","MCI","#6cabdd","2"],
-    ["8.9.2026","21:00","Lille","LIL","#c8102e","Real Betis","BET","#0b6a3d","X"],
-    ["9.9.2026","18:45","Barcelona","BAR","#a50044","Feyenoord","FEY","#c8102e","1"],
-    ["9.9.2026","18:45","Stuttgart","VFB","#e30613","Viking","VIK","#b71c2b","2"],
-    ["9.9.2026","21:00","PSG","PSG","#0a2240","Slovan Bratislava","SLB","#1e88c7","1"],
-    ["9.9.2026","21:00","Liverpool","LIV","#c8102e","Atletico","ATM","#d71920","X"],
-    ["9.9.2026","21:00","Sporting","SCP","#007a3d","Galatasaray","GAL","#a90432","2"],
-    ["9.9.2026","21:00","Napoli","NAP","#1c6dd0","Arsenal","ARS","#d71920","2"],
-    ["10.9.2026","18:45","PSV","PSV","#d2122e","Shakhtar","SHK","#e2711d","1"],
-    ["10.9.2026","18:45","Fenerbahce","FEN","#14226b","Roma","ROM","#8e1b3a","X"],
-    ["10.9.2026","21:00","Bayern","FCB","#dc052d","Bodö/Glimt","BOD","#f4c300","1"],
-    ["10.9.2026","21:00","Man Utd","MUN","#da291c","Sabah","SAB","#d6336c","1"],
-    ["10.9.2026","21:00","Slavia Prag","SLA","#c8102e","Lens","LEN","#ffcc00","2"],
-    ["10.9.2026","21:00","Como","COM","#003c7d","Leipzig","RBL","#d0011b","2"]
+  // 36 league-phase teams. Crest = generic initials badge (no club logos used).
+  var TEAMS = [
+    ["AEK Athen","AEK","#c9a227"],
+    ["Arsenal","ARS","#d71920"],
+    ["Aston Villa","AVL","#7a1f3d"],
+    ["Atletico","ATM","#d71920"],
+    ["Barcelona","BAR","#a50044"],
+    ["Bayern","FCB","#dc052d"],
+    ["Bodö/Glimt","BOD","#f4c300"],
+    ["Club Brügge","CLB","#123a8f"],
+    ["Como","COM","#003c7d"],
+    ["Dortmund","BVB","#f4d117"],
+    ["Fenerbahce","FEN","#14226b"],
+    ["Feyenoord","FEY","#c8102e"],
+    ["Galatasaray","GAL","#a90432"],
+    ["Inter","INT","#1c2b6b"],
+    ["LASK","LSK","#1a1a1a"],
+    ["Leipzig","RBL","#d0011b"],
+    ["Lens","LEN","#ffcc00"],
+    ["Lille","LIL","#c8102e"],
+    ["Liverpool","LIV","#c8102e"],
+    ["Man City","MCI","#6cabdd"],
+    ["Man Utd","MUN","#da291c"],
+    ["Napoli","NAP","#1c6dd0"],
+    ["Porto","POR","#1f4e8c"],
+    ["PSG","PSG","#0a2240"],
+    ["PSV","PSV","#d2122e"],
+    ["Real Betis","BET","#0b6a3d"],
+    ["Real Madrid","RMA","#1b3a6b"],
+    ["Roma","ROM","#8e1b3a"],
+    ["Sabah","SAB","#d6336c"],
+    ["Shakhtar","SHK","#e2711d"],
+    ["Slavia Prag","SLA","#c8102e"],
+    ["Slovan Bratislava","SLB","#1e88c7"],
+    ["Sporting","SCP","#007a3d"],
+    ["Stuttgart","VFB","#e30613"],
+    ["Viking","VIK","#b71c2b"],
+    ["Villareal","VIL","#f2c14e"]
   ];
+  var MAX_PICKS = 8;
+  var DEFAULT_PICKS = ["Arsenal","Barcelona","Bayern","Inter","Liverpool","Man City","PSG","Real Madrid"];
+  var selected = new Set(DEFAULT_PICKS);
 
   function crestTextColor(hex){
     var c = hex.replace('#','');
@@ -420,57 +429,108 @@
     return lum > 0.62 ? '#111' : '#fff';
   }
 
-  function renderMatches(){
-    var tbody = document.getElementById('matchRows');
-    var html = '';
-    MATCHES.forEach(function(m, i){
-      var date=m[0], time=m[1], t1=m[2], i1=m[3], c1=m[4], t2=m[5], i2=m[6], c2=m[7], pick=m[8];
-      var name = 'pick-'+i;
-      function opt(val, label){
-        var checked = (val === pick) ? 'checked' : '';
-        return '<input type="radio" name="'+name+'" id="'+name+'-'+val+'" value="'+val+'" '+checked+'>' +
-               '<label for="'+name+'-'+val+'">'+label+'</label>';
-      }
-      html += '<tr data-teams="'+ (t1+' '+t2).toLowerCase() +'">' +
-        '<td><div class="kickoff-date">'+date+'</div><div class="kickoff-time">'+time+' Uhr</div>' +
-          '<div class="status-row"><span class="status-chip" title="Tipp gespeichert">&#10003;</span>' +
-          '<button type="button" class="info-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Kickoff '+date+', '+time+' Uhr &middot; Gruppenphase">i</button></div>' +
-        '</td>' +
-        '<td><div class="team-cell"><span class="crest" style="background:'+c1+'; color:'+crestTextColor(c1)+';">'+i1+'</span><span class="team-name">'+t1+'</span></div></td>' +
-        '<td><div class="team-cell reverse"><span class="crest" style="background:'+c2+'; color:'+crestTextColor(c2)+';">'+i2+'</span><span class="team-name">'+t2+'</span></div></td>' +
-        '<td class="col-res"><div class="pick-group">' + opt('1','1') + opt('X','X') + opt('2','2') + '</div></td>' +
-      '</tr>';
-    });
-    tbody.innerHTML = html;
-
-    var tooltipEls = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipEls.forEach(function(el){ new bootstrap.Tooltip(el); });
+  function crestHtml(initials, color, extraClass){
+    return '<span class="crest'+(extraClass?' '+extraClass:'')+'" style="background:'+color+'; color:'+crestTextColor(color)+';">'+initials+'</span>';
   }
-  renderMatches();
+
+  function renderPanel(){
+    var panel = document.getElementById('teamPanel');
+    var html = '';
+    TEAMS.forEach(function(t, i){
+      var name = t[0], initials = t[1], color = t[2];
+      var checked = selected.has(name);
+      var disabled = !checked && selected.size >= MAX_PICKS;
+      var id = 'team-'+i;
+      html += '<label class="team-option'+(disabled?' is-disabled':'')+'" for="'+id+'" role="option" aria-selected="'+checked+'">' +
+        '<input type="checkbox" id="'+id+'" data-team="'+name+'" '+(checked?'checked':'')+(disabled?' disabled':'')+'>' +
+        crestHtml(initials, color) +
+        '<span>'+name+'</span>' +
+      '</label>';
+    });
+    panel.innerHTML = html;
+
+    panel.querySelectorAll('input[type="checkbox"]').forEach(function(box){
+      box.addEventListener('change', function(){
+        var name = this.getAttribute('data-team');
+        if (this.checked){
+          if (selected.size >= MAX_PICKS){ this.checked = false; return; }
+          selected.add(name);
+        } else {
+          selected.delete(name);
+        }
+        renderPanel();
+        renderSummary();
+        updateCounter();
+      });
+    });
+
+    panel.querySelectorAll('.team-option.is-disabled').forEach(function(opt){
+      opt.addEventListener('click', function(e){
+        e.preventDefault();
+        showToast('Bitte zuerst einen bisher gewählten Aufsteiger abwählen.');
+      });
+    });
+  }
+
+  function renderSummary(){
+    var summary = document.getElementById('teamSummary');
+    if (selected.size === 0){
+      summary.innerHTML = '<span class="placeholder-text">Bitte 8 Teams w&auml;hlen&hellip;</span>';
+      return;
+    }
+    var html = '';
+    TEAMS.forEach(function(t){
+      var name = t[0], initials = t[1], color = t[2];
+      if (!selected.has(name)) return;
+      html += '<span class="team-tag">' + crestHtml(initials, color, 'crest-sm') + name + '</span>';
+    });
+    summary.innerHTML = html;
+  }
+
+  function updateCounter(){
+    var badge = document.getElementById('pickBadge');
+    document.getElementById('pickCount').textContent = selected.size;
+    badge.classList.toggle('is-complete', selected.size === MAX_PICKS);
+  }
 
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
     document.getElementById('demoToastText').textContent = text;
-    bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000 }).show();
+    bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3200 }).show();
   }
 
-  document.getElementById('submitPicks').addEventListener('click', function(){
-    showToast('Tipps gespeichert! Das ist eine Design-Demo – kein echtes Backend.');
+  renderPanel();
+  renderSummary();
+  updateCounter();
+
+  var toggleBtn = document.getElementById('teamToggle');
+  var panelEl = document.getElementById('teamPanel');
+  function openPanel(){
+    panelEl.classList.add('is-open');
+    toggleBtn.classList.add('is-open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel(){
+    panelEl.classList.remove('is-open');
+    toggleBtn.classList.remove('is-open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+  toggleBtn.addEventListener('click', function(){
+    panelEl.classList.contains('is-open') ? closePanel() : openPanel();
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.team-select')) closePanel();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closePanel();
   });
 
-  document.querySelectorAll('.md-option').forEach(function(opt){
-    opt.addEventListener('click', function(e){
-      e.preventDefault();
-      var md = this.getAttribute('data-md');
-      document.querySelectorAll('.md-option').forEach(function(o){ o.classList.remove('active'); });
-      this.classList.add('active');
-      document.getElementById('mdSelect').textContent = md === 'alle' ? 'Alle' : ('MD'+md);
-      if (md === '1' || md === 'alle'){
-        document.querySelector('.page-header h1').innerHTML = 'Spiele für <span class="accent">Matchday: 1</span>';
-      } else {
-        showToast('Demo: nur Matchday 1 hat hier Spieldaten hinterlegt.');
-      }
-    });
+  document.getElementById('submitPicks').addEventListener('click', function(){
+    if (selected.size !== MAX_PICKS){
+      showToast('Bitte genau 8 Aufsteiger wählen (aktuell ' + selected.size + ' / 8).');
+      return;
+    }
+    showToast('Tipps gespeichert! Das ist eine Design-Demo – kein echtes Backend.');
   });
 
   document.querySelectorAll('.demo-link').forEach(function(a){
@@ -478,18 +538,5 @@
       e.preventDefault();
       showToast('Diese Unterseite ist in der Demo nicht verknüpft.');
     });
-  });
-
-  var searchInput = document.getElementById('teamSearch');
-  searchInput.addEventListener('input', function(){
-    var q = this.value.trim().toLowerCase();
-    var rows = document.querySelectorAll('#matchRows tr');
-    var visible = 0;
-    rows.forEach(function(row){
-      var match = row.getAttribute('data-teams').indexOf(q) !== -1;
-      row.classList.toggle('is-hidden', !match);
-      if (match) visible++;
-    });
-    document.getElementById('visibleCount').textContent = visible;
   });
 </script>

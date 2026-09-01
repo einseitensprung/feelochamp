@@ -22,6 +22,8 @@ const ARTIFACT_SPIELE_URL = "https://claude.ai/code/artifact/6f9f5e88-003d-46ad-
 
 const HOME_URL = mode === "artifact" ? ARTIFACT_HOME_URL : "index.html";
 const SPIELE_URL = mode === "artifact" ? ARTIFACT_SPIELE_URL : "spiele.html";
+// Not yet published as its own Claude Artifact, so always relative.
+const AUFSTEIGER_URL = "aufsteiger.html";
 
 const css = fs.readFileSync(path.join(dir, "vendor/bootstrap.min.css"), "utf8");
 const js = fs.readFileSync(path.join(dir, "vendor/bootstrap.bundle.min.js"), "utf8");
@@ -38,5 +40,6 @@ function build(templateFile, outFile, replacements) {
   console.log(`built ${outFile} (${tpl.length.toLocaleString()} bytes)`);
 }
 
-build("index.template.html", "index.html", { "{{SPIELE_URL}}": SPIELE_URL });
-build("spiele.template.html", "spiele.html", { "{{HOME_URL}}": HOME_URL });
+build("index.template.html", "index.html", { "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL });
+build("spiele.template.html", "spiele.html", { "{{HOME_URL}}": HOME_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL });
+build("aufsteiger.template.html", "aufsteiger.html", { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL });
