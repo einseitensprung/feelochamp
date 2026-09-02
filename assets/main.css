@@ -445,9 +445,9 @@ body.page-aufsteiger .programme-head h2{
   border-radius:.8rem;
   border:1px solid var(--line-cyan);
   box-shadow: var(--shadow);
-  /* Foto ist ein freigestellter Ausschnitt (Originalhintergrund weiss) -
-     heller Grund lässt die Kante sauber statt als Halo erscheinen. */
-  background:#f3f7ff;
+  /* Freigestellter Ausschnitt auf dem Champ-Verlauf: die helle Kante des
+     Originals leuchtet dabei bewusst als Halo um die Person. */
+  background: linear-gradient(160deg, var(--cyan), var(--blue));
 }
 .lightbox-close{
   position:absolute; top:1rem; right:1.15rem;
