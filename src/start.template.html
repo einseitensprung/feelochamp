@@ -198,9 +198,9 @@
 
     <div class="champ-card mt-4 mt-lg-0">
       <span class="eyebrow">Aktueller Champ</span>
-      <div class="champ-avatar has-photo">
+      <button type="button" class="champ-avatar has-photo" id="champPhotoBtn" aria-haspopup="dialog" aria-label="Sieger-Foto vergrössern">
         <img class="champ-photo" src="assets/bono2026.png" alt="Aktueller Champ: Bono" width="800" height="596">
-      </div>
+      </button>
       <h2>Bono</h2>
     </div>
    </div>
@@ -222,6 +222,12 @@
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Schließen"></button>
     </div>
   </div>
+</div>
+
+<!-- ================= LIGHTBOX: Original-Sieger-Foto ================= -->
+<div class="lightbox" id="champLightbox" role="dialog" aria-modal="true" aria-label="Sieger-Foto: Bono">
+  <button type="button" class="lightbox-close" id="champLightboxClose" aria-label="Schließen">&times;</button>
+  <img src="assets/bono2026.png" alt="Aktueller Champ: Bono – Originalfoto" width="800" height="596">
 </div>
 
 <script src="assets/bootstrap.bundle.min.js"></script>
@@ -261,6 +267,34 @@
       showToast('Diese Unterseite ist in der Demo nicht verknüpft.');
     });
   });
+
+  // Lightbox: Klick auf den Champ-Kreis zeigt das Original-Sieger-Foto
+  (function(){
+    var trigger = document.getElementById('champPhotoBtn');
+    var box = document.getElementById('champLightbox');
+    if (!trigger || !box) return;
+    var closeBtn = document.getElementById('champLightboxClose');
+    var lastFocus = null;
+
+    function onKey(e){ if (e.key === 'Escape') close(); }
+    function open(){
+      lastFocus = document.activeElement;
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close(){
+      box.classList.remove('is-open');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    trigger.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', function(e){ if (e.target === box) close(); });
+  })();
 </script>
 </body>
 </html>
