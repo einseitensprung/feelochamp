@@ -155,6 +155,16 @@
   </div>
 </footer>
 
+<!-- ================= LIGHTBOX: Spiel-Info (Live-Tabelle von einseitensprung.at) =================
+     iframe-Quelle relativ: lädt nur im Echtbetrieb auf einseitensprung.at (gleiche Origin).
+     Auf GitHub Pages / lokaler Demo gibt es kein spiele_info.asp -> Fehleranzeige des Hosts. -->
+<div class="lightbox" id="infoLightbox" role="dialog" aria-modal="true" aria-label="Spiel-Info: wer hat was getippt">
+  <div class="lightbox-frame">
+    <button type="button" class="lightbox-close" id="infoLightboxClose" aria-label="Schließen">&times;</button>
+    <iframe id="infoFrame" title="Spiel-Info" src="about:blank"></iframe>
+  </div>
+</div>
+
 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
   <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
     <div class="d-flex">
@@ -224,7 +234,7 @@
       html += '<tr data-teams="'+ (t1+' '+t2).toLowerCase() +'"'+ (locked ? ' class="is-locked"' : '') +'>' +
         '<td><div class="kickoff-date">'+date+'</div><div class="kickoff-time">'+time+' Uhr</div>' +
           '<div class="status-row"><span class="status-chip" title="Tipp gespeichert">&#10003;</span>' +
-          '<button type="button" class="info-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Kickoff '+date+', '+time+' Uhr &middot; '+(locked ? 'Anpfiff vorbei' : 'Gruppenphase')+'">i</button></div>' +
+          '<button type="button" class="info-btn" data-info-id="'+(i+1)+'" data-bs-toggle="tooltip" data-bs-placement="right" title="Kickoff '+date+', '+time+' Uhr &middot; '+(locked ? 'Anpfiff vorbei' : 'Gruppenphase')+' &middot; Tipps ansehen">i</button></div>' +
         '</td>' +
         '<td><div class="team-cell"><span class="crest" style="background:'+c1+'; color:'+crestTextColor(c1)+';">'+i1+'</span><span class="team-name">'+t1+'</span></div></td>' +
         '<td><div class="team-cell reverse"><span class="crest" style="background:'+c2+'; color:'+crestTextColor(c2)+';">'+i2+'</span><span class="team-name">'+t2+'</span></div></td>' +
@@ -282,6 +292,41 @@
     });
     document.getElementById('visibleCount').textContent = visible;
   });
+
+  // Info-Icon je Zeile -> Lightbox mit spiele_info.asp?id=N (id = Zeilennummer, 1-basiert)
+  (function(){
+    var box = document.getElementById('infoLightbox');
+    var frame = document.getElementById('infoFrame');
+    var closeBtn = document.getElementById('infoLightboxClose');
+    var lastFocus = null;
+
+    function onKey(e){ if (e.key === 'Escape') close(); }
+    function open(id){
+      lastFocus = document.activeElement;
+      frame.src = 'spiele_info.asp?id=' + encodeURIComponent(id);
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close(){
+      box.classList.remove('is-open');
+      frame.src = 'about:blank';
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    document.getElementById('matchRows').addEventListener('click', function(e){
+      var btn = e.target.closest('.info-btn');
+      if (!btn) return;
+      var tip = bootstrap.Tooltip.getInstance(btn);
+      if (tip) tip.hide();
+      open(btn.getAttribute('data-info-id'));
+    });
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', function(e){ if (e.target === box) close(); });
+  })();
 </script>
 </body>
 </html>

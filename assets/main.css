@@ -501,6 +501,26 @@ body.page-aufsteiger .programme-head h2{
 .ds-table th{ text-transform:uppercase; letter-spacing:.06em; font-size:.7rem; color:#5a6c8c; }
 .ds-table td{ color:#33415c; }
 
+/* Frame-Variante der Lightbox (Spiel-Info per iframe, Spiele-Seite) */
+.lightbox-frame{
+  position:relative;
+  display:flex; flex-direction:column;
+  width:min(94vw, 760px);
+  height:min(82vh, 600px);
+  overflow:hidden;
+  border:1px solid var(--line-cyan);
+  border-radius:1rem;
+  box-shadow: var(--shadow);
+  background:#fff;
+}
+.lightbox-frame .lightbox-close{
+  top:.7rem; right:.7rem; z-index:1;
+  border-color: rgba(12,25,48,0.15);
+}
+.lightbox-frame iframe{
+  flex:1; width:100%; border:0; border-radius:1rem;
+}
+
 .champ-card h2{
   font-family:'Bebas Neue', sans-serif;
   font-size:1.4rem; letter-spacing:.03em; margin:0; color: var(--white);
