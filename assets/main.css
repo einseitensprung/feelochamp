@@ -775,6 +775,49 @@ body.page-info .crest{ width:2.2rem; height:2.2rem; font-size:.62rem; }
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.82rem;
 }
 
+/* ---------- Preloader-Seite (preloader.html) ---------- */
+body.page-preloader{ background: var(--ink); }
+.preloader{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  padding:1.5rem;
+  background:
+    radial-gradient(ellipse 900px 600px at 20% 8%, rgba(34,211,238,0.28), transparent 60%),
+    radial-gradient(ellipse 800px 620px at 86% 0%, rgba(59,130,246,0.26), transparent 58%),
+    linear-gradient(180deg, #050b1a 0%, #081428 50%, #0a1a34 100%);
+}
+.preloader-card{
+  width:min(92vw, 22rem);
+  background: linear-gradient(180deg, #fbfdff, #eef3fb);
+  border-radius:1rem;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(34,211,238,0.25);
+  overflow:hidden;
+  color:#0c1930; text-align:center;
+}
+.preloader-card-head{ padding:1.1rem 1.4rem; border-bottom:1px solid rgba(12,25,48,0.08); }
+.preloader-card-head h3{
+  font-family:'Bebas Neue', sans-serif; letter-spacing:.05em;
+  font-size:1.4rem; margin:0; color:#0c1930;
+}
+.preloader-card-body{ padding:1.7rem 1.4rem 1.9rem; }
+.preloader-card-body p{
+  margin:1.15rem 0 0; font-size:.9rem; line-height:1.6; color:#4a5b7c; font-weight:600;
+}
+.preloader-dots{ display:flex; gap:.5rem; justify-content:center; }
+.preloader-dots span{
+  width:.7rem; height:.7rem; border-radius:50%; background: var(--blue);
+  animation: preloader-bounce 1.4s ease-in-out infinite both;
+}
+.preloader-dots span:nth-child(1){ animation-delay:-.32s; }
+.preloader-dots span:nth-child(2){ animation-delay:-.16s; }
+@keyframes preloader-bounce{
+  0%, 80%, 100%{ transform: scale(.35); opacity:.4; }
+  40%{ transform: scale(1); opacity:1; }
+}
+@media (prefers-reduced-motion: reduce){
+  .preloader-dots span{ animation:none; opacity:.85; transform:none; }
+}
+
 /* ---------- Footer ---------- */
 .footer-feelo{ background: var(--ink); padding: 1.8rem 0; font-size:.85rem; }
 .footer-feelo a{ color: var(--slate); }

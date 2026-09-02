@@ -24,7 +24,9 @@ node build.js
 
 Quelltemplate **und** das neu gebaute HTML gehören in denselben Commit — nie nur die Quelle oder nur das Build-Ergebnis committen.
 
-`spiele_info.html` ist eine **eigenständige** statische Seite (kein Template, nicht in `build.js`): ohne Navbar/Footer, gedacht als iframe-Ziel der Info-Lightbox auf der Spiele-Seite. Inhalt = `spiele_info.asp?id=1` (Tipp-Übersicht je Spiel), echte Vereinswappen durch Initialen-Badges ersetzt. Direkt editieren.
+`spiele_info.html` und `preloader.html` sind **eigenständige** statische Seiten (kein Template, nicht in `build.js`), ohne Navbar/Footer, direkt editieren:
+- `spiele_info.html` — iframe-Ziel der Info-Lightbox auf der Spiele-Seite. Inhalt = `spiele_info.asp?id=1` (Tipp-Übersicht je Spiel), echte Vereinswappen durch Initialen-Badges ersetzt.
+- `preloader.html` — Inhalt von `preloader.asp` (Loading-Overlay). Original-Hintergrund `img/bg2026_2.jpg` (am Server 404, wäre UEFA-Material) durch den Feelochamp-Verlauf ersetzt, der `808.gif`-Spinner als reines CSS (`.preloader-dots`) nachgebaut.
 
 ## Projektkontext
 
