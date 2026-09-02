@@ -260,7 +260,7 @@ body.page-home .section-programme,
 body.page-start .section-programme,
 body.page-spiele .section-programme,
 body.page-aufsteiger .section-programme,
-body.page-regeln .section-programme{
+body.page-default .section-programme{
   background: linear-gradient(180deg, var(--ink-2) 0%, #0a1626 100%);
   border-bottom: 1px solid var(--line);
   padding: 4.5rem 0;
@@ -269,7 +269,7 @@ body.page-home .programme-head h2,
 body.page-start .programme-head h2,
 body.page-spiele .programme-head h2,
 body.page-aufsteiger .programme-head h2,
-body.page-regeln .programme-head h2{
+body.page-default .programme-head h2{
   font-family:'Bebas Neue', sans-serif;
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   letter-spacing:.02em;
@@ -584,8 +584,8 @@ body.page-regeln .programme-head h2{
 body.page-spiele .content-card{ margin-top: -2.2rem; overflow:hidden; }
 /* Aufsteiger: Karte sitzt unter der Notice-Bar, Multiselect-Panel darf überstehen */
 body.page-aufsteiger .content-card{ margin-top: 1.4rem; overflow:visible; }
-/* Regeln: Karte überlappt den Header wie auf der Spiele-Seite */
-body.page-regeln .content-card{ margin-top: -2.2rem; overflow:hidden; }
+/* Default-Unterseite (z. B. regeln.html): Karte überlappt den Header wie auf der Spiele-Seite */
+body.page-default .content-card{ margin-top: -2.2rem; overflow:hidden; }
 
 .content-card-toolbar{
   display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;
@@ -779,7 +779,7 @@ body.page-info .crest{ width:2.2rem; height:2.2rem; font-size:.62rem; }
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.82rem;
 }
 
-/* ---------- Regeln-Seite (regeln.html) ---------- */
+/* ---------- Regeln-Inhalt (.rules, aktuell nur regeln.html) ---------- */
 .rules{ padding: 1.6rem 1.6rem 2rem; color:#0c1930; }
 .rules h2{
   font-family:'Bebas Neue', sans-serif; letter-spacing:.03em;
