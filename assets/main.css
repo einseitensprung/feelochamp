@@ -642,6 +642,16 @@ body.page-aufsteiger .crest{ width:2rem; height:2rem; font-size:.58rem; }
 .pick-group input:focus-visible + label{ outline:2px solid var(--blue); outline-offset:-2px; }
 .pick-group label:hover{ background: rgba(59,130,246,0.1); }
 
+/* Spiele: Anpfiff vorbei -> Tippen gesperrt, Schloss statt 1/X/2 */
+.pick-locked{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:2.6rem; height:2.15rem;
+  border:1px solid rgba(12,25,48,0.12); border-radius:.6rem;
+  background: rgba(12,25,48,0.03); color:#8092b3;
+}
+.table-feelo tr.is-locked .kickoff-date,
+.table-feelo tr.is-locked .team-name{ color:#8092b3; }
+
 .table-footbar{
   display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
   padding: 1.1rem 1.3rem;

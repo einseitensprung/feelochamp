@@ -197,25 +197,38 @@
     return lum > 0.62 ? '#111' : '#fff';
   }
 
+  // "1.9.2026" + "18:45" -> Date (lokale Zeit)
+  function kickoffDate(dateStr, timeStr){
+    var d = dateStr.split('.').map(Number);   // [Tag, Monat, Jahr]
+    var t = timeStr.split(':').map(Number);   // [Std, Min]
+    return new Date(d[2], d[1] - 1, d[0], t[0] || 0, t[1] || 0, 0, 0);
+  }
+
+  var LOCK_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+
   function renderMatches(){
     var tbody = document.getElementById('matchRows');
     var html = '';
     MATCHES.forEach(function(m, i){
       var date=m[0], time=m[1], t1=m[2], i1=m[3], c1=m[4], t2=m[5], i2=m[6], c2=m[7], pick=m[8];
       var name = 'pick-'+i;
+      var locked = kickoffDate(date, time).getTime() < Date.now();
       function opt(val, label){
         var checked = (val === pick) ? 'checked' : '';
         return '<input type="radio" name="'+name+'" id="'+name+'-'+val+'" value="'+val+'" '+checked+'>' +
                '<label for="'+name+'-'+val+'">'+label+'</label>';
       }
-      html += '<tr data-teams="'+ (t1+' '+t2).toLowerCase() +'">' +
+      var resCell = locked
+        ? '<span class="pick-locked" title="Anpfiff vorbei &ndash; Tippen gesperrt" aria-label="Tippen gesperrt">'+LOCK_SVG+'</span>'
+        : '<div class="pick-group">' + opt('1','1') + opt('X','X') + opt('2','2') + '</div>';
+      html += '<tr data-teams="'+ (t1+' '+t2).toLowerCase() +'"'+ (locked ? ' class="is-locked"' : '') +'>' +
         '<td><div class="kickoff-date">'+date+'</div><div class="kickoff-time">'+time+' Uhr</div>' +
           '<div class="status-row"><span class="status-chip" title="Tipp gespeichert">&#10003;</span>' +
-          '<button type="button" class="info-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Kickoff '+date+', '+time+' Uhr &middot; Gruppenphase">i</button></div>' +
+          '<button type="button" class="info-btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Kickoff '+date+', '+time+' Uhr &middot; '+(locked ? 'Anpfiff vorbei' : 'Gruppenphase')+'">i</button></div>' +
         '</td>' +
         '<td><div class="team-cell"><span class="crest" style="background:'+c1+'; color:'+crestTextColor(c1)+';">'+i1+'</span><span class="team-name">'+t1+'</span></div></td>' +
         '<td><div class="team-cell reverse"><span class="crest" style="background:'+c2+'; color:'+crestTextColor(c2)+';">'+i2+'</span><span class="team-name">'+t2+'</span></div></td>' +
-        '<td class="col-res"><div class="pick-group">' + opt('1','1') + opt('X','X') + opt('2','2') + '</div></td>' +
+        '<td class="col-res">' + resCell + '</td>' +
       '</tr>';
     });
     tbody.innerHTML = html;
