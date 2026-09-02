@@ -402,6 +402,17 @@ body.page-aufsteiger .programme-head h2{
   display:flex; align-items:center; justify-content:center;
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:1.3rem; color:#04131c;
 }
+/* Foto-Variante: freigestelltes Champ-Portrait im runden Rahmen auf dem Verlauf */
+.champ-avatar.has-photo{
+  width:7rem; height:7rem;
+  overflow:hidden;
+  box-shadow: inset 0 0 0 2px rgba(243,247,255,0.25);
+}
+.champ-avatar .champ-photo{
+  width:100%; height:100%;
+  object-fit:cover; object-position:center top;
+  display:block;
+}
 .champ-card h2{
   font-family:'Bebas Neue', sans-serif;
   font-size:1.4rem; letter-spacing:.03em; margin:0; color: var(--white);
