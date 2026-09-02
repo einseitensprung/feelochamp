@@ -205,7 +205,7 @@
 <footer class="footer-feelo">
   <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
     <span class="text-slate">FEELOCHAMP 2026/2027 &nbsp;|&nbsp; gegr. 2002 von Soizbuaga Wettkaiser</span>
-    <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></span>
+    <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#" class="ds-open">Datenschutz</a></span>
   </div>
 </footer>
 
@@ -220,6 +220,7 @@
 </div>
 
 <script src="assets/bootstrap.bundle.min.js"></script>
+<script src="assets/datenschutz.js"></script>
 
 <script>
   // Countdown to next illustrative kickoff
@@ -259,8 +260,8 @@
     setTimeout(function(){ window.location.href = '{{START_URL}}'; }, 900);
   });
 
-  // Alle leeren Links (href="#", ohne Dropdown-Funktion) lösen den Demo-Toast aus
-  document.querySelectorAll('a[href="#"]:not([data-bs-toggle])').forEach(function(a){
+  // Alle leeren Links (href="#", ohne Dropdown-Funktion, ohne eigene Lightbox) lösen den Demo-Toast aus
+  document.querySelectorAll('a[href="#"]:not([data-bs-toggle]):not(.ds-open)').forEach(function(a){
     a.addEventListener('click', function(e){
       e.preventDefault();
       showToast('Diese Unterseite ist in der Demo nicht verknüpft.');
