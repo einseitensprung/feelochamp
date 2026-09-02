@@ -255,13 +255,19 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
   background: linear-gradient(90deg, transparent, var(--line-cyan) 25%, var(--line-cyan) 75%, transparent);
 }
 
-/* ---------- Matchday programme / Sitemap (Startseite) ---------- */
-.section-programme{
+/* ---------- Matchday programme / Sitemap (alle Seiten) ---------- */
+body.page-home .section-programme,
+body.page-start .section-programme,
+body.page-spiele .section-programme,
+body.page-aufsteiger .section-programme{
   background: linear-gradient(180deg, var(--ink-2) 0%, #0a1626 100%);
   border-bottom: 1px solid var(--line);
   padding: 4.5rem 0;
 }
-.programme-head h2{
+body.page-home .programme-head h2,
+body.page-start .programme-head h2,
+body.page-spiele .programme-head h2,
+body.page-aufsteiger .programme-head h2{
   font-family:'Bebas Neue', sans-serif;
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   letter-spacing:.02em;
