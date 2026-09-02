@@ -259,7 +259,8 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
 body.page-home .section-programme,
 body.page-start .section-programme,
 body.page-spiele .section-programme,
-body.page-aufsteiger .section-programme{
+body.page-aufsteiger .section-programme,
+body.page-regeln .section-programme{
   background: linear-gradient(180deg, var(--ink-2) 0%, #0a1626 100%);
   border-bottom: 1px solid var(--line);
   padding: 4.5rem 0;
@@ -267,7 +268,8 @@ body.page-aufsteiger .section-programme{
 body.page-home .programme-head h2,
 body.page-start .programme-head h2,
 body.page-spiele .programme-head h2,
-body.page-aufsteiger .programme-head h2{
+body.page-aufsteiger .programme-head h2,
+body.page-regeln .programme-head h2{
   font-family:'Bebas Neue', sans-serif;
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   letter-spacing:.02em;
