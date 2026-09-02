@@ -2,7 +2,7 @@
 <html lang="de">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Feelochamp – Regeln</title>
+<title>Feelochamp – Spielstand</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 <!-- ================= NAVBAR (logged in) ================= -->
 <nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
   <div class="container">
-    <a class="navbar-brand" href="{{HOME_URL}}">
+    <a class="navbar-brand" href="index.html">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.6" aria-hidden="true">
         <circle cx="12" cy="12" r="9"/>
         <path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/>
@@ -30,17 +30,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item" href="{{SPIELE_URL}}">Spiele</a></li>
-            <li><a class="dropdown-item" href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item" href="spiele.html">Spiele</a></li>
+            <li><a class="dropdown-item" href="aufsteiger.html">8 Fix Aufsteiger</a></li>
             <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link demo-link" href="#">Alle Tipps</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{SPIELSTAND_URL}}">Spielstand</a></li>
+        <li class="nav-item"><a class="nav-link active-mark" href="#" aria-current="page">Spielstand</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item active-mark" href="#" aria-current="page">Regeln</a></li>
+            <li><a class="dropdown-item" href="regeln.html">Regeln</a></li>
             <li><a class="dropdown-item demo-link" href="#">Ligaphase Tabelle</a></li>
             <li><a class="dropdown-item demo-link" href="#">Playoffs</a></li>
             <li><a class="dropdown-item demo-link" href="#">Turnierbaum</a></li>
@@ -89,8 +89,8 @@
   </svg>
   <div class="container page-header-content">
     <div class="hero-panel">
-      <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
-      <h1>Die <span class="accent">Regeln</span></h1>
+      <span class="eyebrow d-block mb-1">Ergebnisse &middot; FeeloChamp</span>
+      <h1>Der <span class="accent">Spielstand</span></h1>
     </div>
   </div>
 </header>
@@ -99,37 +99,37 @@
 <main>
   <div class="container">
     <div class="content-card">
-      <div class="rules">
-        <h2>&sect;1 &middot; Der CL-Sieg-Tipp</h2>
-        <p>Die f&uuml;r den CL-Sieg-Tipp erreichbaren Punkte ergeben sich aus dem Zeitpunkt der Tippabgabe. Die Abgabe und &Auml;nderung dieses Tipps ist jederzeit m&ouml;glich. Punkteverteilung:</p>
-        <ul class="score-list">
-          <li>Tippabgabe vor dem 08.09., 18:45 Uhr (vor der Ligaphase) &rarr; 8 Punkte</li>
-          <li>Tippabgabe vor dem 16.02., 21:00 Uhr (vor den K.-o.-Runden-Play-offs) &rarr; 7 Punkte</li>
-          <li>Tippabgabe vor dem 09.03., 21:00 Uhr (vor dem Achtelfinale) &rarr; 6 Punkte</li>
-          <li>Tippabgabe vor dem 06.04., 21:00 Uhr (vor dem Viertelfinale) &rarr; 4 Punkte</li>
-          <li>Tippabgabe vor dem 27.04., 21:00 Uhr (vor dem Halbfinale) &rarr; 3 Punkte</li>
-          <li>Tippabgabe vor dem 05.06., 21:00 Uhr (vor dem Finale) &rarr; 2 Punkte</li>
-        </ul>
+      <div class="content-card-toolbar">
+        <span class="toolbar-title">Gesamtwertung</span>
+        <span style="color:#5a6c8c; font-size:.82rem; font-weight:600;">Stand: 19.07.2026, 23:00 Uhr</span>
+      </div>
 
-        <h2>&sect;2 &middot; Die Spiele</h2>
-        <p><strong>Letzte M&ouml;glichkeit</strong> der Tippabgabe bei allen Spielen ist jeweils kurz vor Anpfiff des jeweiligen Spiels. Bei allen Spielen (inkl. Finale) wird nach dem 1-2-X-System getippt. Gewertet wird jedes Resultat nach Ende der zweiten H&auml;lfte (ergo ohne eine eventuelle Verl&auml;ngerung). Jeder richtige Tipp bringt einen Punkt.</p>
+      <div class="table-responsive">
+        <table class="table-feelo standings">
+          <thead>
+            <tr>
+              <th style="width:3rem;"><span class="visually-hidden">Tendenz</span></th>
+              <th style="width:4.5rem;">Platz</th>
+              <th>Name</th>
+              <th class="col-pts" style="width:8.5rem;">Punkte</th>
+            </tr>
+          </thead>
+          <tbody id="standingsRows"><!-- rows injected by JS from STANDINGS --></tbody>
+        </table>
+      </div>
 
-        <h2>&sect;3 &middot; Die Ligaphase-Fixaufsteiger-Tipps <span class="badge-new">Neu</span></h2>
-        <p><strong>Letzte M&ouml;glichkeit</strong> der Tippabgabe bei den 8 Fixaufstiegs-Tipps ist am 08.09. um 18:45 Uhr (d.&nbsp;h. vor dem <strong>ersten</strong> Spiel in der Ligaphase). Hier hat jeder Mitspieler vor Beginn der jeweiligen Runde die M&ouml;glichkeit, die 8 Fixaufsteiger zu tippen. Jeder richtig getippte Fixaufsteiger in der Ligaphase bringt zwei Punkte. <strong>Eine Änderung nachtr&auml;glich ist nicht erlaubt und f&uuml;hrt zum Verlust der Punkte.</strong></p>
-
-        <h2>&sect;4 &middot; Die K.-o.-Runden-Play-offs-Aufsteiger-Tipps <span class="badge-new">Neu</span></h2>
-        <p>Hier geht es darum, den jeweils richtigen Aufsteiger in das Achtelfinale zu tippen. Jeder vor Anpfiff des Hinspiels richtig getippte Aufsteiger bringt zwei Punkte. Jeder zwischen Anpfiff des Hinspiels und Anpfiff des R&uuml;ckspiels richtig getippte Aufsteiger bringt einen Punkt.</p>
-
-        <h2>&sect;5 &middot; Die KO-System-Aufsteiger-Tipps (1/8, 1/4, 1/2)</h2>
-        <p>Hier geht es darum, den jeweils richtigen Aufsteiger in die n&auml;chste Runde zu tippen. Jeder vor Anpfiff des Hinspiels richtig getippte Aufsteiger bringt zwei Punkte. Jeder zwischen Anpfiff des Hinspiels und Anpfiff des R&uuml;ckspiels richtig getippte Aufsteiger bringt einen Punkt.</p>
-
-        <h2>&sect;6 &middot; Zusatz</h2>
-        <p>Bei eventuell strittigen Fragen entscheidet v&ouml;llig undemokratisch und autark der allgemeine Regelausschuss der FeeloChamp-Gruppe. Rechtsmittel jeglicher Art sind grunds&auml;tzlich unzul&auml;ssig!</p>
-
-        <h2>&sect;50+ &middot; Senil</h2>
-        <p>Wenn ein Teilnehmer eine Runde komplett zu tippen vergisst, bekommt er zumindest die Punkte des Teilnehmers mit den wenigsten Punkten gutgeschrieben.</p>
+      <div class="table-footbar">
+        <span class="row-count"><span id="playerCount">15</span> Teilnehmer</span>
+        <button type="button" class="btn-ghost-cyan demo-link">Spielstand inkl. Aufsteigerpunkte</button>
       </div>
     </div>
+
+    <p class="standings-legend">
+      <span class="trend up"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M6 11l6-6 6 6"/></svg> nach oben</span>
+      <span class="trend down"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M6 13l6 6 6-6"/></svg> nach unten</span>
+      <span class="trend even"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M4 12h16"/></svg> unver&auml;ndert</span>
+      <span class="legend-note">Zahl in Klammern = noch exklusive Aufsteigerpunkte</span>
+    </p>
   </div>
 </main>
 
@@ -149,8 +149,8 @@
           </div>
           <h3>Tippen</h3>
           <ul>
-            <li><a href="{{SPIELE_URL}}">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="spiele.html">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="aufsteiger.html">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Champion <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
@@ -164,7 +164,7 @@
           <h3>Ergebnisse</h3>
           <ul>
             <li><a class="demo-link" href="#">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{SPIELSTAND_URL}}">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="spielstand.html" aria-current="page">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
       </div>
@@ -176,7 +176,7 @@
           </div>
           <h3>Infos</h3>
           <ul>
-            <li><a href="regeln.html" aria-current="page">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="regeln.html">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
@@ -225,6 +225,61 @@
 <script src="assets/datenschutz.js"></script>
 
 <script>
+  // Gesamtwertung – Demodaten in Anlehnung an einseitensprung.at/wm/spielstand.asp
+  // [Tendenz ('up'|'down'|'even'), Platz, Name, Punkte, exklusive Aufsteigerpunkte]
+  var STANDINGS = [
+    ["even","1","BONO",164,10],
+    ["up","2","BABSI",155,10],
+    ["up","-","MO",155,10],
+    ["down","4","ROMARIO11",153,0],
+    ["down","-","WALCHI",153,2],
+    ["up","6","RIOT",152,10],
+    ["down","7","HONS",151,2],
+    ["down","-","STE",151,0],
+    ["up","9","JAKOB",145,10],
+    ["down","10","HERWIG",144,0],
+    ["down","11","HILLARY",142,0],
+    ["down","12","GUNZ",138,2],
+    ["even","13","VUX",132,0],
+    ["even","14","BULLY",130,0],
+    ["even","15","SONNEHAMMER",127,2]
+  ];
+
+  function trendIcon(t){
+    if (t === 'up')   return '<span class="trend up" title="nach oben"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span>';
+    if (t === 'down') return '<span class="trend down" title="nach unten"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>';
+    return '<span class="trend even" title="unverändert"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M4 12h16"/></svg></span>';
+  }
+
+  function moodIcon(i){
+    var mouth;
+    if (i === 0)      mouth = '<path d="M8 13.5c1.4 2.4 6.6 2.4 8 0" fill="currentColor" stroke="none"/>';
+    else if (i <= 2)  mouth = '<path d="M8.5 14c1 1.5 6 1.5 7 0"/>';
+    else              mouth = '<path d="M9 15h6"/>';
+    return '<svg class="mood" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">' +
+      '<circle cx="12" cy="12" r="9"/>' +
+      '<circle cx="9" cy="10" r="1.1" fill="currentColor" stroke="none"/>' +
+      '<circle cx="15" cy="10" r="1.1" fill="currentColor" stroke="none"/>' + mouth + '</svg>';
+  }
+
+  function renderStandings(){
+    var tbody = document.getElementById('standingsRows');
+    var html = '';
+    STANDINGS.forEach(function(r, i){
+      var trend = r[0], platz = r[1], name = r[2], pts = r[3], bonus = r[4];
+      var tied = platz === '-';
+      html += '<tr' + (i === 0 ? ' class="is-leader"' : '') + '>' +
+        '<td>' + trendIcon(trend) + '</td>' +
+        '<td><span class="rank' + (tied ? ' is-tied' : '') + '">' + platz + '</span></td>' +
+        '<td><div class="player">' + moodIcon(i) + '<span class="player-name">' + name + '</span></div></td>' +
+        '<td class="pts"><span class="pts-main">' + pts + '</span><span class="pts-sub">(' + bonus + ')</span></td>' +
+      '</tr>';
+    });
+    tbody.innerHTML = html;
+    document.getElementById('playerCount').textContent = STANDINGS.length;
+  }
+  renderStandings();
+
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
     document.getElementById('demoToastText').textContent = text;

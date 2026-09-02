@@ -800,6 +800,34 @@ body.page-info .crest{ width:2.2rem; height:2.2rem; font-size:.62rem; }
   background: rgba(34,197,94,0.16); color: var(--green-dark);
 }
 
+/* ---------- Spielstand-Tabelle (spielstand.html) ---------- */
+.standings td{ vertical-align:middle; }
+.standings th.col-pts, .standings td.pts{ text-align:right; }
+.standings .rank{
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:1rem; color:#0c1930;
+}
+.standings .rank.is-tied{ color:#8092b3; }
+.standings tr.is-leader{ background: rgba(232,167,46,0.08) !important; }
+.standings tr.is-leader .player-name{ color:#8a5a00; }
+
+.trend{ display:inline-flex; align-items:center; gap:.3rem; }
+.trend.up{ color: var(--green); }
+.trend.down{ color:#da3a49; }
+.trend.even{ color:#e8a72e; }
+
+.standings .player{ display:flex; align-items:center; gap:.7rem; }
+.standings .mood{ flex:none; color:#5a6c8c; }
+.standings .player-name{ font-weight:700; font-size:.95rem; letter-spacing:.02em; color:#0c1930; }
+.standings .pts-main{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size:1.15rem; color:#0c1930; }
+.standings .pts-sub{ font-size:.8rem; color:#8092b3; margin-left:.2rem; }
+
+.standings-legend{
+  display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1.2rem;
+  margin-top:1rem; font-size:.8rem; color: var(--slate);
+}
+.standings-legend .trend{ font-weight:600; }
+.standings-legend .legend-note{ opacity:.8; }
+
 /* ---------- Preloader-Seite (preloader.html) ---------- */
 body.page-preloader{ background: var(--ink); }
 .preloader{
