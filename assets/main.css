@@ -582,6 +582,8 @@ body.page-aufsteiger .programme-head h2{
 body.page-spiele .content-card{ margin-top: -2.2rem; overflow:hidden; }
 /* Aufsteiger: Karte sitzt unter der Notice-Bar, Multiselect-Panel darf überstehen */
 body.page-aufsteiger .content-card{ margin-top: 1.4rem; overflow:visible; }
+/* Regeln: Karte überlappt den Header wie auf der Spiele-Seite */
+body.page-regeln .content-card{ margin-top: -2.2rem; overflow:hidden; }
 
 .content-card-toolbar{
   display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;
