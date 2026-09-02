@@ -26,6 +26,7 @@ const SPIELE_URL = mode === "artifact" ? ARTIFACT_SPIELE_URL : "spiele.html";
 // Not yet published as their own Claude Artifacts, so always relative.
 const AUFSTEIGER_URL = "aufsteiger.html";
 const START_URL = "start.html";
+const REGELN_URL = "regeln.html";
 
 function build(templateFile, outFile, replacements) {
   let tpl = fs.readFileSync(path.join(dir, "src", templateFile), "utf8");
@@ -36,7 +37,8 @@ function build(templateFile, outFile, replacements) {
   console.log(`built ${outFile} (${tpl.length.toLocaleString()} bytes)`);
 }
 
-build("index.template.html", "index.html", { "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{START_URL}}": START_URL });
-build("spiele.template.html", "spiele.html", { "{{HOME_URL}}": HOME_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL });
-build("aufsteiger.template.html", "aufsteiger.html", { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL });
-build("start.template.html", "start.html", { "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL });
+build("index.template.html", "index.html", { "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{START_URL}}": START_URL, "{{REGELN_URL}}": REGELN_URL });
+build("spiele.template.html", "spiele.html", { "{{HOME_URL}}": HOME_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{REGELN_URL}}": REGELN_URL });
+build("aufsteiger.template.html", "aufsteiger.html", { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL, "{{REGELN_URL}}": REGELN_URL });
+build("start.template.html", "start.html", { "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{REGELN_URL}}": REGELN_URL });
+build("regeln.template.html", "regeln.html", { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL });

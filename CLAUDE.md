@@ -16,13 +16,15 @@ Konkret:
 
 ## Build-Workflow
 
-`index.html`, `spiele.html`, `aufsteiger.html` und `start.html` im Root sind **generierte** Dateien (siehe `build.js`), keine Quelldateien. Nach jeder Änderung an `src/*.template.html` vor dem Commit neu bauen:
+`index.html`, `spiele.html`, `aufsteiger.html`, `start.html` und `regeln.html` im Root sind **generierte** Dateien (siehe `build.js`), keine Quelldateien. Nach jeder Änderung an `src/*.template.html` vor dem Commit neu bauen:
 
 ```bash
 node build.js
 ```
 
 Quelltemplate **und** das neu gebaute HTML gehören in denselben Commit — nie nur die Quelle oder nur das Build-Ergebnis committen.
+
+`regeln.html` (Template `src/regeln.template.html`) ist eine reguläre Unterseite im Redesign-Layout (Navbar + `.page-header` + `.content-card`), verlinkt aus den „Infos → Regeln"-Nav-Einträgen aller Seiten. Inhalt = `regeln.asp` (§1–§6, §50+), als strukturiertes HTML statt der `<br/>`-Wüste des Originals.
 
 `spiele_info.html` und `preloader.html` sind **eigenständige** statische Seiten (kein Template, nicht in `build.js`), ohne Navbar/Footer, direkt editieren:
 - `spiele_info.html` — iframe-Ziel der Info-Lightbox auf der Spiele-Seite. Inhalt = `spiele_info.asp?id=1` (Tipp-Übersicht je Spiel), echte Vereinswappen durch Initialen-Badges ersetzt.

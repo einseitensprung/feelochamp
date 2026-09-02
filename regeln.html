@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feelochamp – Regeln</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/bootstrap.min.css">
+<link rel="stylesheet" href="assets/main.css">
+
+<body class="page-regeln">
+<!-- ================= NAVBAR (logged in) ================= -->
+<nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/>
+        <path d="M12 7.2V4.3M15.4 9.7l2.7-1.6M14.1 13.7l1.7 2.8M9.9 13.7l-1.7 2.8M8.6 9.7l-2.7-1.6"/>
+      </svg>
+      FEELOCHAMP
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Navigation umschalten" style="border-color: var(--line-cyan);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="spiele.html">Spiele</a></li>
+            <li><a class="dropdown-item" href="aufsteiger.html">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Alle Tipps</a></li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Spielstand</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item active-mark" href="#" aria-current="page">Regeln</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Playoffs</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Turnierbaum</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Teams</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Kalender</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item demo-link" href="#">Statistik</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Punkten</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Positionen</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Quoten der Spiele</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Admin</a></li>
+      </ul>
+      <div class="dropdown">
+        <a class="user-chip dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="user-avatar">sTe</span> sTe
+        </a>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end">
+          <li><a class="dropdown-item demo-link" href="#">Einstellungen</a></li>
+          <li><a class="dropdown-item demo-link" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= PAGE HEADER ================= -->
+<header class="page-header">
+  <svg class="page-header-rays" viewBox="0 0 1600 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="#eef4ee">
+      <circle class="twinkle" cx="180" cy="60" r="1.6"/>
+      <circle class="twinkle" cx="520" cy="40" r="1.4" style="animation-delay:.5s"/>
+      <circle class="twinkle" cx="900" cy="70" r="1.8"/>
+      <circle class="twinkle" cx="1250" cy="45" r="1.3" style="animation-delay:1s"/>
+      <circle class="twinkle" cx="1450" cy="90" r="1.5" style="animation-delay:1.4s"/>
+    </g>
+    <g stroke="#7fe3f5" stroke-width="1.2" opacity=".25">
+      <line x1="0" y1="300" x2="500" y2="0"/>
+      <line x1="1600" y1="280" x2="1050" y2="0"/>
+    </g>
+  </svg>
+  <div class="container page-header-content">
+    <div class="hero-panel">
+      <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
+      <h1>Die <span class="accent">Regeln</span></h1>
+    </div>
+  </div>
+</header>
+
+<!-- ================= CONTENT ================= -->
+<main>
+  <div class="container">
+    <div class="content-card">
+      <div class="rules">
+        <h2>&sect;1 &middot; Der CL-Sieg-Tipp</h2>
+        <p>Die f&uuml;r den CL-Sieg-Tipp erreichbaren Punkte ergeben sich aus dem Zeitpunkt der Tippabgabe. Die Abgabe und &Auml;nderung dieses Tipps ist jederzeit m&ouml;glich. Punkteverteilung:</p>
+        <ul class="score-list">
+          <li>Tippabgabe vor dem 08.09., 18:45 Uhr (vor der Ligaphase) &rarr; 8 Punkte</li>
+          <li>Tippabgabe vor dem 16.02., 21:00 Uhr (vor den K.-o.-Runden-Play-offs) &rarr; 7 Punkte</li>
+          <li>Tippabgabe vor dem 09.03., 21:00 Uhr (vor dem Achtelfinale) &rarr; 6 Punkte</li>
+          <li>Tippabgabe vor dem 06.04., 21:00 Uhr (vor dem Viertelfinale) &rarr; 4 Punkte</li>
+          <li>Tippabgabe vor dem 27.04., 21:00 Uhr (vor dem Halbfinale) &rarr; 3 Punkte</li>
+          <li>Tippabgabe vor dem 05.06., 21:00 Uhr (vor dem Finale) &rarr; 2 Punkte</li>
+        </ul>
+
+        <h2>&sect;2 &middot; Die Spiele</h2>
+        <p><strong>Letzte M&ouml;glichkeit</strong> der Tippabgabe bei allen Spielen ist jeweils kurz vor Anpfiff des jeweiligen Spiels. Bei allen Spielen (inkl. Finale) wird nach dem 1-2-X-System getippt. Gewertet wird jedes Resultat nach Ende der zweiten H&auml;lfte (ergo ohne eine eventuelle Verl&auml;ngerung). Jeder richtige Tipp bringt einen Punkt.</p>
+
+        <h2>&sect;3 &middot; Die Ligaphase-Fixaufsteiger-Tipps <span class="badge-new">Neu</span></h2>
+        <p><strong>Letzte M&ouml;glichkeit</strong> der Tippabgabe bei den 8 Fixaufstiegs-Tipps ist am 08.09. um 18:45 Uhr (d.&nbsp;h. vor dem <strong>ersten</strong> Spiel in der Ligaphase). Hier hat jeder Mitspieler vor Beginn der jeweiligen Runde die M&ouml;glichkeit, die 8 Fixaufsteiger zu tippen. Jeder richtig getippte Fixaufsteiger in der Ligaphase bringt zwei Punkte. <strong>Eine Änderung nachtr&auml;glich ist nicht erlaubt und f&uuml;hrt zum Verlust der Punkte.</strong></p>
+
+        <h2>&sect;4 &middot; Die K.-o.-Runden-Play-offs-Aufsteiger-Tipps <span class="badge-new">Neu</span></h2>
+        <p>Hier geht es darum, den jeweils richtigen Aufsteiger in das Achtelfinale zu tippen. Jeder vor Anpfiff des Hinspiels richtig getippte Aufsteiger bringt zwei Punkte. Jeder zwischen Anpfiff des Hinspiels und Anpfiff des R&uuml;ckspiels richtig getippte Aufsteiger bringt einen Punkt.</p>
+
+        <h2>&sect;5 &middot; Die KO-System-Aufsteiger-Tipps (1/8, 1/4, 1/2)</h2>
+        <p>Hier geht es darum, den jeweils richtigen Aufsteiger in die n&auml;chste Runde zu tippen. Jeder vor Anpfiff des Hinspiels richtig getippte Aufsteiger bringt zwei Punkte. Jeder zwischen Anpfiff des Hinspiels und Anpfiff des R&uuml;ckspiels richtig getippte Aufsteiger bringt einen Punkt.</p>
+
+        <h2>&sect;6 &middot; Zusatz</h2>
+        <p>Bei eventuell strittigen Fragen entscheidet v&ouml;llig undemokratisch und autark der allgemeine Regelausschuss der FeeloChamp-Gruppe. Rechtsmittel jeglicher Art sind grunds&auml;tzlich unzul&auml;ssig!</p>
+
+        <h2>&sect;50+ &middot; Senil</h2>
+        <p>Wenn ein Teilnehmer eine Runde komplett zu tippen vergisst, bekommt er zumindest die Punkte des Teilnehmers mit den wenigsten Punkten gutgeschrieben.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-feelo mt-5">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <span class="text-slate">FEELOCHAMP 2026/2027 &nbsp;|&nbsp; gegr. 2002 von Soizbuaga Wettkaiser</span>
+    <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#" class="ds-open">Datenschutz</a></span>
+  </div>
+</footer>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
+  <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="demoToastText">Diese Unterseite ist in der Demo nicht verkn&uuml;pft.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Schließen"></button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/bootstrap.bundle.min.js"></script>
+<script src="assets/datenschutz.js"></script>
+
+<script>
+  function showToast(text){
+    var toastEl = document.getElementById('demoToast');
+    document.getElementById('demoToastText').textContent = text;
+    bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000 }).show();
+  }
+  document.querySelectorAll('.demo-link').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      showToast('Diese Unterseite ist in der Demo nicht verknüpft.');
+    });
+  });
+</script>
+</body>
+</html>
