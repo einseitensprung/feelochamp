@@ -24,6 +24,8 @@ node build.js
 
 Quelltemplate **und** das neu gebaute HTML gehören in denselben Commit — nie nur die Quelle oder nur das Build-Ergebnis committen.
 
+`spiele_info.html` ist eine **eigenständige** statische Seite (kein Template, nicht in `build.js`): ohne Navbar/Footer, gedacht als iframe-Ziel der Info-Lightbox auf der Spiele-Seite. Inhalt = `spiele_info.asp?id=1` (Tipp-Übersicht je Spiel), echte Vereinswappen durch Initialen-Badges ersetzt. Direkt editieren.
+
 ## Projektkontext
 
 - Gestyltes Bootstrap-5-Redesign von [einseitensprung.at/cl/](https://einseitensprung.at/cl/), einer privaten Champions-League-Tipprunde ("Feelochamp", seit 2002).
