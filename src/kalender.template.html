@@ -308,6 +308,32 @@
     return a.date === b.date ? a.time.localeCompare(b.time) : a.date.localeCompare(b.date);
   });
 
+  // Navigations-Grenzen aus den Einträgen: erster bzw. letzter Termin
+  function parseISO(s){ var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  var MIN_D = parseISO(EVENTS[0].date);
+  var MAX_D = parseISO(EVENTS[EVENTS.length - 1].date);
+  function firstOfMonth(d){ return new Date(d.getFullYear(), d.getMonth(), 1); }
+  function mondayOf(d){ var o = (d.getDay() + 6) % 7; return new Date(d.getFullYear(), d.getMonth(), d.getDate() - o); }
+  function clampRef(){
+    if (state.view === 'week'){
+      var lo = mondayOf(MIN_D), hi = mondayOf(MAX_D), cm = mondayOf(state.ref);
+      if (cm < lo) state.ref = lo; else if (cm > hi) state.ref = hi;
+    } else {
+      var loM = firstOfMonth(MIN_D), hiM = firstOfMonth(MAX_D);
+      if (state.ref < loM) state.ref = loM; else if (state.ref > hiM) state.ref = hiM;
+    }
+  }
+  function atMin(){
+    return state.view === 'week'
+      ? mondayOf(state.ref) <= mondayOf(MIN_D)
+      : firstOfMonth(state.ref) <= firstOfMonth(MIN_D);
+  }
+  function atMax(){
+    return state.view === 'week'
+      ? mondayOf(state.ref) >= mondayOf(MAX_D)
+      : firstOfMonth(state.ref) >= firstOfMonth(MAX_D);
+  }
+
   function eventsOn(isoDate){
     return EVENTS.filter(function(e){ return e.date === isoDate; });
   }
@@ -405,9 +431,12 @@
   }
 
   function render(){
+    clampRef();
     if (state.view === 'month') renderMonth();
     else if (state.view === 'week') renderWeek();
     else renderList();
+    document.getElementById('calPrev').disabled = atMin();
+    document.getElementById('calNext').disabled = atMax();
   }
 
   document.querySelectorAll('.cal-view-btn').forEach(function(b){

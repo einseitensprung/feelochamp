@@ -1329,6 +1329,8 @@ body.page-preloader{ background: var(--ink); }
   transition: background .15s ease;
 }
 .cal-arrow:hover{ background: rgba(34,211,238,0.14); }
+.cal-arrow:disabled{ opacity:.3; cursor:not-allowed; }
+.cal-arrow:disabled:hover{ background: var(--panel-strong); }
 .cal-views{ display:inline-flex; border:1px solid var(--line-cyan); border-radius:.6rem; overflow:hidden; }
 .cal-view-btn{
   border:0; background: var(--panel-strong); color: var(--slate);
