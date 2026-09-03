@@ -509,6 +509,14 @@
     openDay(more.dataset.date);
   });
 
+  // Auf Mobile startet der Kalender in der Listenansicht
+  if (window.matchMedia && window.matchMedia('(max-width: 767.98px)').matches){
+    state.view = 'list';
+    document.querySelectorAll('.cal-view-btn').forEach(function(x){
+      x.classList.toggle('is-active', x.dataset.view === 'list');
+    });
+  }
+
   render();
 
   function showToast(text){
