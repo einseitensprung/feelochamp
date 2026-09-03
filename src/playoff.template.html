@@ -326,6 +326,12 @@
   var TEAMS_TBD = true;
   function dispName(n){ return TEAMS_TBD ? 'TBD' : n; }
 
+  // Noch keine Spiele ausgetragen: alle Ergebnisse als "-" zeigen,
+  // keine Aggregat-Zahlen, keine Sieger-Markierung.
+  // Auf false setzen, um die Demo-Ergebnisse zu zeigen.
+  var RESULTS_TBD = true;
+  var DASH = '–';
+
   function crestTextColor(hex){
     var c = hex.replace('#','');
     var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
@@ -340,17 +346,20 @@
   function tieCard(t){
     var grp = t[0], date = t[1], a = t[2], b = t[3], leg1 = t[4], leg2 = t[5], win = t[6], extra = t[7];
     var l1 = parseScore(leg1), l2 = parseScore(leg2);
-    var aggA = l1[0] + l2[1];
-    var aggB = l1[1] + l2[0];
-    var rowA = '<div class="tie-team ' + (win === 0 ? 'win' : 'out') + '">' + crest(a) +
+    var aggA = RESULTS_TBD ? DASH : (l1[0] + l2[1]);
+    var aggB = RESULTS_TBD ? DASH : (l1[1] + l2[0]);
+    var clsA = RESULTS_TBD ? '' : (win === 0 ? 'win' : 'out');
+    var clsB = RESULTS_TBD ? '' : (win === 1 ? 'win' : 'out');
+    var legDisp = RESULTS_TBD ? (DASH + ':' + DASH) : null;
+    var rowA = '<div class="tie-team ' + clsA + '">' + crest(a) +
       '<span class="team-name">' + dispName(a) + '</span><span class="tie-agg">' + aggA + '</span></div>';
-    var rowB = '<div class="tie-team ' + (win === 1 ? 'win' : 'out') + '">' + crest(b) +
+    var rowB = '<div class="tie-team ' + clsB + '">' + crest(b) +
       '<span class="team-name">' + dispName(b) + '</span><span class="tie-agg">' + aggB + '</span></div>';
     return '<div class="tie">' +
       '<div class="tie-head"><span class="tie-grp">Gruppe ' + grp + '</span><span class="tie-date">' + date + '</span></div>' +
       '<div class="tie-body">' + rowA + rowB +
-        '<div class="tie-legs"><span>Hin ' + leg1 + '</span><span>R&uuml;ck ' + leg2 + '</span>' +
-        (extra ? '<span class="pen">' + extra + '</span>' : '') + '</div>' +
+        '<div class="tie-legs"><span>Hin ' + (legDisp || leg1) + '</span><span>R&uuml;ck ' + (legDisp || leg2) + '</span>' +
+        (!RESULTS_TBD && extra ? '<span class="pen">' + extra + '</span>' : '') + '</div>' +
       '</div></div>';
   }
 
@@ -367,19 +376,23 @@
   function renderFinal(){
     var grp = FINAL[0], date = FINAL[1], a = FINAL[2], b = FINAL[3], sc = FINAL[4], win = FINAL[5];
     var s = parseScore(sc);
-    var rowA = '<div class="tie-team ' + (win === 0 ? 'win' : 'out') + '">' + crest(a) +
-      '<span class="team-name">' + dispName(a) + '</span><span class="tie-agg">' + s[0] + '</span></div>';
-    var rowB = '<div class="tie-team ' + (win === 1 ? 'win' : 'out') + '">' + crest(b) +
-      '<span class="team-name">' + dispName(b) + '</span><span class="tie-agg">' + s[1] + '</span></div>';
+    var scA = RESULTS_TBD ? DASH : s[0];
+    var scB = RESULTS_TBD ? DASH : s[1];
+    var clsA = RESULTS_TBD ? '' : (win === 0 ? 'win' : 'out');
+    var clsB = RESULTS_TBD ? '' : (win === 1 ? 'win' : 'out');
+    var rowA = '<div class="tie-team ' + clsA + '">' + crest(a) +
+      '<span class="team-name">' + dispName(a) + '</span><span class="tie-agg">' + scA + '</span></div>';
+    var rowB = '<div class="tie-team ' + clsB + '">' + crest(b) +
+      '<span class="team-name">' + dispName(b) + '</span><span class="tie-agg">' + scB + '</span></div>';
     document.getElementById('finGrid').innerHTML =
       '<div class="tie"><div class="tie-head"><span class="tie-grp">Gruppe ' + grp + '</span>' +
       '<span class="tie-date">' + date + '</span></div><div class="tie-body">' + rowA + rowB + '</div></div>';
 
-    var champ = win === 0 ? a : b;
+    var champ = (RESULTS_TBD || TEAMS_TBD) ? 'TBD' : (win === 0 ? a : b);
     document.getElementById('championCard').innerHTML =
       crest(champ) +
       '<div class="champ-label">FeeloChamp 2026/2027 &ndash; Sieger</div>' +
-      '<div class="champ-name">' + dispName(champ) + '</div>';
+      '<div class="champ-name">' + champ + '</div>';
   }
 
   renderFix();
