@@ -320,13 +320,19 @@
   // Finale: ein Spiel
   var FINAL = ["X","31.05.","Bayern","PSG","2:1",0];
 
+  // Auslosung noch offen: alle Teamnamen als "TBD" anzeigen (graue Badges).
+  // Ergebnisse, Aggregat und Sieger-Markierung bleiben als Layout-Vorschau erhalten.
+  // Auf false setzen, um die echten Demo-Teams zu zeigen.
+  var TEAMS_TBD = true;
+  function dispName(n){ return TEAMS_TBD ? 'TBD' : n; }
+
   function crestTextColor(hex){
     var c = hex.replace('#','');
     var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
     return (0.299*r + 0.587*g + 0.114*b) / 255 > 0.62 ? '#111' : '#fff';
   }
   function crest(name){
-    var info = CLUB[name] || ["?", "#5a6c8c"];
+    var info = TEAMS_TBD ? ["?", "#9aa7bd"] : (CLUB[name] || ["?", "#5a6c8c"]);
     return '<span class="crest" style="background:'+info[1]+'; color:'+crestTextColor(info[1])+';">'+info[0]+'</span>';
   }
   function parseScore(s){ var p = s.split(':'); return [parseInt(p[0],10), parseInt(p[1],10)]; }
@@ -337,9 +343,9 @@
     var aggA = l1[0] + l2[1];
     var aggB = l1[1] + l2[0];
     var rowA = '<div class="tie-team ' + (win === 0 ? 'win' : 'out') + '">' + crest(a) +
-      '<span class="team-name">' + a + '</span><span class="tie-agg">' + aggA + '</span></div>';
+      '<span class="team-name">' + dispName(a) + '</span><span class="tie-agg">' + aggA + '</span></div>';
     var rowB = '<div class="tie-team ' + (win === 1 ? 'win' : 'out') + '">' + crest(b) +
-      '<span class="team-name">' + b + '</span><span class="tie-agg">' + aggB + '</span></div>';
+      '<span class="team-name">' + dispName(b) + '</span><span class="tie-agg">' + aggB + '</span></div>';
     return '<div class="tie">' +
       '<div class="tie-head"><span class="tie-grp">Gruppe ' + grp + '</span><span class="tie-date">' + date + '</span></div>' +
       '<div class="tie-body">' + rowA + rowB +
@@ -354,7 +360,7 @@
 
   function renderFix(){
     document.getElementById('fixWrap').innerHTML = FIX.map(function(n){
-      return '<span class="fix-tag">' + crest(n) + n + '</span>';
+      return '<span class="fix-tag">' + crest(n) + dispName(n) + '</span>';
     }).join('');
   }
 
@@ -362,9 +368,9 @@
     var grp = FINAL[0], date = FINAL[1], a = FINAL[2], b = FINAL[3], sc = FINAL[4], win = FINAL[5];
     var s = parseScore(sc);
     var rowA = '<div class="tie-team ' + (win === 0 ? 'win' : 'out') + '">' + crest(a) +
-      '<span class="team-name">' + a + '</span><span class="tie-agg">' + s[0] + '</span></div>';
+      '<span class="team-name">' + dispName(a) + '</span><span class="tie-agg">' + s[0] + '</span></div>';
     var rowB = '<div class="tie-team ' + (win === 1 ? 'win' : 'out') + '">' + crest(b) +
-      '<span class="team-name">' + b + '</span><span class="tie-agg">' + s[1] + '</span></div>';
+      '<span class="team-name">' + dispName(b) + '</span><span class="tie-agg">' + s[1] + '</span></div>';
     document.getElementById('finGrid').innerHTML =
       '<div class="tie"><div class="tie-head"><span class="tie-grp">Gruppe ' + grp + '</span>' +
       '<span class="tie-date">' + date + '</span></div><div class="tie-body">' + rowA + rowB + '</div></div>';
@@ -373,7 +379,7 @@
     document.getElementById('championCard').innerHTML =
       crest(champ) +
       '<div class="champ-label">FeeloChamp 2026/2027 &ndash; Sieger</div>' +
-      '<div class="champ-name">' + champ + '</div>';
+      '<div class="champ-name">' + dispName(champ) + '</div>';
   }
 
   renderFix();
