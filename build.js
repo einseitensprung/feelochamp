@@ -32,6 +32,7 @@ const ALLETIPS_URL = "alletips.html";
 const TABELLE_URL = "tabelle.html";
 const PLAYOFF_URL = "playoff.html";
 const TURNIERBAUM_URL = "turnierbaum.html";
+const TEAMS_URL = "teams.html";
 
 function build(templateFile, outFile, replacements) {
   let tpl = fs.readFileSync(path.join(dir, "src", templateFile), "utf8");
@@ -42,7 +43,7 @@ function build(templateFile, outFile, replacements) {
   console.log(`built ${outFile} (${tpl.length.toLocaleString()} bytes)`);
 }
 
-const COMMON = { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{START_URL}}": START_URL, "{{REGELN_URL}}": REGELN_URL, "{{SPIELSTAND_URL}}": SPIELSTAND_URL, "{{ALLETIPS_URL}}": ALLETIPS_URL, "{{TABELLE_URL}}": TABELLE_URL, "{{PLAYOFF_URL}}": PLAYOFF_URL, "{{TURNIERBAUM_URL}}": TURNIERBAUM_URL };
+const COMMON = { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{START_URL}}": START_URL, "{{REGELN_URL}}": REGELN_URL, "{{SPIELSTAND_URL}}": SPIELSTAND_URL, "{{ALLETIPS_URL}}": ALLETIPS_URL, "{{TABELLE_URL}}": TABELLE_URL, "{{PLAYOFF_URL}}": PLAYOFF_URL, "{{TURNIERBAUM_URL}}": TURNIERBAUM_URL, "{{TEAMS_URL}}": TEAMS_URL };
 
 build("index.template.html", "index.html", COMMON);
 build("spiele.template.html", "spiele.html", COMMON);
@@ -54,3 +55,4 @@ build("alletips.template.html", "alletips.html", COMMON);
 build("tabelle.template.html", "tabelle.html", COMMON);
 build("playoff.template.html", "playoff.html", COMMON);
 build("turnierbaum.template.html", "turnierbaum.html", COMMON);
+build("teams.template.html", "teams.html", COMMON);

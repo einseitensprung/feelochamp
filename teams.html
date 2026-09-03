@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feelochamp – Teams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/bootstrap.min.css">
+<link rel="stylesheet" href="assets/main.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<body class="page-default">
+<!-- ================= NAVBAR (logged in) ================= -->
+<nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/>
+        <path d="M12 7.2V4.3M15.4 9.7l2.7-1.6M14.1 13.7l1.7 2.8M9.9 13.7l-1.7 2.8M8.6 9.7l-2.7-1.6"/>
+      </svg>
+      FEELOCHAMP
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Navigation umschalten" style="border-color: var(--line-cyan);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="spiele.html">Spiele</a></li>
+            <li><a class="dropdown-item" href="aufsteiger.html">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="alletips.html">Alle Tipps</a></li>
+        <li class="nav-item"><a class="nav-link" href="spielstand.html">Spielstand</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="regeln.html">Regeln</a></li>
+            <li><a class="dropdown-item" href="tabelle.html">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item" href="playoff.html">Playoffs</a></li>
+            <li><a class="dropdown-item" href="turnierbaum.html">Turnierbaum</a></li>
+            <li><a class="dropdown-item" href="teams.html" aria-current="page">Teams</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Kalender</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item demo-link" href="#">Statistik</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Punkten</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Positionen</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Quoten der Spiele</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Admin</a></li>
+      </ul>
+      <div class="dropdown">
+        <a class="user-chip dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="user-avatar">sTe</span> sTe
+        </a>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end">
+          <li><a class="dropdown-item demo-link" href="#">Einstellungen</a></li>
+          <li><a class="dropdown-item demo-link" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= PAGE HEADER ================= -->
+<header class="page-header">
+  <svg class="page-header-rays" viewBox="0 0 1600 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="#eef4ee">
+      <circle class="twinkle" cx="180" cy="60" r="1.6"/>
+      <circle class="twinkle" cx="520" cy="40" r="1.4" style="animation-delay:.5s"/>
+      <circle class="twinkle" cx="900" cy="70" r="1.8"/>
+      <circle class="twinkle" cx="1250" cy="45" r="1.3" style="animation-delay:1s"/>
+      <circle class="twinkle" cx="1450" cy="90" r="1.5" style="animation-delay:1.4s"/>
+    </g>
+    <g stroke="#7fe3f5" stroke-width="1.2" opacity=".25">
+      <line x1="0" y1="300" x2="500" y2="0"/>
+      <line x1="1600" y1="280" x2="1050" y2="0"/>
+    </g>
+  </svg>
+  <div class="container page-header-content">
+    <div class="hero-panel">
+      <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
+      <h1>Die <span class="accent">Teams</span></h1>
+    </div>
+  </div>
+</header>
+
+<!-- ================= CONTENT ================= -->
+<main>
+  <div class="container">
+    <div class="teams-toolbar">
+      <div class="dropdown md-select">
+        <button class="btn dropdown-toggle" type="button" id="sortBtn" data-bs-toggle="dropdown" aria-expanded="false">Sortierung</button>
+        <ul class="dropdown-menu dropdown-menu-feelo" aria-labelledby="sortBtn">
+          <li><a class="dropdown-item sort-opt" data-sort="name" href="#">nach Name</a></li>
+          <li><a class="dropdown-item sort-opt" data-sort="land" href="#">nach Land</a></li>
+        </ul>
+      </div>
+      <div class="dropdown md-select">
+        <button class="btn dropdown-toggle" type="button" id="teamBtn" data-bs-toggle="dropdown" aria-expanded="false">Team</button>
+        <ul class="dropdown-menu dropdown-menu-feelo team-jump-menu" id="teamJump" aria-labelledby="teamBtn"><!-- injected --></ul>
+      </div>
+    </div>
+
+    <div class="teams-grid" id="teamsGrid"><!-- injected by JS --></div>
+  </div>
+</main>
+
+<!-- ================= RUND UM DEN TIPPBEWERB (Sitemap) ================= -->
+<section class="section-programme">
+  <div class="container">
+    <div class="programme-head mb-5">
+      <span class="eyebrow">Rund um den Tippbewerb</span>
+      <h2>Matchday&nbsp;Programm</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/><path d="M12 7.2V4.3M15.4 9.7l2.7-1.6M14.1 13.7l1.7 2.8M9.9 13.7l-1.7 2.8M8.6 9.7l-2.7-1.6"/></svg>
+          </div>
+          <h3>Tippen</h3>
+          <ul>
+            <li><a href="spiele.html">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="aufsteiger.html">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Champion <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1.5"/><line x1="12" y1="5" x2="12" y2="19"/><path d="M7 10h2M15 10h2M7 14h2M15 14h2"/></svg>
+          </div>
+          <h3>Ergebnisse</h3>
+          <ul>
+            <li><a href="alletips.html">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="spielstand.html">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+          </div>
+          <h3>Infos</h3>
+          <ul>
+            <li><a href="regeln.html">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="tabelle.html">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="playoff.html">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="turnierbaum.html">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="teams.html" aria-current="page">Teams <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Kalender <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18M8 17V10M13 17V6M18 17v-4"/></svg>
+          </div>
+          <h3>Statistik</h3>
+          <ul>
+            <li><a class="demo-link" href="#">Statistik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Verlauf nach Punkten <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Verlauf nach Positionen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Quoten der Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-feelo mt-5">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <span class="text-slate">FEELOCHAMP 2026/2027 &nbsp;|&nbsp; gegr. 2002 von Soizbuaga Wettkaiser</span>
+    <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#" class="ds-open">Datenschutz</a></span>
+  </div>
+</footer>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
+  <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="demoToastText">Diese Unterseite ist in der Demo nicht verkn&uuml;pft.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Schließen"></button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/bootstrap.bundle.min.js"></script>
+<script src="assets/datenschutz.js"></script>
+
+<script>
+  // Teams – Inhalt von einseitensprung.at/cl_neu/teams.asp.
+  // 36 Teams mit ihren 8 Ligaphase-Spielen (echter Spielplan), Ergebnisse offen.
+  // Crest = Initialen-Badge (keine echten Wappen). [Initialen, Farbe, Land]
+  var CLUB = {
+    "AEK Athen":["AEK","#c9a227","Griechenland"], "Arsenal":["ARS","#d71920","England"],
+    "Aston Villa":["AVL","#7a1f3d","England"], "Atletico":["ATM","#d71920","Spanien"],
+    "Barcelona":["BAR","#a50044","Spanien"], "Bayern":["FCB","#dc052d","Deutschland"],
+    "Bodö/Glimt":["BOD","#f4c300","Norwegen"], "Club Brügge":["CLB","#123a8f","Belgien"],
+    "Como":["COM","#003c7d","Italien"], "Dortmund":["BVB","#f4d117","Deutschland"],
+    "Fenerbahce":["FEN","#14226b","Türkei"], "Feyenoord":["FEY","#c8102e","Niederlande"],
+    "Galatasaray":["GAL","#a90432","Türkei"], "Inter":["INT","#1c2b6b","Italien"],
+    "LASK":["LSK","#1a1a1a","Österreich"], "Leipzig":["RBL","#d0011b","Deutschland"],
+    "Lens":["LEN","#ffcc00","Frankreich"], "Lille":["LIL","#c8102e","Frankreich"],
+    "Liverpool":["LIV","#c8102e","England"], "Man City":["MCI","#6cabdd","England"],
+    "Man Utd":["MUN","#da291c","England"], "Napoli":["NAP","#1c6dd0","Italien"],
+    "Porto":["POR","#1f4e8c","Portugal"], "PSG":["PSG","#0a2240","Frankreich"],
+    "PSV":["PSV","#d2122e","Niederlande"], "Real Betis":["BET","#0b6a3d","Spanien"],
+    "Real Madrid":["RMA","#1b3a6b","Spanien"], "Roma":["ROM","#8e1b3a","Italien"],
+    "Sabah":["SAB","#d6336c","Aserbaidschan"], "Shakhtar":["SHK","#e2711d","Ukraine"],
+    "Slavia Prag":["SLA","#c8102e","Tschechien"], "Slovan Bratislava":["SLB","#1e88c7","Slowakei"],
+    "Sporting":["SCP","#007a3d","Portugal"], "Stuttgart":["VFB","#e30613","Deutschland"],
+    "Viking":["VIK","#b71c2b","Norwegen"], "Villareal":["VIL","#f2c14e","Spanien"]
+  };
+
+  // [Spieltag, Datum, Zeit, Heim, Gast]  (144 Ligaphase-Spiele, je Team 4 Heim + 4 Auswärts)
+  var FIXTURES = [
+    [1,"8.9.","18:00","AEK Athen","LASK"],[4,"4.11.","18:00","AEK Athen","Real Madrid"],[6,"8.12.","21:00","AEK Athen","Galatasaray"],[7,"19.1.","21:00","AEK Athen","Roma"],
+    [2,"13.10.","21:00","Arsenal","Lille"],[5,"24.11.","21:00","Arsenal","Dortmund"],[6,"9.12.","21:00","Arsenal","Real Madrid"],[8,"27.1.","21:00","Arsenal","Sabah"],
+    [2,"14.10.","21:00","Aston Villa","Fenerbahce"],[3,"21.10.","21:00","Aston Villa","Viking"],[6,"8.12.","21:00","Aston Villa","PSG"],[7,"19.1.","21:00","Aston Villa","Dortmund"],
+    [2,"13.10.","21:00","Atletico","Man Utd"],[4,"3.11.","21:00","Atletico","Bayern"],[5,"24.11.","21:00","Atletico","Viking"],[8,"27.1.","21:00","Atletico","Fenerbahce"],
+    [1,"9.9.","18:00","Barcelona","Feyenoord"],[4,"3.11.","21:00","Barcelona","Aston Villa"],[6,"8.12.","21:00","Barcelona","Man City"],[8,"27.1.","21:00","Barcelona","Como"],
+    [1,"10.9.","21:00","Bayern","Bodö/Glimt"],[3,"21.10.","21:00","Bayern","Arsenal"],[6,"8.12.","21:00","Bayern","Slavia Prag"],[8,"27.1.","21:00","Bayern","Real Betis"],
+    [2,"14.10.","21:00","Bodö/Glimt","Dortmund"],[4,"3.11.","21:00","Bodö/Glimt","Lille"],[5,"24.11.","18:00","Bodö/Glimt","LASK"],[7,"19.1.","18:00","Bodö/Glimt","Atletico"],
+    [1,"8.9.","18:00","Club Brügge","Aston Villa"],[3,"21.10.","21:00","Club Brügge","Lens"],[5,"24.11.","21:00","Club Brügge","Liverpool"],[8,"27.1.","21:00","Club Brügge","Bodö/Glimt"],
+    [1,"10.9.","21:00","Como","Leipzig"],[3,"21.10.","18:00","Como","Man Utd"],[5,"24.11.","21:00","Como","AEK Athen"],[7,"20.1.","21:00","Como","PSG"],
+    [1,"8.9.","21:00","Dortmund","Villareal"],[4,"4.11.","21:00","Dortmund","Real Betis"],[6,"9.12.","21:00","Dortmund","Inter"],[8,"27.1.","21:00","Dortmund","AEK Athen"],
+    [1,"10.9.","18:00","Fenerbahce","Roma"],[3,"20.10.","18:00","Fenerbahce","Slavia Prag"],[4,"4.11.","18:00","Fenerbahce","Liverpool"],[7,"20.1.","18:00","Fenerbahce","Villareal"],
+    [2,"14.10.","18:00","Feyenoord","Como"],[4,"3.11.","21:00","Feyenoord","Inter"],[5,"24.11.","21:00","Feyenoord","Porto"],[8,"27.1.","21:00","Feyenoord","Leipzig"],
+    [2,"13.10.","21:00","Galatasaray","Barcelona"],[4,"3.11.","18:00","Galatasaray","Stuttgart"],[5,"24.11.","18:00","Galatasaray","Aston Villa"],[7,"19.1.","18:00","Galatasaray","Feyenoord"],
+    [2,"13.10.","21:00","Inter","Club Brügge"],[3,"21.10.","21:00","Inter","Shakhtar"],[5,"24.11.","21:00","Inter","Stuttgart"],[7,"19.1.","21:00","Inter","Liverpool"],
+    [2,"14.10.","18:00","LASK","Liverpool"],[4,"3.11.","21:00","LASK","Slovan Bratislava"],[6,"9.12.","21:00","LASK","Fenerbahce"],[8,"27.1.","21:00","LASK","Porto"],
+    [2,"13.10.","21:00","Leipzig","PSV"],[4,"4.11.","21:00","Leipzig","Man City"],[5,"24.11.","21:00","Leipzig","Lens"],[7,"20.1.","21:00","Leipzig","Shakhtar"],
+    [2,"13.10.","18:00","Lens","Sporting"],[4,"4.11.","21:00","Lens","Como"],[6,"9.12.","21:00","Lens","Bodö/Glimt"],[7,"20.1.","21:00","Lens","Man City"],
+    [1,"8.9.","21:00","Lille","Real Betis"],[3,"21.10.","18:00","Lille","Galatasaray"],[5,"24.11.","21:00","Lille","Bayern"],[7,"19.1.","21:00","Lille","Slovan Bratislava"],
+    [1,"9.9.","21:00","Liverpool","Atletico"],[3,"20.10.","21:00","Liverpool","Villareal"],[6,"9.12.","21:00","Liverpool","Porto"],[8,"27.1.","21:00","Liverpool","Lens"],
+    [2,"14.10.","21:00","Man City","PSG"],[3,"20.10.","21:00","Man City","AEK Athen"],[5,"24.11.","21:00","Man City","Napoli"],[8,"27.1.","21:00","Man City","Sporting"],
+    [1,"10.9.","21:00","Man Utd","Sabah"],[4,"3.11.","21:00","Man Utd","Roma"],[6,"8.12.","21:00","Man Utd","Leipzig"],[7,"20.1.","21:00","Man Utd","Bayern"],
+    [1,"9.9.","21:00","Napoli","Arsenal"],[3,"20.10.","21:00","Napoli","Bodö/Glimt"],[6,"8.12.","21:00","Napoli","Club Brügge"],[8,"27.1.","21:00","Napoli","Viking"],
+    [1,"8.9.","21:00","Porto","Man City"],[3,"20.10.","21:00","Porto","PSV"],[4,"4.11.","21:00","Porto","Napoli"],[7,"19.1.","21:00","Porto","Slavia Prag"],
+    [1,"9.9.","21:00","PSG","Slovan Bratislava"],[3,"20.10.","21:00","PSG","Barcelona"],[5,"24.11.","21:00","PSG","Roma"],[8,"27.1.","21:00","PSG","Galatasaray"],
+    [1,"10.9.","18:00","PSV","Shakhtar"],[4,"4.11.","21:00","PSV","Club Brügge"],[6,"9.12.","21:00","PSV","Atletico"],[8,"27.1.","21:00","PSV","Stuttgart"],
+    [2,"14.10.","21:00","Real Betis","Porto"],[3,"21.10.","21:00","Real Betis","Feyenoord"],[6,"9.12.","18:00","Real Betis","Como"],[7,"20.1.","21:00","Real Betis","Arsenal"],
+    [1,"8.9.","21:00","Real Madrid","Inter"],[3,"21.10.","21:00","Real Madrid","Leipzig"],[5,"24.11.","21:00","Real Madrid","PSV"],[7,"19.1.","21:00","Real Madrid","LASK"],
+    [2,"14.10.","21:00","Roma","Real Madrid"],[3,"20.10.","21:00","Roma","Slovan Bratislava"],[6,"8.12.","21:00","Roma","Sporting"],[8,"27.1.","21:00","Roma","Lille"],
+    [2,"13.10.","18:00","Sabah","Slavia Prag"],[3,"20.10.","18:00","Sabah","Dortmund"],[5,"24.11.","18:00","Sabah","Barcelona"],[7,"20.1.","18:00","Sabah","Napoli"],
+    [2,"14.10.","21:00","Shakhtar","AEK Athen"],[4,"3.11.","18:00","Shakhtar","Sporting"],[5,"24.11.","21:00","Shakhtar","Fenerbahce"],[8,"27.1.","21:00","Shakhtar","Real Madrid"],
+    [1,"10.9.","21:00","Slavia Prag","Lens"],[4,"4.11.","21:00","Slavia Prag","Arsenal"],[5,"24.11.","18:00","Slavia Prag","Villareal"],[8,"27.1.","21:00","Slavia Prag","Aston Villa"],
+    [2,"14.10.","21:00","Slovan Bratislava","Stuttgart"],[5,"24.11.","21:00","Slovan Bratislava","Real Betis"],[6,"9.12.","18:00","Slovan Bratislava","Shakhtar"],[8,"27.1.","21:00","Slovan Bratislava","Inter"],
+    [1,"9.9.","21:00","Sporting","Galatasaray"],[3,"21.10.","21:00","Sporting","LASK"],[5,"24.11.","21:00","Sporting","Man Utd"],[7,"20.1.","21:00","Sporting","Barcelona"],
+    [1,"9.9.","18:00","Stuttgart","Viking"],[3,"20.10.","21:00","Stuttgart","Atletico"],[6,"9.12.","21:00","Stuttgart","Lille"],[7,"19.1.","21:00","Stuttgart","Club Brügge"],
+    [2,"13.10.","21:00","Viking","Bayern"],[4,"4.11.","21:00","Viking","Sabah"],[6,"8.12.","18:00","Viking","Feyenoord"],[7,"20.1.","21:00","Viking","PSV"],
+    [2,"13.10.","21:00","Villareal","Napoli"],[4,"3.11.","21:00","Villareal","PSG"],[6,"8.12.","18:00","Villareal","Sabah"],[8,"27.1.","21:00","Villareal","Man Utd"]
+  ];
+
+  function crestTextColor(hex){
+    var c = hex.replace('#','');
+    var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
+    return (0.299*r + 0.587*g + 0.114*b) / 255 > 0.62 ? '#111' : '#fff';
+  }
+  function crestHtml(name, extra){
+    var info = CLUB[name] || ["?","#5a6c8c",""];
+    return '<span class="crest' + (extra ? ' ' + extra : '') + '" title="' + name +
+      '" style="background:' + info[1] + '; color:' + crestTextColor(info[1]) + ';">' + info[0] + '</span>';
+  }
+
+  var TEAMS = Object.keys(CLUB);
+
+  function fixturesFor(team){
+    return FIXTURES.filter(function(f){ return f[3] === team || f[4] === team; })
+      .sort(function(a, b){ return a[0] - b[0]; });
+  }
+
+  function teamCard(team){
+    var info = CLUB[team];
+    var rows = fixturesFor(team).map(function(f){
+      var md = f[0], date = f[1], time = f[2], home = f[3], away = f[4];
+      return '<div class="tf-row">' +
+        '<span class="tf-date">' + date + '<br>' + time + '</span>' +
+        '<span class="tf-side' + (home === team ? ' self' : '') + '">' + crestHtml(home) + '</span>' +
+        '<span class="tf-sc">&ndash; : &ndash;</span>' +
+        '<span class="tf-side away' + (away === team ? ' self' : '') + '">' + crestHtml(away) + '</span>' +
+      '</div>';
+    }).join('');
+    return '<article class="team-card" id="team-' + team.replace(/[^A-Za-z]/g, '') + '">' +
+      '<div class="team-card-head">' + crestHtml(team) +
+        '<h3>' + team + '</h3>' +
+        '<div class="country">' + info[2] + '</div>' +
+      '</div>' +
+      '<div class="team-fixtures">' + rows + '</div>' +
+    '</article>';
+  }
+
+  function sortTeams(mode){
+    var list = TEAMS.slice();
+    if (mode === 'land'){
+      list.sort(function(a, b){
+        var la = CLUB[a][2], lb = CLUB[b][2];
+        return la === lb ? a.localeCompare(b) : la.localeCompare(lb, 'de');
+      });
+    } else {
+      list.sort(function(a, b){ return a.localeCompare(b, 'de'); });
+    }
+    return list;
+  }
+
+  function render(mode){
+    var list = sortTeams(mode);
+    document.getElementById('teamsGrid').innerHTML = list.map(teamCard).join('');
+    document.getElementById('teamJump').innerHTML = list.map(function(t){
+      return '<li><a class="dropdown-item team-jump" href="#team-' + t.replace(/[^A-Za-z]/g, '') + '">' + t + '</a></li>';
+    }).join('');
+    document.querySelectorAll('a.team-jump').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        var el = document.querySelector(a.getAttribute('href'));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+  render('name');
+
+  document.querySelectorAll('.sort-opt').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); render(a.dataset.sort); });
+  });
+
+  function showToast(text){
+    var toastEl = document.getElementById('demoToast');
+    document.getElementById('demoToastText').textContent = text;
+    bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000 }).show();
+  }
+  document.querySelectorAll('.demo-link').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      showToast('Diese Unterseite ist in der Demo nicht verknüpft.');
+    });
+  });
+
+  // Scroll-reveal für die "Rund um den Tippbewerb"-Karten
+  (function(){
+    var cards = document.querySelectorAll('.card-feelo');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      cards.forEach(function(c){ c.classList.add('in-view'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry, i){
+        if (entry.isIntersecting){
+          setTimeout(function(){ entry.target.classList.add('in-view'); }, i * 70);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    cards.forEach(function(c){ io.observe(c); });
+  })();
+</script>
+</body>
+</html>
