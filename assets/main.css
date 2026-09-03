@@ -802,6 +802,44 @@ body.page-info .crest{ width:2.2rem; height:2.2rem; font-size:.62rem; }
 
 /* ---------- Alle-Tipps-Tabellen (alletips.html) ---------- */
 body.page-default .crest{ width:2rem; height:2rem; font-size:.56rem; }
+
+/* DataTables-Bedienelemente an die helle content-card anpassen */
+.content-card .dataTables_wrapper{ padding: .2rem 0 .4rem; }
+.content-card .dataTables_length,
+.content-card .dataTables_filter{ padding: .2rem 1.3rem .7rem; font-size:.84rem; color:#5a6c8c; }
+.content-card .dataTables_filter{ text-align:right; }
+.content-card .dataTables_length select,
+.content-card .dataTables_filter input{
+  border:1px solid rgba(12,25,48,0.16); border-radius:.5rem; padding:.3rem .6rem;
+  font-size:.84rem; color:#0c1930; background:#fff; margin:0 .35rem;
+}
+.content-card .dataTables_filter input:focus,
+.content-card .dataTables_length select:focus{
+  outline:none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.16);
+}
+.content-card .dataTables_info{ padding: .8rem 1.3rem 0; font-size:.8rem; color:#5a6c8c; }
+.content-card .dataTables_paginate{ padding: .6rem 1.3rem .2rem; text-align:right; }
+.content-card .dataTables_paginate .paginate_button{
+  display:inline-block; padding:.3rem .6rem; margin:0 .1rem; border-radius:.4rem;
+  font-size:.82rem; color:#5a6c8c !important; border:1px solid transparent; cursor:pointer;
+}
+.content-card .dataTables_paginate .paginate_button.current{
+  background: var(--blue); color:#fff !important; border-color: var(--blue);
+}
+.content-card .dataTables_paginate .paginate_button:hover{
+  background: rgba(59,130,246,0.1); color:#0c1930 !important;
+}
+.content-card .dataTables_paginate .paginate_button.disabled,
+.content-card .dataTables_paginate .paginate_button.disabled:hover{
+  opacity:.4; cursor:default; background:none; color:#5a6c8c !important;
+}
+.content-card table.dataTable{ border-collapse:separate !important; margin:0 !important; }
+body.page-default #resTable, body.page-default #resTable2, body.page-default #resTable3{ scroll-margin-top: 5rem; }
+.content-card table.dataTable thead th{ cursor:pointer; }
+/* Responsive-Aufklapper (+/-) */
+.content-card table.dataTable td.dtr-control:before,
+.content-card table.dataTable td.child .dtr-title{ color:#5a6c8c; }
+.content-card table.dataTable tr.child ul.dtr-details{ color:#33415c; font-size:.85rem; }
 .alltips td{ vertical-align:middle; }
 .alltips td.user{ font-weight:700; font-size:.88rem; color:#0c1930; }
 .alltips td.erg, .alltips td.dt{ color:#8092b3; font-size:.85rem; white-space:nowrap; }

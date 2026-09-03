@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="assets/bootstrap.min.css">
+<link rel="stylesheet" href="assets/datatables.min.css">
 <link rel="stylesheet" href="assets/main.css">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
@@ -89,9 +90,19 @@
     </g>
   </svg>
   <div class="container page-header-content">
-    <div class="hero-panel">
-      <span class="eyebrow d-block mb-1">Ergebnisse &middot; FeeloChamp</span>
-      <h1>Alle <span class="accent">Tipps</span></h1>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="hero-panel">
+        <span class="eyebrow d-block mb-1">Ergebnisse &middot; FeeloChamp</span>
+        <h1>Alle <span class="accent">Tipps</span></h1>
+      </div>
+      <div class="dropdown md-select">
+        <button class="btn dropdown-toggle" type="button" id="quickNav" data-bs-toggle="dropdown" aria-expanded="false">Quick Nav</button>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end" aria-labelledby="quickNav">
+          <li><a class="dropdown-item qn" href="#resTable">Spiele</a></li>
+          <li><a class="dropdown-item qn" href="#resTable2">8 Fix Aufsteiger</a></li>
+          <li><a class="dropdown-item qn" href="#resTable3">Champions</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </header>
@@ -106,8 +117,8 @@
         <span class="toolbar-title">Die einzelnen Spiele</span>
         <span style="color:#5a6c8c; font-size:.82rem; font-weight:600;">Matchday 1 &middot; Gruppe A</span>
       </div>
-      <div class="table-responsive">
-        <table class="table-feelo alltips">
+      <div class="dt-wrap">
+        <table class="table-feelo alltips display responsive" id="resTable" style="width:100%">
           <thead>
             <tr>
               <th style="width:3rem;">Gr.</th>
@@ -159,7 +170,6 @@
           </tbody>
         </table>
       </div>
-      <div class="table-footbar"><span class="row-count">36 Tipps &middot; 2 Mitspieler</span></div>
     </div>
 
     <!-- ---- Die 8 Fix Aufsteiger ---- -->
@@ -167,8 +177,8 @@
       <div class="content-card-toolbar">
         <span class="toolbar-title">Die 8 Fix Aufsteiger</span>
       </div>
-      <div class="table-responsive">
-        <table class="table-feelo alltips">
+      <div class="dt-wrap">
+        <table class="table-feelo alltips display responsive" id="resTable2" style="width:100%">
           <thead>
             <tr>
               <th style="width:3rem;">Gr.</th>
@@ -197,7 +207,6 @@
           </tbody>
         </table>
       </div>
-      <div class="table-footbar"><span class="row-count">je 8 Aufsteiger &middot; 2 Mitspieler</span></div>
     </div>
 
     <!-- ---- Die Champions ---- -->
@@ -205,8 +214,8 @@
       <div class="content-card-toolbar">
         <span class="toolbar-title">Die Champions</span>
       </div>
-      <div class="table-responsive">
-        <table class="table-feelo alltips">
+      <div class="dt-wrap">
+        <table class="table-feelo alltips display responsive" id="resTable3" style="width:100%">
           <thead>
             <tr>
               <th>Champion</th>
@@ -313,10 +322,47 @@
   </div>
 </div>
 
+<script src="assets/jquery-3.3.1.min.js"></script>
 <script src="assets/bootstrap.bundle.min.js"></script>
+<script src="assets/datatables.min.js"></script>
+<script src="assets/dataTables.responsive.min.js"></script>
+<script src="assets/date-de.js"></script>
 <script src="assets/datenschutz.js"></script>
 
 <script>
+  // DataTables auf allen drei Tabellen – Config wie auf cl_neu/alletips.asp
+  jQuery(function($){
+    $('#resTable').DataTable({
+      bStateSave: true,
+      language: { url: 'assets/datatables_ger.js' },
+      lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'Alle']],
+      iDisplayLength: 50,
+      columnDefs: [{ type: 'de_datetime', targets: 6 }]
+    });
+    $('#resTable2').DataTable({
+      bStateSave: true,
+      language: { url: 'assets/datatables_ger.js' },
+      lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'Alle']],
+      iDisplayLength: 50,
+      columnDefs: [{ type: 'de_datetime', targets: -1 }]
+    });
+    $('#resTable3').DataTable({
+      bStateSave: true,
+      language: { url: 'assets/datatables_ger.js' },
+      lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'Alle']],
+      iDisplayLength: 20,
+      columnDefs: [{ type: 'de_datetime', targets: -1 }]
+    });
+
+    // Quick Nav: sanft zur jeweiligen Tabelle scrollen (natives scrollIntoView,
+    // damit es mit scroll-behavior:smooth zusammenspielt; Offset via scroll-margin-top)
+    $('.qn').on('click', function(e){
+      e.preventDefault();
+      var el = document.querySelector($(this).attr('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
     document.getElementById('demoToastText').textContent = text;
