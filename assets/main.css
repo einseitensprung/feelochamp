@@ -993,7 +993,18 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
 /* ---------- Turnierbaum-Klammer (turnierbaum.html) ---------- */
 :root{ --br-line: rgba(34,211,238,0.4); --br-gap: 3rem; --br-col: 220px; }
 
-.bracket-note{ color: var(--slate); font-size:.86rem; max-width: 640px; margin: 0 0 1.6rem; }
+.bracket-note{
+  display: flex; gap: .85rem; align-items: flex-start;
+  max-width: 680px; margin: 0 0 1.9rem; padding: .95rem 1.15rem;
+  background: linear-gradient(180deg, rgba(34,211,238,0.12), rgba(34,211,238,0.03));
+  border: 1px solid var(--line-cyan); border-left: 3px solid var(--cyan);
+  border-radius: .7rem;
+  color: var(--white); font-size: .88rem; line-height: 1.55;
+  box-shadow: 0 10px 30px rgba(3,10,25,0.4);
+}
+.bracket-note svg{ flex: none; margin-top: .1rem; color: var(--cyan); }
+.bracket-note strong{ font-weight: 800; }
+.bracket-note b{ color: var(--cyan-soft); font-weight: 700; font-family:'JetBrains Mono', monospace; }
 .bracket-scroll{ overflow-x: auto; overflow-y: hidden; padding-bottom: 1rem; }
 .bracket{ display: flex; gap: var(--br-gap); align-items: stretch; min-width: max-content; }
 
