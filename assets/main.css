@@ -1058,8 +1058,25 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
   width: 2px; height: 50%; background: var(--br-line);
 }
 
+/* Schmale Screens: kein horizontales Bracket – Runden untereinander,
+   Spiele je Runde als responsives Raster, Verbindungslinien aus. */
+@media (max-width: 991.98px){
+  .bracket-scroll{ overflow-x: visible; overflow-y: visible; padding-bottom: 0; }
+  .bracket{ flex-direction: column; align-items: stretch; gap: 2.4rem; min-width: 0; }
+  .br-round{ width: 100%; }
+  .br-round-title{ font-size: 1.2rem; margin-bottom: .9rem; }
+  .br-round ul{
+    display: grid; flex: none;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: .9rem;
+  }
+  .br-round li{ flex: none; display: block; min-height: 0; }
+  .br-round li::before, .br-round li::after{ display: none; }
+}
+
 @media (max-width: 575.98px){
   :root{ --br-gap: 2rem; --br-col: 190px; }
+  .br-round ul{ grid-template-columns: 1fr; }
 }
 
 /* ---------- Preloader-Seite (preloader.html) ---------- */
