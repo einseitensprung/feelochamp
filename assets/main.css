@@ -603,11 +603,11 @@ body.page-default .content-card{ margin-top: -2.2rem; overflow:hidden; }
 .search-feelo label{
   font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#4a5b7c;
 }
-.search-feelo input{
+.search-feelo input, .search-feelo select{
   border:1px solid rgba(12,25,48,0.16); border-radius:.55rem; padding:.4rem .75rem;
-  font-size:.88rem; min-width: 12rem; color:#0c1930;
+  font-size:.88rem; min-width: 12rem; color:#0c1930; background:#fff;
 }
-.search-feelo input:focus{ outline:none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.16); }
+.search-feelo input:focus, .search-feelo select:focus{ outline:none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.16); }
 
 .table-feelo{ width:100%; border-collapse:separate; border-spacing:0; }
 .table-feelo thead th{
