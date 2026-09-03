@@ -849,7 +849,7 @@ body.page-default #resTable, body.page-default #resTable2, body.page-default #re
 .alltips .tip{
   display:inline-flex; align-items:center; justify-content:center;
   min-width:1.7rem; padding:.15rem .45rem; border-radius:.4rem;
-  background: rgba(34,211,238,0.14); color: var(--cyan-soft);
+  background: var(--ink-2); color: var(--cyan-soft);
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.82rem;
 }
 
