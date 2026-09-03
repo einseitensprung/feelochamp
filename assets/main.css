@@ -71,7 +71,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible, 
   content:""; position:absolute; left:.85rem; right:.85rem; bottom:.1rem;
   height:2px; background: var(--cyan); border-radius:2px;
 }
-/* ---- Mobiles Hamburger-Icon: kein Rahmen, helle Striche, öffnet zu einem Y ----
+/* ---- Mobiles Hamburger-Icon: kein Rahmen, helle Striche, öffnet zu einem X ----
    3 unabhängige Striche direkt am Button (::before / .icon / ::after), damit sich
    die Transforms nicht gegenseitig vererben. */
 .navbar-feelo .navbar-toggler{
@@ -87,7 +87,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible, 
   width: 1.4rem; height: 2px; margin: -1px 0 0 -.7rem;
   background-image: none;
   background-color: var(--white); border-radius: 2px;
-  transition: transform .3s cubic-bezier(.4,.05,.2,1), background-color .2s ease;
+  transition: transform .3s cubic-bezier(.4,.05,.2,1), opacity .2s ease, background-color .2s ease;
 }
 .navbar-feelo .navbar-toggler::before{ transform: translateY(-6px); }
 .navbar-feelo .navbar-toggler::after{ transform: translateY(6px); }
@@ -98,15 +98,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible, 
 .navbar-feelo .navbar-toggler:focus-visible::after,
 .navbar-feelo .navbar-toggler:focus-visible .navbar-toggler-icon{ background-color: var(--cyan); }
 
-/* geöffnet -> Y: Arme oben (::before links, ::after rechts), Stiel unten (.icon) */
+/* geöffnet -> X: oberer + unterer Strich kreuzen sich, mittlerer blendet aus */
 .navbar-feelo .navbar-toggler[aria-expanded="true"]::before{
-  transform: translate(-4px, -4px) rotate(45deg) scaleX(.5);
+  transform: translateY(0) rotate(45deg);
 }
 .navbar-feelo .navbar-toggler[aria-expanded="true"]::after{
-  transform: translate(4px, -4px) rotate(-45deg) scaleX(.5);
+  transform: translateY(0) rotate(-45deg);
 }
 .navbar-feelo .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
-  transform: translateY(5px) rotate(90deg) scaleX(.5);
+  opacity: 0; transform: scaleX(.2);
 }
 
 /* Startseite verwendet einen minimal helleren/grösseren Navbar-Auftritt */
