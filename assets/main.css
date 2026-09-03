@@ -1082,7 +1082,8 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
 /* ---------- Teams-Seite (teams.html) ---------- */
 .teams-toolbar{ display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.4rem; }
 .teams-toolbar .dropdown-menu{ max-height:60vh; overflow-y:auto; overflow-x:hidden; }
-.teams-toolbar .team-jump-menu{ display:grid; grid-template-columns:1fr 1fr; min-width:19rem; }
+/* nur im geöffneten Zustand als 2-Spalten-Raster – sonst greift Bootstraps display:none */
+.teams-toolbar .team-jump-menu.show{ display:grid; grid-template-columns:1fr 1fr; min-width:19rem; }
 
 .teams-grid{
   display:grid; gap:1.2rem;
@@ -1130,7 +1131,7 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
 }
 
 @media (max-width: 575.98px){
-  .teams-toolbar .team-jump-menu{ grid-template-columns:1fr; min-width:12rem; }
+  .teams-toolbar .team-jump-menu.show{ grid-template-columns:1fr; min-width:12rem; }
 }
 
 /* ---------- Preloader-Seite (preloader.html) ---------- */
