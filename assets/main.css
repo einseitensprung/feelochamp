@@ -1080,13 +1080,13 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
 }
 
 /* ---------- Teams-Seite (teams.html) ---------- */
-.teams-toolbar{ display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.4rem; }
+.teams-toolbar{ display:flex; flex-wrap:wrap; gap:.6rem; }
 .teams-toolbar .dropdown-menu{ max-height:60vh; overflow-y:auto; overflow-x:hidden; }
 /* nur im geöffneten Zustand als 2-Spalten-Raster – sonst greift Bootstraps display:none */
 .teams-toolbar .team-jump-menu.show{ display:grid; grid-template-columns:1fr 1fr; min-width:19rem; }
 
 .teams-grid{
-  display:grid; gap:1.2rem;
+  display:grid; gap:1.2rem; margin-top:1.6rem;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
 }
 .team-card{

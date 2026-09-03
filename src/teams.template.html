@@ -89,9 +89,24 @@
     </g>
   </svg>
   <div class="container page-header-content">
-    <div class="hero-panel">
-      <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
-      <h1>Die <span class="accent">Teams</span></h1>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="hero-panel">
+        <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
+        <h1>Die <span class="accent">Teams</span></h1>
+      </div>
+      <div class="teams-toolbar">
+        <div class="dropdown md-select">
+          <button class="btn dropdown-toggle" type="button" id="sortBtn" data-bs-toggle="dropdown" aria-expanded="false">Sortierung</button>
+          <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end" aria-labelledby="sortBtn">
+            <li><a class="dropdown-item sort-opt" data-sort="name" href="#">nach Name</a></li>
+            <li><a class="dropdown-item sort-opt" data-sort="land" href="#">nach Land</a></li>
+          </ul>
+        </div>
+        <div class="dropdown md-select">
+          <button class="btn dropdown-toggle" type="button" id="teamBtn" data-bs-toggle="dropdown" aria-expanded="false">Team</button>
+          <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end team-jump-menu" id="teamJump" aria-labelledby="teamBtn"><!-- injected --></ul>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -99,20 +114,6 @@
 <!-- ================= CONTENT ================= -->
 <main>
   <div class="container">
-    <div class="teams-toolbar">
-      <div class="dropdown md-select">
-        <button class="btn dropdown-toggle" type="button" id="sortBtn" data-bs-toggle="dropdown" aria-expanded="false">Sortierung</button>
-        <ul class="dropdown-menu dropdown-menu-feelo" aria-labelledby="sortBtn">
-          <li><a class="dropdown-item sort-opt" data-sort="name" href="#">nach Name</a></li>
-          <li><a class="dropdown-item sort-opt" data-sort="land" href="#">nach Land</a></li>
-        </ul>
-      </div>
-      <div class="dropdown md-select">
-        <button class="btn dropdown-toggle" type="button" id="teamBtn" data-bs-toggle="dropdown" aria-expanded="false">Team</button>
-        <ul class="dropdown-menu dropdown-menu-feelo team-jump-menu" id="teamJump" aria-labelledby="teamBtn"><!-- injected --></ul>
-      </div>
-    </div>
-
     <div class="teams-grid" id="teamsGrid"><!-- injected by JS --></div>
   </div>
 </main>
