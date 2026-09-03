@@ -197,6 +197,16 @@
   </div>
 </footer>
 
+<!-- ================= LIGHTBOX: Spiel-Info (wie auf der Spiele-Seite) =================
+     iframe-Ziel ist die statische spiele_info.html (Tipp-Übersicht je Spiel);
+     im Echtbetrieb auf einseitensprung.at wäre das spiele_info.asp?id=N. -->
+<div class="lightbox" id="infoLightbox" role="dialog" aria-modal="true" aria-label="Spiel-Info: wer hat was getippt">
+  <div class="lightbox-frame">
+    <button type="button" class="lightbox-close" id="infoLightboxClose" aria-label="Schließen">&times;</button>
+    <iframe id="infoFrame" title="Spiel-Info" src="about:blank"></iframe>
+  </div>
+</div>
+
 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
   <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
     <div class="d-flex">
@@ -289,19 +299,26 @@
   var TEAMS = Object.keys(CLUB);
 
   function fixturesFor(team){
-    return FIXTURES.filter(function(f){ return f[3] === team || f[4] === team; })
-      .sort(function(a, b){ return a[0] - b[0]; });
+    var out = [];
+    FIXTURES.forEach(function(f, i){
+      if (f[3] === team || f[4] === team) out.push({ f: f, id: i + 1 });
+    });
+    out.sort(function(a, b){ return a.f[0] - b.f[0]; });
+    return out;
   }
 
   function teamCard(team){
     var info = CLUB[team];
-    var rows = fixturesFor(team).map(function(f){
-      var md = f[0], date = f[1], time = f[2], home = f[3], away = f[4];
+    var rows = fixturesFor(team).map(function(entry){
+      var f = entry.f;
+      var date = f[1], time = f[2], home = f[3], away = f[4];
       return '<div class="tf-row">' +
         '<span class="tf-date">' + date + '<br>' + time + '</span>' +
         '<span class="tf-side' + (home === team ? ' self' : '') + '">' + crestHtml(home) + '</span>' +
         '<span class="tf-sc">&ndash; : &ndash;</span>' +
         '<span class="tf-side away' + (away === team ? ' self' : '') + '">' + crestHtml(away) + '</span>' +
+        '<button type="button" class="info-btn" data-info-id="' + entry.id +
+          '" title="Alle Tipps zu diesem Spiel ansehen">i</button>' +
       '</div>';
     }).join('');
     return '<article class="team-card" id="team-' + team.replace(/[^A-Za-z]/g, '') + '">' +
@@ -345,6 +362,40 @@
   document.querySelectorAll('.sort-opt').forEach(function(a){
     a.addEventListener('click', function(e){ e.preventDefault(); render(a.dataset.sort); });
   });
+
+  // Info-Button je Spiel-Zeile -> Lightbox (wie auf der Spiele-Seite).
+  // Delegiert auf #teamsGrid, überlebt daher das Neu-Rendern beim Sortieren.
+  (function(){
+    var box = document.getElementById('infoLightbox');
+    var frame = document.getElementById('infoFrame');
+    var closeBtn = document.getElementById('infoLightboxClose');
+    var lastFocus = null;
+
+    function onKey(e){ if (e.key === 'Escape') close(); }
+    function open(id){
+      lastFocus = document.activeElement;
+      frame.src = 'spiele_info.html' + (id ? '?id=' + encodeURIComponent(id) : '');
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close(){
+      box.classList.remove('is-open');
+      frame.src = 'about:blank';
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    document.getElementById('teamsGrid').addEventListener('click', function(e){
+      var btn = e.target.closest('.info-btn');
+      if (!btn) return;
+      open(btn.getAttribute('data-info-id'));
+    });
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', function(e){ if (e.target === box) close(); });
+  })();
 
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
