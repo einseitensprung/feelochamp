@@ -2,7 +2,7 @@
 <html lang="de">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Feelochamp – Regeln</title>
+<title>Feelochamp – Turnierbaum</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 <!-- ================= NAVBAR (logged in) ================= -->
 <nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
   <div class="container">
-    <a class="navbar-brand" href="{{HOME_URL}}">
+    <a class="navbar-brand" href="index.html">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.6" aria-hidden="true">
         <circle cx="12" cy="12" r="9"/>
         <path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/>
@@ -31,20 +31,20 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item" href="{{SPIELE_URL}}">Spiele</a></li>
-            <li><a class="dropdown-item" href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item" href="spiele.html">Spiele</a></li>
+            <li><a class="dropdown-item" href="aufsteiger.html">8 Fix Aufsteiger</a></li>
             <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="{{ALLETIPS_URL}}">Alle Tipps</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{SPIELSTAND_URL}}">Spielstand</a></li>
+        <li class="nav-item"><a class="nav-link" href="alletips.html">Alle Tipps</a></li>
+        <li class="nav-item"><a class="nav-link" href="spielstand.html">Spielstand</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item active-mark" href="#" aria-current="page">Regeln</a></li>
-            <li><a class="dropdown-item" href="{{TABELLE_URL}}">Ligaphase Tabelle</a></li>
-            <li><a class="dropdown-item" href="{{PLAYOFF_URL}}">Playoffs</a></li>
-            <li><a class="dropdown-item" href="{{TURNIERBAUM_URL}}">Turnierbaum</a></li>
+            <li><a class="dropdown-item" href="regeln.html">Regeln</a></li>
+            <li><a class="dropdown-item" href="tabelle.html">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item" href="playoff.html">Playoffs</a></li>
+            <li><a class="dropdown-item" href="turnierbaum.html" aria-current="page">Turnierbaum</a></li>
             <li><a class="dropdown-item demo-link" href="#">Teams</a></li>
             <li><a class="dropdown-item demo-link" href="#">Kalender</a></li>
           </ul>
@@ -90,8 +90,8 @@
   </svg>
   <div class="container page-header-content">
     <div class="hero-panel">
-      <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
-      <h1>Die <span class="accent">Regeln</span></h1>
+      <span class="eyebrow d-block mb-1">K.o.-Phase &middot; FeeloChamp</span>
+      <h1><span class="accent">Turnierbaum</span></h1>
     </div>
   </div>
 </header>
@@ -99,37 +99,10 @@
 <!-- ================= CONTENT ================= -->
 <main>
   <div class="container">
-    <div class="content-card">
-      <div class="rules">
-        <h2>&sect;1 &middot; Der CL-Sieg-Tipp</h2>
-        <p>Die f&uuml;r den CL-Sieg-Tipp erreichbaren Punkte ergeben sich aus dem Zeitpunkt der Tippabgabe. Die Abgabe und &Auml;nderung dieses Tipps ist jederzeit m&ouml;glich. Punkteverteilung:</p>
-        <ul class="score-list">
-          <li>Tippabgabe vor dem 08.09., 18:45 Uhr (vor der Ligaphase) &rarr; 8 Punkte</li>
-          <li>Tippabgabe vor dem 16.02., 21:00 Uhr (vor den K.-o.-Runden-Play-offs) &rarr; 7 Punkte</li>
-          <li>Tippabgabe vor dem 09.03., 21:00 Uhr (vor dem Achtelfinale) &rarr; 6 Punkte</li>
-          <li>Tippabgabe vor dem 06.04., 21:00 Uhr (vor dem Viertelfinale) &rarr; 4 Punkte</li>
-          <li>Tippabgabe vor dem 27.04., 21:00 Uhr (vor dem Halbfinale) &rarr; 3 Punkte</li>
-          <li>Tippabgabe vor dem 05.06., 21:00 Uhr (vor dem Finale) &rarr; 2 Punkte</li>
-        </ul>
-
-        <h2>&sect;2 &middot; Die Spiele</h2>
-        <p><strong>Letzte M&ouml;glichkeit</strong> der Tippabgabe bei allen Spielen ist jeweils kurz vor Anpfiff des jeweiligen Spiels. Bei allen Spielen (inkl. Finale) wird nach dem 1-2-X-System getippt. Gewertet wird jedes Resultat nach Ende der zweiten H&auml;lfte (ergo ohne eine eventuelle Verl&auml;ngerung). Jeder richtige Tipp bringt einen Punkt.</p>
-
-        <h2>&sect;3 &middot; Die Ligaphase-Fixaufsteiger-Tipps <span class="badge-new">Neu</span></h2>
-        <p><strong>Letzte M&ouml;glichkeit</strong> der Tippabgabe bei den 8 Fixaufstiegs-Tipps ist am 08.09. um 18:45 Uhr (d.&nbsp;h. vor dem <strong>ersten</strong> Spiel in der Ligaphase). Hier hat jeder Mitspieler vor Beginn der jeweiligen Runde die M&ouml;glichkeit, die 8 Fixaufsteiger zu tippen. Jeder richtig getippte Fixaufsteiger in der Ligaphase bringt zwei Punkte. <strong>Eine Änderung nachtr&auml;glich ist nicht erlaubt und f&uuml;hrt zum Verlust der Punkte.</strong></p>
-
-        <h2>&sect;4 &middot; Die K.-o.-Runden-Play-offs-Aufsteiger-Tipps <span class="badge-new">Neu</span></h2>
-        <p>Hier geht es darum, den jeweils richtigen Aufsteiger in das Achtelfinale zu tippen. Jeder vor Anpfiff des Hinspiels richtig getippte Aufsteiger bringt zwei Punkte. Jeder zwischen Anpfiff des Hinspiels und Anpfiff des R&uuml;ckspiels richtig getippte Aufsteiger bringt einen Punkt.</p>
-
-        <h2>&sect;5 &middot; Die KO-System-Aufsteiger-Tipps (1/8, 1/4, 1/2)</h2>
-        <p>Hier geht es darum, den jeweils richtigen Aufsteiger in die n&auml;chste Runde zu tippen. Jeder vor Anpfiff des Hinspiels richtig getippte Aufsteiger bringt zwei Punkte. Jeder zwischen Anpfiff des Hinspiels und Anpfiff des R&uuml;ckspiels richtig getippte Aufsteiger bringt einen Punkt.</p>
-
-        <h2>&sect;6 &middot; Zusatz</h2>
-        <p>Bei eventuell strittigen Fragen entscheidet v&ouml;llig undemokratisch und autark der allgemeine Regelausschuss der FeeloChamp-Gruppe. Rechtsmittel jeglicher Art sind grunds&auml;tzlich unzul&auml;ssig!</p>
-
-        <h2>&sect;50+ &middot; Senil</h2>
-        <p>Wenn ein Teilnehmer eine Runde komplett zu tippen vergisst, bekommt er zumindest die Punkte des Teilnehmers mit den wenigsten Punkten gutgeschrieben.</p>
-      </div>
+    <p class="bracket-note">Achtelfinale bis Finale. Die Paarungen werden erst nach den Play-offs
+      ausgelost &ndash; A1&ndash;A8 = die 8 Fix-Aufsteiger, B1&ndash;I1 = die Play-off-Sieger.</p>
+    <div class="bracket-scroll">
+      <div class="bracket" id="bracket"><!-- injected by JS --></div>
     </div>
   </div>
 </main>
@@ -150,8 +123,8 @@
           </div>
           <h3>Tippen</h3>
           <ul>
-            <li><a href="{{SPIELE_URL}}">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="spiele.html">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="aufsteiger.html">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Champion <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
@@ -164,8 +137,8 @@
           </div>
           <h3>Ergebnisse</h3>
           <ul>
-            <li><a href="{{ALLETIPS_URL}}">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{SPIELSTAND_URL}}">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="alletips.html">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="spielstand.html">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
       </div>
@@ -177,10 +150,10 @@
           </div>
           <h3>Infos</h3>
           <ul>
-            <li><a href="regeln.html" aria-current="page">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{TABELLE_URL}}">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{PLAYOFF_URL}}">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{TURNIERBAUM_URL}}">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="regeln.html">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="tabelle.html">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="playoff.html">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="turnierbaum.html" aria-current="page">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Teams <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Kalender <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
@@ -226,6 +199,71 @@
 <script src="assets/datenschutz.js"></script>
 
 <script>
+  // Turnierbaum – Inhalt von einseitensprung.at/cl/turnierbaum.asp.
+  // K.o.-Baum ab Achtelfinale, Paarungen als Setzplatz-Codes (A1, B1, …),
+  // Ergebnisse noch offen ("– : –"). Finale mit Beispiel-Endstand wie im Original.
+  var ROUNDS = [
+    {
+      title: "Achtelfinale",
+      date: "10./11. 03. & 17./18. 03. 21:00",
+      matches: [
+        ["A1","B1"], ["A2","C1"], ["A3","D1"], ["A4","E1"],
+        ["A5","F1"], ["A6","G1"], ["A7","H1"], ["A8","I1"]
+      ]
+    },
+    {
+      title: "Viertelfinale",
+      date: "7./8. 04. & 14./15. 04. 21:00",
+      matches: [ ["J1","K1"], ["L1","M1"], ["N1","O1"], ["P1","Q1"] ]
+    },
+    {
+      title: "Halbfinale",
+      date: "28./29. 04. & 5./6. 05. 21:00",
+      matches: [ ["R1","S1"], ["T1","U1"] ]
+    },
+    {
+      title: "Finale",
+      date: "30.05. 18:00",
+      matches: [ ["V1","W1"] ],
+      score: "4:3 i.E.",
+      medals: ["🥇", "🥈"]   // 🥇 🥈
+    }
+  ];
+
+  function shield(){
+    return '<svg class="br-flag" viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3z"/></svg>';
+  }
+
+  function matchCard(round, m){
+    var score = round.score || ('&ndash; : &ndash;');
+    var medals = round.medals || ['',''];
+    var side = function(seed, medal){
+      return '<div class="br-side">' + shield() +
+        '<span class="br-seed">' + seed + '</span>' +
+        (medal ? '<span class="br-medal">' + medal + '</span>' : '') + '</div>';
+    };
+    return '<div class="br-match">' +
+      '<div class="br-score">' + score + '</div>' +
+      side(m[0], medals[0]) + side(m[1], medals[1]) +
+      '<div class="br-date">' + round.date + '</div>' +
+    '</div>';
+  }
+
+  function render(){
+    var html = '';
+    ROUNDS.forEach(function(round){
+      html += '<div class="br-round">' +
+        '<h2 class="br-round-title">' + round.title + '</h2>' +
+        '<ul>' +
+        round.matches.map(function(m){ return '<li>' + matchCard(round, m) + '</li>'; }).join('') +
+        '</ul>' +
+      '</div>';
+    });
+    document.getElementById('bracket').innerHTML = html;
+  }
+  render();
+
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
     document.getElementById('demoToastText').textContent = text;
