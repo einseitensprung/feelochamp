@@ -994,8 +994,9 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
 :root{ --br-line: rgba(34,211,238,0.4); --br-gap: 3rem; --br-col: 220px; }
 
 .bracket-note{
+  position: relative; z-index: 2;
   display: flex; gap: .85rem; align-items: flex-start;
-  max-width: 680px; margin: 0 0 1.9rem; padding: .95rem 1.15rem;
+  max-width: 680px; margin: -2rem 0 1.7rem; padding: .95rem 1.15rem;
   background: linear-gradient(180deg, rgba(34,211,238,0.12), rgba(34,211,238,0.03));
   border: 1px solid var(--line-cyan); border-left: 3px solid var(--cyan);
   border-radius: .7rem;
