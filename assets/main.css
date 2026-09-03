@@ -800,6 +800,18 @@ body.page-info .crest{ width:2.2rem; height:2.2rem; font-size:.62rem; }
   background: rgba(34,197,94,0.16); color: var(--green-dark);
 }
 
+/* ---------- Alle-Tipps-Tabellen (alletips.html) ---------- */
+body.page-default .crest{ width:2rem; height:2rem; font-size:.56rem; }
+.alltips td{ vertical-align:middle; }
+.alltips td.user{ font-weight:700; font-size:.88rem; color:#0c1930; }
+.alltips td.erg, .alltips td.dt{ color:#8092b3; font-size:.85rem; white-space:nowrap; }
+.alltips .tip{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.7rem; padding:.15rem .45rem; border-radius:.4rem;
+  background: rgba(34,211,238,0.14); color: var(--cyan-soft);
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.82rem;
+}
+
 /* ---------- Spielstand-Tabelle (spielstand.html) ---------- */
 .standings td{ vertical-align:middle; }
 .standings th.col-pts, .standings td.pts{ text-align:right; }

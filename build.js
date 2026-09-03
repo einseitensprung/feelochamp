@@ -28,6 +28,7 @@ const AUFSTEIGER_URL = "aufsteiger.html";
 const START_URL = "start.html";
 const REGELN_URL = "regeln.html";
 const SPIELSTAND_URL = "spielstand.html";
+const ALLETIPS_URL = "alletips.html";
 
 function build(templateFile, outFile, replacements) {
   let tpl = fs.readFileSync(path.join(dir, "src", templateFile), "utf8");
@@ -38,7 +39,7 @@ function build(templateFile, outFile, replacements) {
   console.log(`built ${outFile} (${tpl.length.toLocaleString()} bytes)`);
 }
 
-const COMMON = { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{START_URL}}": START_URL, "{{REGELN_URL}}": REGELN_URL, "{{SPIELSTAND_URL}}": SPIELSTAND_URL };
+const COMMON = { "{{HOME_URL}}": HOME_URL, "{{SPIELE_URL}}": SPIELE_URL, "{{AUFSTEIGER_URL}}": AUFSTEIGER_URL, "{{START_URL}}": START_URL, "{{REGELN_URL}}": REGELN_URL, "{{SPIELSTAND_URL}}": SPIELSTAND_URL, "{{ALLETIPS_URL}}": ALLETIPS_URL };
 
 build("index.template.html", "index.html", COMMON);
 build("spiele.template.html", "spiele.html", COMMON);
@@ -46,3 +47,4 @@ build("aufsteiger.template.html", "aufsteiger.html", COMMON);
 build("start.template.html", "start.html", COMMON);
 build("regeln.template.html", "regeln.html", COMMON);
 build("spielstand.template.html", "spielstand.html", COMMON);
+build("alletips.template.html", "alletips.html", COMMON);

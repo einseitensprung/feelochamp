@@ -27,6 +27,7 @@ Quelltemplate **und** das neu gebaute HTML gehören in denselben Commit — nie 
 `regeln.html` (Template `src/regeln.template.html`) und `spielstand.html` (Template `src/spielstand.template.html`) sind reguläre Unterseiten im Redesign-Layout (`body.page-default`, Navbar + `.page-header` + `.content-card` + Sitemap-Sektion), verlinkt aus den Nav-Einträgen aller Seiten:
 - `regeln.html` — Inhalt = `regeln.asp` (§1–§6, §50+), als strukturiertes HTML statt der `<br/>`-Wüste des Originals.
 - `spielstand.html` — Gesamtwertungs-Tabelle in Anlehnung an `einseitensprung.at/wm/spielstand.asp`; Demodaten im `STANDINGS`-Array im Template, Tendenzpfeile/Stimmungs-Icons als Inline-SVG (`.standings`-Styles in `main.css`).
+- `alletips.html` — drei Tabellen (einzelne Spiele / 8 Fix Aufsteiger / Champions) in Anlehnung an `cl_neu/alletips.asp`. Bewusst **ohne JS-Rendering**: die Zeilen stehen direkt als statisches HTML im Template. Echte Vereinswappen durch Initialen-Badges ersetzt (`.alltips`-Styles in `main.css`).
 
 `spiele_info.html` und `preloader.html` sind **eigenständige** statische Seiten (kein Template, nicht in `build.js`), ohne Navbar/Footer, direkt editieren:
 - `spiele_info.html` — iframe-Ziel der Info-Lightbox auf der Spiele-Seite. Inhalt = `spiele_info.asp?id=1` (Tipp-Übersicht je Spiel), echte Vereinswappen durch Initialen-Badges ersetzt.
