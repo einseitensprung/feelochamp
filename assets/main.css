@@ -150,6 +150,27 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.72rem; color:#04131c;
 }
 
+/* Mobile: das User-Dropdown genau wie die anderen Nav-Dropdowns
+   (inline aufklappen statt rechts überlagern) */
+@media (max-width: 991.98px){
+  .navbar-feelo .navbar-collapse > .dropdown{ width: 100%; }
+  .navbar-feelo .navbar-collapse > .dropdown .user-chip{
+    padding: .5rem .85rem;
+    color: var(--slate); font-size: .85rem; font-weight: 600; letter-spacing: .02em;
+  }
+  .navbar-feelo .navbar-collapse > .dropdown .user-chip:hover,
+  .navbar-feelo .navbar-collapse > .dropdown .user-chip.show{ color: var(--cyan-soft); }
+  .navbar-feelo .navbar-collapse > .dropdown .user-chip .user-avatar{
+    width: 1.45rem; height: 1.45rem; font-size: .56rem;
+  }
+  .navbar-feelo .navbar-collapse > .dropdown .dropdown-menu{
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    float: none; width: 100%; margin: .15rem 0 .3rem;
+  }
+}
+
 /* ---------- Hero: Champions-League night glow (Startseite + Start-Dashboard) ---------- */
 .hero{
   position:relative;
