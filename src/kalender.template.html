@@ -204,6 +204,15 @@
   </div>
 </footer>
 
+<!-- ================= LIGHTBOX: alle Spiele eines Tages ("+ weitere N") ================= -->
+<div class="lightbox" id="dayLightbox" role="dialog" aria-modal="true" aria-label="Spiele des Tages">
+  <div class="cal-daybox">
+    <button type="button" class="lightbox-close" id="dayLightboxClose" aria-label="Schließen">&times;</button>
+    <div class="cal-daybox-head" id="dayLightboxTitle"></div>
+    <div class="cal-daybox-body" id="dayLightboxBody"></div>
+  </div>
+</div>
+
 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
   <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
     <div class="d-flex">
@@ -457,18 +466,47 @@
     }
     render();
   }
+  // "+ weitere N" -> Lightbox mit allen Spielen des Tages
+  var dayBox = document.getElementById('dayLightbox');
+  var dayBoxTitle = document.getElementById('dayLightboxTitle');
+  var dayBoxBody = document.getElementById('dayLightboxBody');
+  var dayBoxClose = document.getElementById('dayLightboxClose');
+  var dayLastFocus = null;
+
+  function dayKey(e){ if (e.key === 'Escape') closeDay(); }
+  function openDay(isoDate){
+    var evs = eventsOn(isoDate);
+    if (!evs.length) return;
+    var p = isoDate.split('-');
+    var dt = new Date(+p[0], +p[1] - 1, +p[2]);
+    var wd = (dt.getDay() + 6) % 7;
+    dayBoxTitle.innerHTML = dt.getDate() + '. ' + MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() +
+      '<small>' + WEEKDAYS_LONG[wd] + ' &middot; ' + evs.length + (evs.length === 1 ? ' Spiel' : ' Spiele') + '</small>';
+    dayBoxBody.innerHTML = evs.map(function(e){
+      return '<div class="cal-list-row ph-' + e.phase + '">' +
+        '<span class="cal-lr-time">' + e.time + '</span>' +
+        '<span class="cal-ev-dot"></span>' +
+        '<span class="cal-lr-title">' + e.title + '</span></div>';
+    }).join('');
+    dayLastFocus = document.activeElement;
+    dayBox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    dayBoxClose.focus();
+    document.addEventListener('keydown', dayKey);
+  }
+  function closeDay(){
+    dayBox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', dayKey);
+    if (dayLastFocus && dayLastFocus.focus) dayLastFocus.focus();
+  }
+  dayBoxClose.addEventListener('click', closeDay);
+  dayBox.addEventListener('click', function(e){ if (e.target === dayBox) closeDay(); });
+
   document.getElementById('calBody').addEventListener('click', function(e){
     var more = e.target.closest('.cal-more');
     if (!more) return;
-    var p = more.dataset.date.split('-');
-    state.ref = new Date(+p[0], +p[1] - 1, 1);
-    state.view = 'list';
-    document.querySelectorAll('.cal-view-btn').forEach(function(x){ x.classList.toggle('is-active', x.dataset.view === 'list'); });
-    render();
-    var target = [].slice.call(document.querySelectorAll('.cal-list-day')).filter(function(el){
-      return el.textContent.indexOf(parseInt(p[2], 10) + '. ') === 0;
-    })[0];
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    openDay(more.dataset.date);
   });
 
   render();

@@ -1396,6 +1396,34 @@ body.page-preloader{ background: var(--ink); }
   font-size:.7rem; font-weight:600; cursor:pointer;
 }
 .cal-more:hover{ text-decoration:underline; }
+
+/* Tages-Lightbox (Klick auf "+ weitere N") */
+.cal-daybox{
+  position:relative;
+  width:min(94vw, 420px); max-height:82vh;
+  display:flex; flex-direction:column;
+  background: var(--ink-2);
+  border:1px solid var(--line-cyan);
+  border-radius:.9rem; overflow:hidden;
+  box-shadow: var(--shadow);
+}
+.cal-daybox .lightbox-close{
+  top:.6rem; right:.6rem; z-index:1;
+  width:2.2rem; height:2.2rem; font-size:1.1rem;
+}
+.cal-daybox-head{
+  padding:1.05rem 3.2rem 1rem 1.25rem;
+  border-bottom:1px solid rgba(243,247,255,0.08);
+  font-family:'Bebas Neue', sans-serif; letter-spacing:.03em; font-size:1.25rem;
+  color: var(--white);
+}
+.cal-daybox-head small{
+  display:block; margin-top:.15rem;
+  font-family:'Inter', sans-serif; font-size:.72rem; font-weight:600;
+  letter-spacing:0; color: var(--slate);
+}
+.cal-daybox-body{ overflow-y:auto; }
+.cal-daybox-body .cal-list-row:first-child{ border-top:0; }
 .cal-empty{ color: rgba(168,183,214,0.35); font-size:.8rem; }
 
 .cal-list{
