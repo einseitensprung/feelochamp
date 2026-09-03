@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feelochamp – Kalender</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/bootstrap.min.css">
+<link rel="stylesheet" href="assets/main.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<body class="page-default">
+<!-- ================= NAVBAR (logged in) ================= -->
+<nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
+  <div class="container">
+    <a class="navbar-brand" href="{{HOME_URL}}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/>
+        <path d="M12 7.2V4.3M15.4 9.7l2.7-1.6M14.1 13.7l1.7 2.8M9.9 13.7l-1.7 2.8M8.6 9.7l-2.7-1.6"/>
+      </svg>
+      FEELOCHAMP
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Navigation umschalten" style="border-color: var(--line-cyan);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="{{SPIELE_URL}}">Spiele</a></li>
+            <li><a class="dropdown-item" href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{ALLETIPS_URL}}">Alle Tipps</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{SPIELSTAND_URL}}">Spielstand</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item" href="{{REGELN_URL}}">Regeln</a></li>
+            <li><a class="dropdown-item" href="{{TABELLE_URL}}">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item" href="{{PLAYOFF_URL}}">Playoffs</a></li>
+            <li><a class="dropdown-item" href="{{TURNIERBAUM_URL}}">Turnierbaum</a></li>
+            <li><a class="dropdown-item" href="{{TEAMS_URL}}">Teams</a></li>
+            <li><a class="dropdown-item" href="{{KALENDER_URL}}" aria-current="page">Kalender</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
+          <ul class="dropdown-menu dropdown-menu-feelo">
+            <li><a class="dropdown-item demo-link" href="#">Statistik</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Punkten</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Verlauf nach Positionen</a></li>
+            <li><a class="dropdown-item demo-link" href="#">Quoten der Spiele</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link demo-link" href="#">Admin</a></li>
+      </ul>
+      <div class="dropdown">
+        <a class="user-chip dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="user-avatar">sTe</span> sTe
+        </a>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end">
+          <li><a class="dropdown-item demo-link" href="#">Einstellungen</a></li>
+          <li><a class="dropdown-item demo-link" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= PAGE HEADER ================= -->
+<header class="page-header">
+  <svg class="page-header-rays" viewBox="0 0 1600 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="#eef4ee">
+      <circle class="twinkle" cx="180" cy="60" r="1.6"/>
+      <circle class="twinkle" cx="520" cy="40" r="1.4" style="animation-delay:.5s"/>
+      <circle class="twinkle" cx="900" cy="70" r="1.8"/>
+      <circle class="twinkle" cx="1250" cy="45" r="1.3" style="animation-delay:1s"/>
+      <circle class="twinkle" cx="1450" cy="90" r="1.5" style="animation-delay:1.4s"/>
+    </g>
+    <g stroke="#7fe3f5" stroke-width="1.2" opacity=".25">
+      <line x1="0" y1="300" x2="500" y2="0"/>
+      <line x1="1600" y1="280" x2="1050" y2="0"/>
+    </g>
+  </svg>
+  <div class="container page-header-content">
+    <div class="hero-panel">
+      <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
+      <h1>Der <span class="accent">Kalender</span></h1>
+    </div>
+  </div>
+</header>
+
+<!-- ================= CONTENT ================= -->
+<main>
+  <div class="container">
+    <div class="cal-toolbar">
+      <div class="cal-nav">
+        <button type="button" class="cal-arrow" id="calPrev" aria-label="Zurück">&#8249;</button>
+        <h2 id="calTitle">&nbsp;</h2>
+        <button type="button" class="cal-arrow" id="calNext" aria-label="Weiter">&#8250;</button>
+      </div>
+      <div class="cal-views" role="group" aria-label="Ansicht">
+        <button type="button" class="cal-view-btn is-active" data-view="month">Monat</button>
+        <button type="button" class="cal-view-btn" data-view="week">Woche</button>
+        <button type="button" class="cal-view-btn" data-view="list">Liste</button>
+      </div>
+    </div>
+
+    <div id="calBody"><!-- injected --></div>
+
+    <p class="cal-legend">
+      <span class="cal-key"><span class="cal-dot ph-liga"></span>Ligaphase</span>
+      <span class="cal-key"><span class="cal-dot ph-po"></span>Playoffs</span>
+      <span class="cal-key"><span class="cal-dot ph-r16"></span>1/8 Finale</span>
+      <span class="cal-key"><span class="cal-dot ph-qf"></span>1/4 Finale</span>
+      <span class="cal-key"><span class="cal-dot ph-sf"></span>1/2 Finale</span>
+      <span class="cal-key"><span class="cal-dot ph-fin"></span>Finale</span>
+    </p>
+  </div>
+</main>
+
+<!-- ================= RUND UM DEN TIPPBEWERB (Sitemap) ================= -->
+<section class="section-programme">
+  <div class="container">
+    <div class="programme-head mb-5">
+      <span class="eyebrow">Rund um den Tippbewerb</span>
+      <h2>Matchday&nbsp;Programm</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/><path d="M12 7.2V4.3M15.4 9.7l2.7-1.6M14.1 13.7l1.7 2.8M9.9 13.7l-1.7 2.8M8.6 9.7l-2.7-1.6"/></svg>
+          </div>
+          <h3>Tippen</h3>
+          <ul>
+            <li><a href="{{SPIELE_URL}}">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Champion <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1.5"/><line x1="12" y1="5" x2="12" y2="19"/><path d="M7 10h2M15 10h2M7 14h2M15 14h2"/></svg>
+          </div>
+          <h3>Ergebnisse</h3>
+          <ul>
+            <li><a href="{{ALLETIPS_URL}}">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{SPIELSTAND_URL}}">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+          </div>
+          <h3>Infos</h3>
+          <ul>
+            <li><a href="{{REGELN_URL}}">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{TABELLE_URL}}">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{PLAYOFF_URL}}">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{TURNIERBAUM_URL}}">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{TEAMS_URL}}">Teams <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{KALENDER_URL}}" aria-current="page">Kalender <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card-feelo">
+          <div class="icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18M8 17V10M13 17V6M18 17v-4"/></svg>
+          </div>
+          <h3>Statistik</h3>
+          <ul>
+            <li><a class="demo-link" href="#">Statistik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Verlauf nach Punkten <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Verlauf nach Positionen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a class="demo-link" href="#">Quoten der Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-feelo mt-5">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <span class="text-slate">FEELOCHAMP 2026/2027 &nbsp;|&nbsp; gegr. 2002 von Soizbuaga Wettkaiser</span>
+    <span class="text-slate">&copy; 2026 einseitensprung.at &nbsp;&middot;&nbsp; v5.96 &nbsp;&middot;&nbsp; <a href="#" class="ds-open">Datenschutz</a></span>
+  </div>
+</footer>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
+  <div id="demoToast" class="toast toast-feelo" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="demoToastText">Diese Unterseite ist in der Demo nicht verkn&uuml;pft.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Schließen"></button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/bootstrap.bundle.min.js"></script>
+<script src="assets/datenschutz.js"></script>
+
+<script>
+  // Kalender – Inhalt von einseitensprung.at/cl_neu/kalender.asp.
+  // Ligaphase: echter Spielplan (144 Spiele). K.o.-Phase wie im Original als
+  // Platzhalter je Runde ("Play-off 1", "1/8 1" …), farbcodiert nach Phase.
+  var MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  var WEEKDAYS = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+  var WEEKDAYS_LONG = ['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag'];
+
+  // Ligaphase-Spiele: [Datum "d.m.", Zeit, Heim, Gast]  (Monate 9–12 = 2026, 1 = 2027)
+  var LIGA = [
+    ["8.9.","18:45","AEK Athen","LASK"],["4.11.","18:45","AEK Athen","Real Madrid"],["8.12.","21:00","AEK Athen","Galatasaray"],["19.1.","21:00","AEK Athen","Roma"],
+    ["13.10.","21:00","Arsenal","Lille"],["24.11.","21:00","Arsenal","Dortmund"],["9.12.","21:00","Arsenal","Real Madrid"],["27.1.","21:00","Arsenal","Sabah"],
+    ["14.10.","21:00","Aston Villa","Fenerbahce"],["21.10.","21:00","Aston Villa","Viking"],["8.12.","21:00","Aston Villa","PSG"],["19.1.","21:00","Aston Villa","Dortmund"],
+    ["13.10.","21:00","Atletico","Man Utd"],["3.11.","21:00","Atletico","Bayern"],["24.11.","21:00","Atletico","Viking"],["27.1.","21:00","Atletico","Fenerbahce"],
+    ["9.9.","18:45","Barcelona","Feyenoord"],["3.11.","21:00","Barcelona","Aston Villa"],["8.12.","21:00","Barcelona","Man City"],["27.1.","21:00","Barcelona","Como"],
+    ["10.9.","21:00","Bayern","Bodö/Glimt"],["21.10.","21:00","Bayern","Arsenal"],["8.12.","21:00","Bayern","Slavia Prag"],["27.1.","21:00","Bayern","Real Betis"],
+    ["14.10.","21:00","Bodö/Glimt","Dortmund"],["3.11.","21:00","Bodö/Glimt","Lille"],["24.11.","18:45","Bodö/Glimt","LASK"],["19.1.","18:45","Bodö/Glimt","Atletico"],
+    ["8.9.","18:45","Club Brügge","Aston Villa"],["21.10.","21:00","Club Brügge","Lens"],["24.11.","21:00","Club Brügge","Liverpool"],["27.1.","21:00","Club Brügge","Bodö/Glimt"],
+    ["10.9.","21:00","Como","Leipzig"],["21.10.","18:45","Como","Man Utd"],["24.11.","21:00","Como","AEK Athen"],["20.1.","21:00","Como","PSG"],
+    ["8.9.","21:00","Dortmund","Villareal"],["4.11.","21:00","Dortmund","Real Betis"],["9.12.","21:00","Dortmund","Inter"],["27.1.","21:00","Dortmund","AEK Athen"],
+    ["10.9.","18:45","Fenerbahce","Roma"],["20.10.","18:45","Fenerbahce","Slavia Prag"],["4.11.","18:45","Fenerbahce","Liverpool"],["20.1.","18:45","Fenerbahce","Villareal"],
+    ["14.10.","18:45","Feyenoord","Como"],["3.11.","21:00","Feyenoord","Inter"],["24.11.","21:00","Feyenoord","Porto"],["27.1.","21:00","Feyenoord","Leipzig"],
+    ["13.10.","21:00","Galatasaray","Barcelona"],["3.11.","18:45","Galatasaray","Stuttgart"],["24.11.","18:45","Galatasaray","Aston Villa"],["19.1.","18:45","Galatasaray","Feyenoord"],
+    ["13.10.","21:00","Inter","Club Brügge"],["21.10.","21:00","Inter","Shakhtar"],["24.11.","21:00","Inter","Stuttgart"],["19.1.","21:00","Inter","Liverpool"],
+    ["14.10.","18:45","LASK","Liverpool"],["3.11.","21:00","LASK","Slovan Bratislava"],["9.12.","21:00","LASK","Fenerbahce"],["27.1.","21:00","LASK","Porto"],
+    ["13.10.","21:00","Leipzig","PSV"],["4.11.","21:00","Leipzig","Man City"],["24.11.","21:00","Leipzig","Lens"],["20.1.","21:00","Leipzig","Shakhtar"],
+    ["13.10.","18:45","Lens","Sporting"],["4.11.","21:00","Lens","Como"],["9.12.","21:00","Lens","Bodö/Glimt"],["20.1.","21:00","Lens","Man City"],
+    ["8.9.","21:00","Lille","Real Betis"],["21.10.","18:45","Lille","Galatasaray"],["24.11.","21:00","Lille","Bayern"],["19.1.","21:00","Lille","Slovan Bratislava"],
+    ["9.9.","21:00","Liverpool","Atletico"],["20.10.","21:00","Liverpool","Villareal"],["9.12.","21:00","Liverpool","Porto"],["27.1.","21:00","Liverpool","Lens"],
+    ["14.10.","21:00","Man City","PSG"],["20.10.","21:00","Man City","AEK Athen"],["24.11.","21:00","Man City","Napoli"],["27.1.","21:00","Man City","Sporting"],
+    ["10.9.","21:00","Man Utd","Sabah"],["3.11.","21:00","Man Utd","Roma"],["8.12.","21:00","Man Utd","Leipzig"],["20.1.","21:00","Man Utd","Bayern"],
+    ["9.9.","21:00","Napoli","Arsenal"],["20.10.","21:00","Napoli","Bodö/Glimt"],["8.12.","21:00","Napoli","Club Brügge"],["27.1.","21:00","Napoli","Viking"],
+    ["8.9.","21:00","Porto","Man City"],["20.10.","21:00","Porto","PSV"],["4.11.","21:00","Porto","Napoli"],["19.1.","21:00","Porto","Slavia Prag"],
+    ["9.9.","21:00","PSG","Slovan Bratislava"],["20.10.","21:00","PSG","Barcelona"],["24.11.","21:00","PSG","Roma"],["27.1.","21:00","PSG","Galatasaray"],
+    ["10.9.","18:45","PSV","Shakhtar"],["4.11.","21:00","PSV","Club Brügge"],["9.12.","21:00","PSV","Atletico"],["27.1.","21:00","PSV","Stuttgart"],
+    ["14.10.","21:00","Real Betis","Porto"],["21.10.","21:00","Real Betis","Feyenoord"],["9.12.","18:45","Real Betis","Como"],["20.1.","21:00","Real Betis","Arsenal"],
+    ["8.9.","21:00","Real Madrid","Inter"],["21.10.","21:00","Real Madrid","Leipzig"],["24.11.","21:00","Real Madrid","PSV"],["19.1.","21:00","Real Madrid","LASK"],
+    ["14.10.","21:00","Roma","Real Madrid"],["20.10.","21:00","Roma","Slovan Bratislava"],["8.12.","21:00","Roma","Sporting"],["27.1.","21:00","Roma","Lille"],
+    ["13.10.","18:45","Sabah","Slavia Prag"],["20.10.","18:45","Sabah","Dortmund"],["24.11.","18:45","Sabah","Barcelona"],["20.1.","18:45","Sabah","Napoli"],
+    ["14.10.","21:00","Shakhtar","AEK Athen"],["3.11.","18:45","Shakhtar","Sporting"],["24.11.","21:00","Shakhtar","Fenerbahce"],["27.1.","21:00","Shakhtar","Real Madrid"],
+    ["10.9.","21:00","Slavia Prag","Lens"],["4.11.","21:00","Slavia Prag","Arsenal"],["24.11.","18:45","Slavia Prag","Villareal"],["27.1.","21:00","Slavia Prag","Aston Villa"],
+    ["14.10.","21:00","Slovan Bratislava","Stuttgart"],["24.11.","21:00","Slovan Bratislava","Real Betis"],["9.12.","18:45","Slovan Bratislava","Shakhtar"],["27.1.","21:00","Slovan Bratislava","Inter"],
+    ["9.9.","21:00","Sporting","Galatasaray"],["21.10.","21:00","Sporting","LASK"],["24.11.","21:00","Sporting","Man Utd"],["20.1.","21:00","Sporting","Barcelona"],
+    ["9.9.","18:45","Stuttgart","Viking"],["20.10.","21:00","Stuttgart","Atletico"],["9.12.","21:00","Stuttgart","Lille"],["19.1.","21:00","Stuttgart","Club Brügge"],
+    ["13.10.","21:00","Viking","Bayern"],["4.11.","21:00","Viking","Sabah"],["8.12.","18:45","Viking","Feyenoord"],["20.1.","21:00","Viking","PSV"],
+    ["13.10.","21:00","Villareal","Napoli"],["3.11.","21:00","Villareal","PSG"],["8.12.","18:45","Villareal","Sabah"],["27.1.","21:00","Villareal","Man Utd"]
+  ];
+
+  // K.o.-Phase (Platzhalter je Runde, 2027) – [ISO-Datum, Zeit, Label, Phase]
+  var KO = (function(){
+    var out = [];
+    function tie(dates, times, prefix, n, phase){
+      for (var i = 1; i <= n; i++){
+        var d = dates[(i-1) % dates.length];
+        for (var l = 0; l < d.length; l++){
+          out.push([d[l], times, prefix + ' ' + i + ' : ' + prefix + ' ' + i, phase]);
+        }
+      }
+    }
+    // Play-offs: Ties 1-4 am Di, 5-8 am Mi (Hin + Rück)
+    tie([['2027-02-16','2027-02-23'],['2027-02-17','2027-02-24']], '21:00', 'Play-off', 8, 'po');
+    // 1/8 Finale
+    tie([['2027-03-09','2027-03-17'],['2027-03-10','2027-03-18']], '21:00', '1/8', 8, 'r16');
+    // 1/4 Finale
+    tie([['2027-04-06','2027-04-14'],['2027-04-07','2027-04-15']], '21:00', '1/4', 4, 'qf');
+    // 1/2 Finale
+    tie([['2027-04-27','2027-05-05'],['2027-04-28','2027-05-06']], '21:00', '1/2', 2, 'sf');
+    // Finale (ein Spiel)
+    out.push(['2027-05-30','21:00','Finale', 'fin']);
+    return out;
+  })();
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function iso(y, m, d){ return y + '-' + pad(m) + '-' + pad(d); }
+  function ligaISO(dm){
+    var p = dm.split('.').filter(Boolean);
+    var d = +p[0], mo = +p[1];
+    return iso(mo <= 6 ? 2027 : 2026, mo, d);
+  }
+
+  // Alle Events als { date:'YYYY-MM-DD', time, title, phase }
+  var EVENTS = [];
+  LIGA.forEach(function(f){
+    EVENTS.push({ date: ligaISO(f[0]), time: f[1], title: f[2] + ' : ' + f[3], phase: 'liga' });
+  });
+  KO.forEach(function(k){
+    EVENTS.push({ date: k[0], time: k[1], title: k.length === 4 ? k[2] : k[2], phase: k[k.length - 1] });
+  });
+  EVENTS.sort(function(a, b){
+    return a.date === b.date ? a.time.localeCompare(b.time) : a.date.localeCompare(b.date);
+  });
+
+  function eventsOn(isoDate){
+    return EVENTS.filter(function(e){ return e.date === isoDate; });
+  }
+  function eventChip(e){
+    return '<span class="cal-event ph-' + e.phase + '">' +
+      '<span class="cal-ev-dot"></span>' +
+      '<span class="cal-ev-time">' + e.time + '</span> ' +
+      '<span class="cal-ev-title">' + e.title + '</span></span>';
+  }
+
+  var state = { ref: new Date(2026, 8, 1), view: 'month' };
+
+  function renderMonth(){
+    var y = state.ref.getFullYear(), m = state.ref.getMonth();
+    document.getElementById('calTitle').textContent = MONTHS[m] + ' ' + y;
+
+    var first = new Date(y, m, 1);
+    var startOffset = (first.getDay() + 6) % 7; // Mo=0
+    var gridStart = new Date(y, m, 1 - startOffset);
+    var weeks = 6;
+
+    var html = '<div class="cal-grid"><div class="cal-weekdays">' +
+      WEEKDAYS.map(function(w){ return '<div>' + w + '</div>'; }).join('') + '</div>';
+    for (var w = 0; w < weeks; w++){
+      html += '<div class="cal-week">';
+      for (var d = 0; d < 7; d++){
+        var cur = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + w * 7 + d);
+        var inMonth = cur.getMonth() === m;
+        var evs = eventsOn(iso(cur.getFullYear(), cur.getMonth() + 1, cur.getDate()));
+        var shown = evs.slice(0, 3);
+        html += '<div class="cal-day' + (inMonth ? '' : ' is-out') + '">' +
+          '<div class="cal-day-num">' + cur.getDate() + '</div>' +
+          shown.map(eventChip).join('') +
+          (evs.length > 3 ? '<button type="button" class="cal-more" data-date="' +
+            iso(cur.getFullYear(), cur.getMonth() + 1, cur.getDate()) + '">+ weitere ' + (evs.length - 3) + '</button>' : '') +
+        '</div>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    document.getElementById('calBody').innerHTML = html;
+  }
+
+  function renderWeek(){
+    var ref = state.ref;
+    var offset = (ref.getDay() + 6) % 7;
+    var monday = new Date(ref.getFullYear(), ref.getMonth(), ref.getDate() - offset);
+    var sunday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 6);
+    var titleMon = monday.getDate() + '. ' + MONTHS[monday.getMonth()];
+    var titleSun = sunday.getDate() + '. ' + MONTHS[sunday.getMonth()] + ' ' + sunday.getFullYear();
+    document.getElementById('calTitle').textContent = titleMon + ' – ' + titleSun;
+
+    var html = '<div class="cal-grid cal-grid-week"><div class="cal-weekdays">' +
+      WEEKDAYS.map(function(w){ return '<div>' + w + '</div>'; }).join('') + '</div><div class="cal-week">';
+    for (var d = 0; d < 7; d++){
+      var cur = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + d);
+      var evs = eventsOn(iso(cur.getFullYear(), cur.getMonth() + 1, cur.getDate()));
+      html += '<div class="cal-day cal-day-week">' +
+        '<div class="cal-day-num">' + cur.getDate() + '</div>' +
+        (evs.length ? evs.map(eventChip).join('') : '<span class="cal-empty">–</span>') +
+      '</div>';
+    }
+    html += '</div></div>';
+    document.getElementById('calBody').innerHTML = html;
+  }
+
+  function renderList(){
+    var y = state.ref.getFullYear(), m = state.ref.getMonth();
+    document.getElementById('calTitle').textContent = MONTHS[m] + ' ' + y;
+    var monthEvents = EVENTS.filter(function(e){
+      var p = e.date.split('-');
+      return +p[0] === y && +p[1] === m + 1;
+    });
+    if (!monthEvents.length){
+      document.getElementById('calBody').innerHTML = '<p class="cal-list-empty">Keine Spiele in diesem Monat.</p>';
+      return;
+    }
+    var byDay = {};
+    monthEvents.forEach(function(e){ (byDay[e.date] = byDay[e.date] || []).push(e); });
+    var html = '<div class="cal-list">';
+    Object.keys(byDay).sort().forEach(function(dk){
+      var p = dk.split('-'); var dt = new Date(+p[0], +p[1] - 1, +p[2]);
+      var wd = (dt.getDay() + 6) % 7;
+      html += '<div class="cal-list-day"><span>' + dt.getDate() + '. ' + MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() +
+        '</span><span class="cal-list-wd">' + WEEKDAYS_LONG[wd] + '</span></div>';
+      byDay[dk].forEach(function(e){
+        html += '<div class="cal-list-row ph-' + e.phase + '">' +
+          '<span class="cal-lr-time">' + e.time + '</span>' +
+          '<span class="cal-ev-dot"></span>' +
+          '<span class="cal-lr-title">' + e.title + '</span></div>';
+      });
+    });
+    html += '</div>';
+    document.getElementById('calBody').innerHTML = html;
+  }
+
+  function render(){
+    if (state.view === 'month') renderMonth();
+    else if (state.view === 'week') renderWeek();
+    else renderList();
+  }
+
+  document.querySelectorAll('.cal-view-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.cal-view-btn').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      state.view = b.dataset.view;
+      render();
+    });
+  });
+  document.getElementById('calPrev').addEventListener('click', function(){ step(-1); });
+  document.getElementById('calNext').addEventListener('click', function(){ step(1); });
+  function step(dir){
+    if (state.view === 'week'){
+      state.ref = new Date(state.ref.getFullYear(), state.ref.getMonth(), state.ref.getDate() + dir * 7);
+    } else {
+      state.ref = new Date(state.ref.getFullYear(), state.ref.getMonth() + dir, 1);
+    }
+    render();
+  }
+  document.getElementById('calBody').addEventListener('click', function(e){
+    var more = e.target.closest('.cal-more');
+    if (!more) return;
+    var p = more.dataset.date.split('-');
+    state.ref = new Date(+p[0], +p[1] - 1, 1);
+    state.view = 'list';
+    document.querySelectorAll('.cal-view-btn').forEach(function(x){ x.classList.toggle('is-active', x.dataset.view === 'list'); });
+    render();
+    var target = [].slice.call(document.querySelectorAll('.cal-list-day')).filter(function(el){
+      return el.textContent.indexOf(parseInt(p[2], 10) + '. ') === 0;
+    })[0];
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  render();
+
+  function showToast(text){
+    var toastEl = document.getElementById('demoToast');
+    document.getElementById('demoToastText').textContent = text;
+    bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000 }).show();
+  }
+  document.querySelectorAll('.demo-link').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      showToast('Diese Unterseite ist in der Demo nicht verknüpft.');
+    });
+  });
+
+  (function(){
+    var cards = document.querySelectorAll('.card-feelo');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      cards.forEach(function(c){ c.classList.add('in-view'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry, i){
+        if (entry.isIntersecting){
+          setTimeout(function(){ entry.target.classList.add('in-view'); }, i * 70);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    cards.forEach(function(c){ io.observe(c); });
+  })();
+</script>
+</body>
+</html>
