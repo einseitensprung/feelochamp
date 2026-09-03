@@ -2,7 +2,7 @@
 <html lang="de">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Feelochamp – Ligaphase Tabelle</title>
+<title>Feelochamp – Playoffs & Turnierbaum</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -42,8 +42,8 @@
           <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
             <li><a class="dropdown-item" href="regeln.html">Regeln</a></li>
-            <li><a class="dropdown-item" href="tabelle.html" aria-current="page">Ligaphase Tabelle</a></li>
-            <li><a class="dropdown-item" href="playoff.html">Playoffs</a></li>
+            <li><a class="dropdown-item" href="tabelle.html">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item" href="playoff.html" aria-current="page">Playoffs</a></li>
             <li><a class="dropdown-item demo-link" href="#">Turnierbaum</a></li>
             <li><a class="dropdown-item demo-link" href="#">Teams</a></li>
             <li><a class="dropdown-item demo-link" href="#">Kalender</a></li>
@@ -89,9 +89,22 @@
     </g>
   </svg>
   <div class="container page-header-content">
-    <div class="hero-panel">
-      <span class="eyebrow d-block mb-1">Infos &middot; FeeloChamp</span>
-      <h1>Die <span class="accent">Ligaphase</span>-Tabelle</h1>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="hero-panel">
+        <span class="eyebrow d-block mb-1">K.o.-Phase &middot; FeeloChamp</span>
+        <h1>Playoffs &amp; <span class="accent">Turnierbaum</span></h1>
+      </div>
+      <div class="dropdown md-select">
+        <button class="btn dropdown-toggle" type="button" id="quickNav" data-bs-toggle="dropdown" aria-expanded="false">Quick Nav</button>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end" aria-labelledby="quickNav">
+          <li><a class="dropdown-item qn" href="#fixaufsteiger">8 Fix-Aufsteiger</a></li>
+          <li><a class="dropdown-item qn" href="#playoffs">Play-offs</a></li>
+          <li><a class="dropdown-item qn" href="#achtelfinale">Achtelfinale</a></li>
+          <li><a class="dropdown-item qn" href="#viertelfinale">Viertelfinale</a></li>
+          <li><a class="dropdown-item qn" href="#halbfinale">Halbfinale</a></li>
+          <li><a class="dropdown-item qn" href="#finale">Finale</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </header>
@@ -99,40 +112,58 @@
 <!-- ================= CONTENT ================= -->
 <main>
   <div class="container">
-    <div class="content-card">
-      <div class="content-card-toolbar">
-        <span class="toolbar-title">Ligaphase Tabelle</span>
-        <span style="color:#5a6c8c; font-size:.82rem; font-weight:600;">Endstand nach dem 8.&nbsp;Spieltag &middot; Demodaten</span>
-      </div>
 
-      <div class="table-responsive">
-        <table class="table-feelo ligaphase">
-          <thead>
-            <tr>
-              <th class="col-num">#</th>
-              <th>Team</th>
-              <th class="col-stat" title="Siege">S</th>
-              <th class="col-stat" title="Unentschieden">U</th>
-              <th class="col-stat" title="Niederlagen">N</th>
-              <th class="col-goals" title="Tore">T</th>
-              <th class="col-pts" title="Punkte">Pt</th>
-            </tr>
-          </thead>
-          <tbody id="tableRows"><!-- rows injected by JS from STANDINGS --></tbody>
-        </table>
+    <section class="ko-section" id="fixaufsteiger">
+      <div class="ko-head">
+        <h2>Ligaphase &ndash; 8 Fix-Aufsteiger</h2>
+        <span class="ko-sub">Platz 1&ndash;8 &middot; direkt im Achtelfinale</span>
       </div>
-
-      <div class="table-footbar">
-        <span class="row-count"><span id="teamCount">36</span> Teams &middot; 8 Spieltage</span>
+      <div class="content-card" style="padding:1rem 1.1rem;">
+        <div class="fix-wrap" id="fixWrap"><!-- injected --></div>
       </div>
-    </div>
+    </section>
 
-    <p class="standings-legend">
-      <span class="zone-key"><span class="zone-dot aufsteiger"></span>Aufsteiger &ndash; Achtelfinale (Pl.&nbsp;1&ndash;8)</span>
-      <span class="zone-key"><span class="zone-dot playoffs"></span>Play-offs (Pl.&nbsp;9&ndash;24)</span>
-      <span class="zone-key"><span class="zone-dot raus"></span>Ausgeschieden (Pl.&nbsp;25&ndash;36)</span>
-      <span class="legend-note">S = Siege &middot; U = Unentschieden &middot; N = Niederlagen &middot; T = Tore &middot; Pt = Punkte</span>
-    </p>
+    <section class="ko-section" id="playoffs">
+      <div class="ko-head">
+        <h2>Play-offs</h2>
+        <span class="ko-sub">Platz 9&ndash;24 der Ligaphase &middot; Hin- &amp; R&uuml;ckspiel &middot; 17.&ndash;25.02.</span>
+      </div>
+      <div class="tie-grid" id="poGrid"><!-- injected --></div>
+    </section>
+
+    <section class="ko-section" id="achtelfinale">
+      <div class="ko-head">
+        <h2>Achtelfinale</h2>
+        <span class="ko-sub">8 Fix-Aufsteiger vs. 8 Play-off-Sieger &middot; 04.&ndash;12.03.</span>
+      </div>
+      <div class="tie-grid" id="r16Grid"><!-- injected --></div>
+    </section>
+
+    <section class="ko-section" id="viertelfinale">
+      <div class="ko-head">
+        <h2>Viertelfinale</h2>
+        <span class="ko-sub">08.&ndash;16.04.</span>
+      </div>
+      <div class="tie-grid cols-2" id="qfGrid"><!-- injected --></div>
+    </section>
+
+    <section class="ko-section" id="halbfinale">
+      <div class="ko-head">
+        <h2>Halbfinale</h2>
+        <span class="ko-sub">29.04.&ndash;08.05.</span>
+      </div>
+      <div class="tie-grid cols-2" id="sfGrid"><!-- injected --></div>
+    </section>
+
+    <section class="ko-section" id="finale">
+      <div class="ko-head">
+        <h2>Finale</h2>
+        <span class="ko-sub">Gruppe X &middot; 31.05. &middot; ein Spiel</span>
+      </div>
+      <div class="tie-grid cols-1" id="finGrid"><!-- injected --></div>
+      <div class="champion-card" id="championCard"><!-- injected --></div>
+    </section>
+
   </div>
 </main>
 
@@ -180,8 +211,8 @@
           <h3>Infos</h3>
           <ul>
             <li><a href="regeln.html">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="tabelle.html" aria-current="page">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="playoff.html">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="tabelle.html">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="playoff.html" aria-current="page">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Teams <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Kalender <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
@@ -228,91 +259,138 @@
 <script src="assets/datenschutz.js"></script>
 
 <script>
-  // Ligaphase-Tabelle – Teams/Aufbau von einseitensprung.at/cl/tabelle.asp,
-  // Ergebnisse = frei erfundene Demodaten (Endstand nach 8 Spieltagen).
-  // Reihenfolge = Abschlusstabelle: Punkte, dann Tordifferenz, dann Tore.
-  // Jedes Team 8 Spiele; Crest = generisches Initialen-Badge (keine Wappen).
-  // [Name, Initialen, Farbe, S, U, N, Tore+, Tore-]
-  var STANDINGS = [
-    ["Bayern","FCB","#dc052d",7,1,0,24,6],
-    ["Arsenal","ARS","#d71920",6,2,0,18,5],
-    ["Barcelona","BAR","#a50044",6,1,1,22,10],
-    ["Real Madrid","RMA","#1b3a6b",6,1,1,19,9],
-    ["Liverpool","LIV","#c8102e",5,3,0,17,6],
-    ["PSG","PSG","#0a2240",5,2,1,19,9],
-    ["Inter","INT","#1c2b6b",5,2,1,15,6],
-    ["Napoli","NAP","#1c6dd0",5,2,1,16,9],
-    ["Man City","MCI","#6cabdd",5,1,2,17,9],
-    ["Atletico","ATM","#d71920",4,3,1,12,7],
-    ["Feyenoord","FEY","#c8102e",4,3,1,14,10],
-    ["Dortmund","BVB","#f4d117",4,2,2,18,12],
-    ["Leipzig","RBL","#d0011b",4,2,2,13,11],
-    ["Sporting","SCP","#007a3d",4,1,3,12,12],
-    ["Club Brügge","CLB","#123a8f",3,3,2,11,10],
-    ["Aston Villa","AVL","#7a1f3d",3,2,3,11,11],
-    ["Villareal","VIL","#f2c14e",3,2,3,12,13],
-    ["Galatasaray","GAL","#a90432",3,2,3,10,11],
-    ["Porto","POR","#1f4e8c",2,4,2,9,9],
-    ["Roma","ROM","#8e1b3a",2,4,2,9,9],
-    ["PSV","PSV","#d2122e",3,1,4,15,16],
-    ["Fenerbahce","FEN","#14226b",2,3,3,10,12],
-    ["Lille","LIL","#c8102e",2,3,3,8,10],
-    ["Como","COM","#003c7d",2,2,4,9,13],
-    ["Real Betis","BET","#0b6a3d",2,2,4,9,14],
-    ["Stuttgart","VFB","#e30613",2,1,5,10,15],
-    ["Bodö/Glimt","BOD","#f4c300",2,1,5,8,15],
-    ["Lens","LEN","#ffcc00",1,3,4,8,12],
-    ["Slavia Prag","SLA","#c8102e",1,3,4,6,12],
-    ["Man Utd","MUN","#da291c",1,2,5,11,17],
-    ["AEK Athen","AEK","#c9a227",1,2,5,5,13],
-    ["Shakhtar","SHK","#e2711d",1,1,6,6,16],
-    ["Slovan Bratislava","SLB","#1e88c7",1,1,6,5,19],
-    ["Sabah","SAB","#d6336c",0,3,5,4,14],
-    ["Viking","VIK","#b71c2b",0,2,6,4,17],
-    ["LASK","LSK","#1a1a1a",0,1,7,3,20]
+  // Turnierbaum – Aufbau von einseitensprung.at/cl/uebersicht.asp.
+  // Teams/Seeds aus der Ligaphase-Tabelle (tabelle.html), Ergebnisse = Demodaten.
+  // Gruppen-Buchstaben wie im Original: B–I Play-offs, J–Q Achtelfinale,
+  // R–U Viertelfinale, V–W Halbfinale, X Finale.
+  var CLUB = {
+    "AEK Athen":["AEK","#c9a227"], "Arsenal":["ARS","#d71920"], "Aston Villa":["AVL","#7a1f3d"],
+    "Atletico":["ATM","#d71920"], "Barcelona":["BAR","#a50044"], "Bayern":["FCB","#dc052d"],
+    "Bodö/Glimt":["BOD","#f4c300"], "Club Brügge":["CLB","#123a8f"], "Como":["COM","#003c7d"],
+    "Dortmund":["BVB","#f4d117"], "Fenerbahce":["FEN","#14226b"], "Feyenoord":["FEY","#c8102e"],
+    "Galatasaray":["GAL","#a90432"], "Inter":["INT","#1c2b6b"], "LASK":["LSK","#1a1a1a"],
+    "Leipzig":["RBL","#d0011b"], "Lens":["LEN","#ffcc00"], "Lille":["LIL","#c8102e"],
+    "Liverpool":["LIV","#c8102e"], "Man City":["MCI","#6cabdd"], "Man Utd":["MUN","#da291c"],
+    "Napoli":["NAP","#1c6dd0"], "Porto":["POR","#1f4e8c"], "PSG":["PSG","#0a2240"],
+    "PSV":["PSV","#d2122e"], "Real Betis":["BET","#0b6a3d"], "Real Madrid":["RMA","#1b3a6b"],
+    "Roma":["ROM","#8e1b3a"], "Sabah":["SAB","#d6336c"], "Shakhtar":["SHK","#e2711d"],
+    "Slavia Prag":["SLA","#c8102e"], "Slovan Bratislava":["SLB","#1e88c7"], "Sporting":["SCP","#007a3d"],
+    "Stuttgart":["VFB","#e30613"], "Viking":["VIK","#b71c2b"], "Villareal":["VIL","#f2c14e"]
+  };
+
+  // Platz 1–8 der Ligaphase → direkt im Achtelfinale
+  var FIX = ["Bayern","Arsenal","Barcelona","Real Madrid","Liverpool","PSG","Inter","Napoli"];
+
+  // Zweispiel-Paarung: [Gruppe, Datum, TeamA (Hinspiel daheim), TeamB, "Hin H:A", "Rück H:A", Sieger 0|1, Zusatz]
+  // Aggregat: A = Hin.heim + Rück.gast, B = Hin.gast + Rück.heim
+  var PLAYOFFS = [
+    ["B","17.02. & 25.02.","Como","Man City","0:1","3:0",1,""],
+    ["C","18.02. & 24.02.","Lille","Atletico","2:1","1:1",0,""],
+    ["D","17.02. & 25.02.","Fenerbahce","Feyenoord","1:2","2:0",1,""],
+    ["E","18.02. & 24.02.","PSV","Dortmund","3:1","2:1",0,""],
+    ["F","17.02. & 25.02.","Roma","Leipzig","0:0","2:1",1,""],
+    ["G","18.02. & 24.02.","Porto","Sporting","1:1","3:1",1,""],
+    ["H","18.02. & 24.02.","Galatasaray","Club Brügge","2:0","1:1",0,""],
+    ["I","17.02. & 25.02.","Villareal","Aston Villa","1:2","2:2",1,""]
   ];
+
+  var R16 = [
+    ["J","5.3. & 11.3.","Aston Villa","Bayern","1:2","3:0",1,""],
+    ["K","5.3. & 11.3.","Galatasaray","Arsenal","1:1","2:0",1,""],
+    ["L","4.3. & 12.3.","Sporting","Barcelona","2:1","4:1",1,""],
+    ["M","5.3. & 11.3.","Leipzig","Real Madrid","0:0","1:2",0,""],
+    ["N","4.3. & 12.3.","PSV","Liverpool","1:3","2:1",1,""],
+    ["O","5.3. & 11.3.","Feyenoord","PSG","2:2","3:1",1,""],
+    ["P","4.3. & 12.3.","Lille","Inter","1:0","3:1",1,""],
+    ["Q","4.3. & 12.3.","Man City","Napoli","2:1","1:1",0,""]
+  ];
+
+  var QF = [
+    ["R","8.4. & 16.4.","Man City","Bayern","1:1","3:1",1,""],
+    ["S","8.4. & 16.4.","Inter","Arsenal","0:1","2:2",1,""],
+    ["T","9.4. & 15.4.","Barcelona","PSG","2:2","3:1",1,""],
+    ["U","9.4. & 15.4.","Leipzig","Liverpool","1:1","2:0",1,""]
+  ];
+
+  var SF = [
+    ["V","29.4. & 8.5.","Liverpool","Bayern","1:2","1:1",1,""],
+    ["W","30.4. & 7.5.","PSG","Arsenal","2:1","1:1",0,""]
+  ];
+
+  // Finale: ein Spiel
+  var FINAL = ["X","31.05.","Bayern","PSG","2:1",0];
 
   function crestTextColor(hex){
     var c = hex.replace('#','');
     var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
-    var lum = (0.299*r + 0.587*g + 0.114*b) / 255;
-    return lum > 0.62 ? '#111' : '#fff';
+    return (0.299*r + 0.587*g + 0.114*b) / 255 > 0.62 ? '#111' : '#fff';
   }
-  function crestHtml(initials, color){
-    return '<span class="crest crest-sm" style="background:'+color+'; color:'+crestTextColor(color)+';">'+initials+'</span>';
+  function crest(name){
+    var info = CLUB[name] || ["?", "#5a6c8c"];
+    return '<span class="crest" style="background:'+info[1]+'; color:'+crestTextColor(info[1])+';">'+info[0]+'</span>';
+  }
+  function parseScore(s){ var p = s.split(':'); return [parseInt(p[0],10), parseInt(p[1],10)]; }
+
+  function tieCard(t){
+    var grp = t[0], date = t[1], a = t[2], b = t[3], leg1 = t[4], leg2 = t[5], win = t[6], extra = t[7];
+    var l1 = parseScore(leg1), l2 = parseScore(leg2);
+    var aggA = l1[0] + l2[1];
+    var aggB = l1[1] + l2[0];
+    var rowA = '<div class="tie-team ' + (win === 0 ? 'win' : 'out') + '">' + crest(a) +
+      '<span class="team-name">' + a + '</span><span class="tie-agg">' + aggA + '</span></div>';
+    var rowB = '<div class="tie-team ' + (win === 1 ? 'win' : 'out') + '">' + crest(b) +
+      '<span class="team-name">' + b + '</span><span class="tie-agg">' + aggB + '</span></div>';
+    return '<div class="tie">' +
+      '<div class="tie-head"><span class="tie-grp">Gruppe ' + grp + '</span><span class="tie-date">' + date + '</span></div>' +
+      '<div class="tie-body">' + rowA + rowB +
+        '<div class="tie-legs"><span>Hin ' + leg1 + '</span><span>R&uuml;ck ' + leg2 + '</span>' +
+        (extra ? '<span class="pen">' + extra + '</span>' : '') + '</div>' +
+      '</div></div>';
   }
 
-  function zoneFor(pos){
-    if (pos <= 8)  return 'aufsteiger';
-    if (pos <= 24) return 'playoffs';
-    return 'raus';
+  function renderTies(id, list){
+    document.getElementById(id).innerHTML = list.map(tieCard).join('');
   }
 
-  function renderTable(){
-    var tbody = document.getElementById('tableRows');
-    var html = '';
-    STANDINGS.forEach(function(t, i){
-      var pos = i + 1;
-      var name = t[0], initials = t[1], color = t[2];
-      var s = t[3], u = t[4], n = t[5], gf = t[6], ga = t[7];
-      var pts = s * 3 + u;
-      var zone = zoneFor(pos);
-      var edge = (pos === 9 || pos === 25) ? ' zone-edge' : '';
-      html += '<tr class="zone-' + zone + edge + '">' +
-        '<td class="col-num"><span class="pos">' + pos + '</span></td>' +
-        '<td class="team-col"><div class="team-cell">' + crestHtml(initials, color) +
-          '<span class="team-name">' + name + '</span></div></td>' +
-        '<td class="col-stat">' + s + '</td>' +
-        '<td class="col-stat">' + u + '</td>' +
-        '<td class="col-stat">' + n + '</td>' +
-        '<td class="col-goals">' + gf + ':' + ga + '</td>' +
-        '<td class="col-pts">' + pts + '</td>' +
-      '</tr>';
+  function renderFix(){
+    document.getElementById('fixWrap').innerHTML = FIX.map(function(n){
+      return '<span class="fix-tag">' + crest(n) + n + '</span>';
+    }).join('');
+  }
+
+  function renderFinal(){
+    var grp = FINAL[0], date = FINAL[1], a = FINAL[2], b = FINAL[3], sc = FINAL[4], win = FINAL[5];
+    var s = parseScore(sc);
+    var rowA = '<div class="tie-team ' + (win === 0 ? 'win' : 'out') + '">' + crest(a) +
+      '<span class="team-name">' + a + '</span><span class="tie-agg">' + s[0] + '</span></div>';
+    var rowB = '<div class="tie-team ' + (win === 1 ? 'win' : 'out') + '">' + crest(b) +
+      '<span class="team-name">' + b + '</span><span class="tie-agg">' + s[1] + '</span></div>';
+    document.getElementById('finGrid').innerHTML =
+      '<div class="tie"><div class="tie-head"><span class="tie-grp">Gruppe ' + grp + '</span>' +
+      '<span class="tie-date">' + date + '</span></div><div class="tie-body">' + rowA + rowB + '</div></div>';
+
+    var champ = win === 0 ? a : b;
+    document.getElementById('championCard').innerHTML =
+      crest(champ) +
+      '<div class="champ-label">FeeloChamp 2026/2027 &ndash; Sieger</div>' +
+      '<div class="champ-name">' + champ + '</div>';
+  }
+
+  renderFix();
+  renderTies('poGrid', PLAYOFFS);
+  renderTies('r16Grid', R16);
+  renderTies('qfGrid', QF);
+  renderTies('sfGrid', SF);
+  renderFinal();
+
+  // Quick Nav: sanft zur Sektion scrollen
+  document.querySelectorAll('a.qn').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    tbody.innerHTML = html;
-    document.getElementById('teamCount').textContent = STANDINGS.length;
-  }
-  renderTable();
+  });
 
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
