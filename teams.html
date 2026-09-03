@@ -318,7 +318,7 @@
         '<span class="tf-sc">&ndash; : &ndash;</span>' +
         '<span class="tf-side away' + (away === team ? ' self' : '') + '">' + crestHtml(away) + '</span>' +
         '<button type="button" class="info-btn" data-info-id="' + entry.id +
-          '" title="Alle Tipps zu diesem Spiel ansehen">i</button>' +
+          '" data-tip="Alle Tipps zu diesem Spiel" aria-label="Alle Tipps zu diesem Spiel ansehen">i</button>' +
       '</div>';
     }).join('');
     return '<article class="team-card" id="team-' + team.replace(/[^A-Za-z]/g, '') + '">' +

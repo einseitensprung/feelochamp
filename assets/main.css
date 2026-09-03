@@ -1162,8 +1162,40 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
 @keyframes crest-tip{
   from{ opacity:0; transform:translateX(-50%) translateY(-4px); }
 }
+
+/* Info-Button-Tooltip: über dem Button, rechtsbündig (ragt nach links,
+   nie über den rechten Kartenrand) */
+.info-btn[data-tip]{ position:relative; }
+.info-btn[data-tip]:hover{ z-index:60; }
+.info-btn[data-tip]:hover::after{
+  content: attr(data-tip);
+  position:absolute; bottom:calc(100% + 9px); right:-.35rem;
+  padding:.36rem .62rem;
+  background: linear-gradient(180deg, #12274f, #0a1730);
+  color: var(--white);
+  border:1px solid var(--line-cyan);
+  border-radius:.45rem;
+  font:700 .72rem/1.2 'Inter', system-ui, sans-serif;
+  letter-spacing:.01em;
+  width:max-content; max-width:12rem; text-align:right;
+  box-shadow: 0 12px 28px rgba(3,10,25,0.6);
+  z-index:60; pointer-events:none;
+  animation: info-tip .13s ease-out;
+}
+.info-btn[data-tip]:hover::before{
+  content:"";
+  position:absolute; bottom:calc(100% + 4px); right:.15rem;
+  transform:rotate(45deg);
+  width:9px; height:9px;
+  background:#0a1730;
+  border-right:1px solid var(--line-cyan);
+  border-bottom:1px solid var(--line-cyan);
+  z-index:60; pointer-events:none;
+}
+@keyframes info-tip{ from{ opacity:0; transform:translateY(4px); } }
+
 @media (prefers-reduced-motion: reduce){
-  .crest[data-tip]:hover::after{ animation:none; }
+  .crest[data-tip]:hover::after, .info-btn[data-tip]:hover::after{ animation:none; }
 }
 .tf-sc{
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.8rem; color:#5a6c8c;
