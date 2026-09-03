@@ -881,6 +881,47 @@ body.page-default #resTable, body.page-default #resTable2, body.page-default #re
 .standings-legend .trend{ font-weight:600; }
 .standings-legend .legend-note{ opacity:.8; }
 
+/* ---------- Ligaphase-Tabelle (tabelle.html) ---------- */
+.ligaphase th.col-num, .ligaphase td.col-num{ text-align:center; width:3rem; }
+.ligaphase th.col-stat, .ligaphase td.col-stat{ text-align:center; width:2.7rem; }
+.ligaphase th.col-goals, .ligaphase td.col-goals{ text-align:center; width:4rem; }
+.ligaphase th.col-pts, .ligaphase td.col-pts{ text-align:center; width:3.4rem; }
+.ligaphase td.col-stat, .ligaphase td.col-goals{
+  font-family:'JetBrains Mono', monospace; font-size:.9rem; color:#5a6c8c;
+}
+.ligaphase td.col-pts{
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:1.05rem; color:#0c1930;
+}
+.ligaphase .pos{
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.95rem; color:#0c1930;
+}
+.ligaphase td, .ligaphase th{ padding-top:.6rem; padding-bottom:.6rem; }
+
+/* Qualifikationszonen – farbiger Balken an der Positionsspalte + zarte Tönung */
+.ligaphase tbody td.col-num{ border-left:3px solid transparent; }
+.ligaphase tbody tr.zone-aufsteiger td.col-num{ border-left-color: var(--green); }
+.ligaphase tbody tr.zone-playoffs   td.col-num{ border-left-color:#e8a72e; }
+.ligaphase tbody tr.zone-raus       td.col-num{ border-left-color:#da3a49; }
+.ligaphase tbody tr.zone-aufsteiger{ background: rgba(34,197,94,0.07) !important; }
+.ligaphase tbody tr.zone-playoffs{ background: rgba(232,167,46,0.07) !important; }
+.ligaphase tbody tr.zone-raus{ background: rgba(218,58,73,0.06) !important; }
+.ligaphase tbody tr:hover{ background: rgba(59,130,246,0.1) !important; }
+.ligaphase tbody tr.zone-edge td{ border-top:2px solid rgba(12,25,48,0.18); }
+
+.zone-key{ display:inline-flex; align-items:center; gap:.4rem; font-weight:600; }
+.zone-dot{ width:.75rem; height:.75rem; border-radius:.2rem; flex:none; display:inline-block; }
+.zone-dot.aufsteiger{ background: var(--green); }
+.zone-dot.playoffs{ background:#e8a72e; }
+.zone-dot.raus{ background:#da3a49; }
+
+@media (max-width: 575.98px){
+  .ligaphase thead{ display:table-header-group; }
+  .ligaphase tbody tr{ display:table-row; }
+  .ligaphase td{ display:table-cell; }
+  .ligaphase td, .ligaphase th{ padding-left:.5rem; padding-right:.5rem; }
+  .ligaphase .team-name{ font-size:.85rem; }
+}
+
 /* ---------- Preloader-Seite (preloader.html) ---------- */
 body.page-preloader{ background: var(--ink); }
 .preloader{
