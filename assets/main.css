@@ -973,12 +973,28 @@ body.page-default #resTable, body.page-default #resTable2, body.page-default #re
 .zone-dot.playoffs{ background:#e8a72e; }
 .zone-dot.raus{ background:#da3a49; }
 
-@media (max-width: 575.98px){
-  .ligaphase thead{ display:table-header-group; }
-  .ligaphase tbody tr{ display:table-row; }
-  .ligaphase td{ display:table-cell; }
-  .ligaphase td, .ligaphase th{ padding-left:.5rem; padding-right:.5rem; }
-  .ligaphase .team-name{ font-size:.85rem; }
+/* Datentabellen (Ligaphase-Tabelle, Spielstand): auf Mobile echte Tabelle
+   behalten – Zellen NICHT umbrechen, dafür kleinere Schrift + Querscrollen
+   im .table-responsive-Wrapper. (Überschreibt den Stack der Spiele-Tabelle.) */
+@media (max-width: 767.98px){
+  .table-feelo.ligaphase,
+  .table-feelo.standings{ font-size: .8rem; }
+  .table-feelo.ligaphase thead,
+  .table-feelo.standings thead{ display: table-header-group; }
+  .table-feelo.ligaphase tbody tr,
+  .table-feelo.standings tbody tr{ display: table-row; padding: 0; }
+  .table-feelo.ligaphase td, .table-feelo.ligaphase th,
+  .table-feelo.standings td, .table-feelo.standings th{
+    display: table-cell;
+    white-space: nowrap;
+    padding: .5rem .5rem;
+    font-size: .76rem;
+  }
+  .table-feelo.ligaphase .team-name,
+  .table-feelo.standings .player-name{ font-size: .78rem; }
+  .table-feelo.ligaphase td.col-pts{ font-size: .85rem; }
+  .table-feelo.standings .pts-main{ font-size: .9rem; }
+  .table-feelo.standings .pts-sub{ font-size: .68rem; }
 }
 
 /* ---------- Turnierbaum / Playoffs (playoff.html) ---------- */
