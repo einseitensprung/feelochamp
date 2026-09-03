@@ -279,10 +279,11 @@
     var r = parseInt(c.substring(0,2),16), g = parseInt(c.substring(2,4),16), b = parseInt(c.substring(4,6),16);
     return (0.299*r + 0.587*g + 0.114*b) / 255 > 0.62 ? '#111' : '#fff';
   }
-  function crestHtml(name, extra){
+  function crestHtml(name, extra, noTip){
     var info = CLUB[name] || ["?","#5a6c8c",""];
-    return '<span class="crest' + (extra ? ' ' + extra : '') + '" title="' + name +
-      '" style="background:' + info[1] + '; color:' + crestTextColor(info[1]) + ';">' + info[0] + '</span>';
+    var tip = noTip ? '' : ' data-tip="' + name + (info[2] ? ' · ' + info[2] : '') + '"';
+    return '<span class="crest' + (extra ? ' ' + extra : '') + '"' + tip +
+      ' style="background:' + info[1] + '; color:' + crestTextColor(info[1]) + ';">' + info[0] + '</span>';
   }
 
   var TEAMS = Object.keys(CLUB);
@@ -304,7 +305,7 @@
       '</div>';
     }).join('');
     return '<article class="team-card" id="team-' + team.replace(/[^A-Za-z]/g, '') + '">' +
-      '<div class="team-card-head">' + crestHtml(team) +
+      '<div class="team-card-head">' + crestHtml(team, '', true) +
         '<h3>' + team + '</h3>' +
         '<div class="country">' + info[2] + '</div>' +
       '</div>' +

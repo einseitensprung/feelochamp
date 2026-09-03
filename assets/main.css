@@ -1090,17 +1090,21 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
 }
 .team-card{
-  border-radius:.9rem; overflow:hidden;
+  border-radius:.9rem;
   box-shadow: var(--shadow), 0 0 0 1px rgba(34,211,238,0.16);
   scroll-margin-top: calc(var(--nav-h) + 1rem);
 }
+/* kein overflow:hidden – Crest-Tooltips dürfen aus der Karte ragen;
+   Rundung stattdessen an Kopf + letzter Zeile */
 .team-card-head{
   text-align:center; padding:1.2rem 1rem 1rem; color: var(--white);
+  border-radius:.9rem .9rem 0 0;
   background:
     radial-gradient(ellipse 400px 200px at 50% -30%, rgba(34,211,238,0.22), transparent 70%),
     linear-gradient(180deg, #0c1a3a, #0a1730);
   border-bottom:1px solid var(--line-cyan);
 }
+.team-fixtures .tf-row:last-child{ border-radius:0 0 .9rem .9rem; }
 .team-card-head .crest{ width:3rem; height:3rem; margin:0 auto .55rem; font-size:.8rem; }
 .team-card-head h3{
   font-family:'Bebas Neue', sans-serif; letter-spacing:.04em; font-size:1.35rem; margin:0;
@@ -1125,6 +1129,41 @@ body.page-default .ko-section .content-card{ margin-top: 0; }
 .tf-side.away{ flex-direction:row-reverse; }
 .tf-side .crest{ width:1.6rem; height:1.6rem; font-size:.5rem; }
 .tf-side.self .crest{ box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.5), 0 0 0 2px var(--cyan); }
+
+/* Crest-Tooltip (rein CSS, erscheint unter dem Badge) */
+.crest[data-tip]{ position:relative; cursor:default; }
+.crest[data-tip]:hover{ z-index:60; }
+.crest[data-tip]:hover::after{
+  content: attr(data-tip);
+  position:absolute; top:calc(100% + 9px); left:50%;
+  transform:translateX(-50%);
+  padding:.34rem .62rem;
+  background: linear-gradient(180deg, #12274f, #0a1730);
+  color: var(--white);
+  border:1px solid var(--line-cyan);
+  border-radius:.45rem;
+  font:700 .72rem/1 'Inter', system-ui, sans-serif;
+  letter-spacing:.01em; white-space:nowrap;
+  box-shadow: 0 12px 28px rgba(3,10,25,0.6);
+  z-index:60; pointer-events:none;
+  animation: crest-tip .13s ease-out;
+}
+.crest[data-tip]:hover::before{
+  content:"";
+  position:absolute; top:calc(100% + 4px); left:50%;
+  transform:translateX(-50%) rotate(45deg);
+  width:9px; height:9px;
+  background:#12274f;
+  border-left:1px solid var(--line-cyan);
+  border-top:1px solid var(--line-cyan);
+  z-index:60; pointer-events:none;
+}
+@keyframes crest-tip{
+  from{ opacity:0; transform:translateX(-50%) translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce){
+  .crest[data-tip]:hover::after{ animation:none; }
+}
 .tf-sc{
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.8rem; color:#5a6c8c;
   white-space:nowrap;
