@@ -448,13 +448,15 @@
     document.getElementById('calNext').disabled = atMax();
   }
 
-  document.querySelectorAll('.cal-view-btn').forEach(function(b){
-    b.addEventListener('click', function(){
-      document.querySelectorAll('.cal-view-btn').forEach(function(x){ x.classList.remove('is-active'); });
-      b.classList.add('is-active');
-      state.view = b.dataset.view;
-      render();
+  function setView(v){
+    state.view = v;
+    document.querySelectorAll('.cal-view-btn').forEach(function(x){
+      x.classList.toggle('is-active', x.dataset.view === v);
     });
+    render();
+  }
+  document.querySelectorAll('.cal-view-btn').forEach(function(b){
+    b.addEventListener('click', function(){ setView(b.dataset.view); });
   });
   document.getElementById('calPrev').addEventListener('click', function(){ step(-1); });
   document.getElementById('calNext').addEventListener('click', function(){ step(1); });
@@ -509,8 +511,22 @@
     openDay(more.dataset.date);
   });
 
-  // Auf Mobile startet der Kalender in der Listenansicht
-  if (window.matchMedia && window.matchMedia('(max-width: 767.98px)').matches){
+  // Mobile: Liste als Default – beim Laden UND beim Umschalten der Fensterbreite
+  // (< 768px). Eine manuell gewählte "Woche" bleibt erhalten.
+  var calMql = window.matchMedia ? window.matchMedia('(max-width: 767.98px)') : { matches: false };
+  function calResponsiveView(isMobile){
+    if (isMobile && state.view === 'month') setView('list');
+    else if (!isMobile && state.view === 'list') setView('month');
+  }
+  if (calMql.addEventListener) calMql.addEventListener('change', function(e){ calResponsiveView(e.matches); });
+  else if (calMql.addListener) calMql.addListener(function(e){ calResponsiveView(e.matches); });
+  var calResizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(calResizeTimer);
+    calResizeTimer = setTimeout(function(){ calResponsiveView(calMql.matches); }, 150);
+  });
+
+  if (calMql.matches){
     state.view = 'list';
     document.querySelectorAll('.cal-view-btn').forEach(function(x){
       x.classList.toggle('is-active', x.dataset.view === 'list');
