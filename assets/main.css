@@ -1611,11 +1611,16 @@ body.page-preloader{ background: var(--ink); }
 
 .toast-feelo{ background: var(--ink-2); border:1px solid var(--line-cyan); color: var(--white); }
 
-/* ---------- Responsive: Tabellen allgemein (Spielstand, ...) ---------- */
+/* ---------- Responsive: Tabellen allgemein (Spielstand, ...) ----------
+   .alltips (alletips.html) bewusst ausgenommen: DataTables Responsive
+   verwaltet dort Spaltenausblendung selbst per JS und braucht dafür
+   eine echte table/tr/td-Layoutberechnung - das generische Stapeln auf
+   display:block bricht diese Messung (Header werden ausgeblendet, Body-
+   Zellen aber nicht mehr synchron -> großer horizontaler Overflow). */
 @media (max-width: 575.98px){
-  .table-feelo thead{ display:none; }
-  .table-feelo td{ display:block; padding:.4rem 1rem; }
-  .table-feelo tbody tr{ display:block; padding:.9rem 0; border-bottom:1px solid rgba(12,25,48,0.1); }
+  .table-feelo:not(.alltips) thead{ display:none; }
+  .table-feelo:not(.alltips) td{ display:block; padding:.4rem 1rem; }
+  .table-feelo:not(.alltips) tbody tr{ display:block; padding:.9rem 0; border-bottom:1px solid rgba(12,25,48,0.1); }
   .team-cell.reverse{ flex-direction:row; text-align:left; }
   .col-res{ text-align:left !important; }
 }
