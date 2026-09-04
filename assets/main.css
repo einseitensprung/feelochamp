@@ -263,6 +263,13 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
   color: var(--slate);
 }
 
+@media (max-width: 575.98px){
+  .scoreboard{ gap:.4rem; }
+  .scoreboard .cell{ min-width:3.3rem; padding:.5rem .25rem .4rem; }
+  .scoreboard .cell .val{ font-size:1.15rem; }
+  .scoreboard .cell .lbl{ font-size:.52rem; letter-spacing:.1em; }
+}
+
 /* ---------- Login card (Startseite, hell wie die Content-Card) ---------- */
 .login-card{
   background: linear-gradient(180deg, #fbfdff, #eef3fb);
