@@ -1620,6 +1620,27 @@ body.page-preloader{ background: var(--ink); }
   .col-res{ text-align:left !important; }
 }
 
+/* ---------- Responsive: Spielstand-Tabelle (Gesamtwertung) ----------
+   table.standings (Typ+Klasse) schlägt die generische .table-feelo-Regel
+   oben per Spezifität, unabhängig von der Reihenfolge im Stylesheet -
+   analog zu table.spielplan/table.alltips. Inhalt ist schon kompakt
+   genug für eine normale (nicht gestapelte) Tabellenzeile, nur Header-
+   Breiten und Schrift/Icon-Größen werden für schmale Screens gestutzt. */
+@media (max-width: 575.98px){
+  table.standings thead{ display:table-header-group; }
+  table.standings tbody tr{ display:table-row; }
+  table.standings td{ display:table-cell; padding:.55rem .4rem; }
+  table.standings th:nth-child(1){ width:1.8rem !important; }
+  table.standings th:nth-child(2){ width:3rem !important; }
+  table.standings th.col-pts{ width:6rem !important; }
+  table.standings .mood{ width:1.15rem; height:1.15rem; }
+  table.standings .player{ gap:.4rem; }
+  table.standings .player-name{ font-size:.82rem; }
+  table.standings .rank{ font-size:.85rem; min-width:1.4rem; padding:.1rem .3rem; }
+  table.standings .pts-main{ font-size:.95rem; }
+  table.standings .pts-sub{ font-size:.68rem; margin-left:.1rem; }
+}
+
 /* ---------- Responsive: Alle-Tipps-Tabellen (alletips.html) ----------
    table.alltips (Typ+Klasse) schlägt die generische .table-feelo-Regel
    oben per Spezifität, unabhängig von der Reihenfolge im Stylesheet -
