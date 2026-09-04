@@ -99,9 +99,9 @@
       <div class="dropdown md-select">
         <button class="btn dropdown-toggle" type="button" id="quickNav" data-bs-toggle="dropdown" aria-expanded="false">Quick Nav</button>
         <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end" aria-labelledby="quickNav">
-          <li><a class="dropdown-item qn" href="#resTable">Spiele</a></li>
-          <li><a class="dropdown-item qn" href="#resTable2">8 Fix Aufsteiger</a></li>
-          <li><a class="dropdown-item qn" href="#resTable3">Champions</a></li>
+          <li><a class="dropdown-item qn" href="#resTableCard">Spiele</a></li>
+          <li><a class="dropdown-item qn" href="#resTable2Card">8 Fix Aufsteiger</a></li>
+          <li><a class="dropdown-item qn" href="#resTable3Card">Champions</a></li>
         </ul>
       </div>
     </div>
@@ -113,7 +113,7 @@
   <div class="container">
 
     <!-- ---- Die einzelnen Spiele ---- -->
-    <div class="content-card">
+    <div class="content-card" id="resTableCard">
       <div class="content-card-toolbar">
         <span class="toolbar-title">Die einzelnen Spiele</span>
         <div class="search-feelo">
@@ -193,7 +193,7 @@
     </div>
 
     <!-- ---- Die 8 Fix Aufsteiger ---- -->
-    <div class="content-card mt-4">
+    <div class="content-card mt-4" id="resTable2Card">
       <div class="content-card-toolbar">
         <span class="toolbar-title">Die 8 Fix Aufsteiger</span>
       </div>
@@ -230,7 +230,7 @@
     </div>
 
     <!-- ---- Die Champions ---- -->
-    <div class="content-card mt-4">
+    <div class="content-card mt-4" id="resTable3Card">
       <div class="content-card-toolbar">
         <span class="toolbar-title">Die Champions</span>
       </div>
@@ -388,8 +388,10 @@
       columnDefs: [{ type: 'de_datetime', targets: -1 }]
     });
 
-    // Quick Nav: sanft zur jeweiligen Tabelle scrollen (natives scrollIntoView,
-    // damit es mit scroll-behavior:smooth zusammenspielt; Offset via scroll-margin-top)
+    // Quick Nav: sanft zur jeweiligen Card scrollen (natives scrollIntoView,
+    // damit es mit scroll-behavior:smooth zusammenspielt; Offset via scroll-margin-top).
+    // Ziel ist die .content-card (nicht die Tabelle selbst), damit der Card-Header
+    // (Titel + Matchday-Filter) beim Scrollen nicht unter der Navbar verschwindet.
     $('.qn').on('click', function(e){
       e.preventDefault();
       var el = document.querySelector($(this).attr('href'));

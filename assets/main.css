@@ -901,7 +901,7 @@ body.page-default .crest{ width:2rem; height:2rem; font-size:.56rem; }
   opacity:.4; cursor:default; background:none; color:#5a6c8c !important;
 }
 .content-card table.dataTable{ border-collapse:separate !important; margin:0 !important; }
-body.page-default #resTable, body.page-default #resTable2, body.page-default #resTable3{
+body.page-default #resTableCard, body.page-default #resTable2Card, body.page-default #resTable3Card{
   scroll-margin-top: calc(var(--nav-h) + 0.75rem);
 }
 .content-card table.dataTable thead th{ cursor:pointer; }
