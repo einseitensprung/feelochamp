@@ -89,9 +89,22 @@
     </g>
   </svg>
   <div class="container page-header-content">
-    <div class="hero-panel">
-      <span class="eyebrow d-block mb-1">Statistik &middot; FeeloChamp</span>
-      <h1>Die <span class="accent">Statistik</span></h1>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="hero-panel">
+        <span class="eyebrow d-block mb-1">Statistik &middot; FeeloChamp</span>
+        <h1>Die <span class="accent">Statistik</span></h1>
+      </div>
+      <div class="dropdown md-select">
+        <button class="btn dropdown-toggle" type="button" id="quickNav" data-bs-toggle="dropdown" aria-expanded="false">Quick Nav</button>
+        <ul class="dropdown-menu dropdown-menu-feelo dropdown-menu-end" aria-labelledby="quickNav">
+          <li><a class="dropdown-item qn" href="#statPunkte">Punkte Gesamt</a></li>
+          <li><a class="dropdown-item qn" href="#statSchnitt">Punkte &#8960; pro Spiel</a></li>
+          <li><a class="dropdown-item qn" href="#statTore">Geschossene Tore</a></li>
+          <li><a class="dropdown-item qn" href="#statGegentore">Bekommene Tore</a></li>
+          <li><a class="dropdown-item qn" href="#statTipps">Richtige Tipps</a></li>
+          <li><a class="dropdown-item qn" href="#statVerteilung">Verteilung der Tipps</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </header>
@@ -104,32 +117,32 @@
       passend zur <a href="{{TABELLE_URL}}">Ligaphase-Tabelle</a>.
     </p>
 
-    <section class="stat-card">
+    <section class="stat-card" id="statPunkte">
       <h2 class="stat-card-title">Anzahl an Punkten Gesamt</h2>
       <div id="chartPunkte"></div>
     </section>
 
-    <section class="stat-card">
+    <section class="stat-card" id="statSchnitt">
       <h2 class="stat-card-title">Anzahl an Punkten &#8960; pro Spiel</h2>
       <div id="chartSchnitt"></div>
     </section>
 
-    <section class="stat-card">
+    <section class="stat-card" id="statTore">
       <h2 class="stat-card-title">Anzahl an geschossenen Toren</h2>
       <div id="chartTore"></div>
     </section>
 
-    <section class="stat-card">
+    <section class="stat-card" id="statGegentore">
       <h2 class="stat-card-title">Anzahl an bekommenen Toren</h2>
       <div id="chartGegentore"></div>
     </section>
 
-    <section class="stat-card">
+    <section class="stat-card" id="statTipps">
       <h2 class="stat-card-title">Anzahl an richtigen Tipps</h2>
       <div id="chartTipps"></div>
     </section>
 
-    <section class="stat-card">
+    <section class="stat-card" id="statVerteilung">
       <h2 class="stat-card-title">Verteilung der Tipps</h2>
       <div class="stat-donut-grid">
         <div>
@@ -319,6 +332,15 @@
     { l: 'Richtig', v: 723,  c: 'var(--green)' },
     { l: 'Falsch',  v: 1021, c: '#da3a49' }
   ]);
+
+  // Quick Nav: sanft zur Sektion scrollen
+  document.querySelectorAll('a.qn').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 
   function showToast(text){
     var toastEl = document.getElementById('demoToast');

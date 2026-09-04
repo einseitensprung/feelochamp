@@ -1502,6 +1502,7 @@ body.page-preloader{ background: var(--ink); }
   padding:1.2rem 1.3rem 1.4rem;
   margin-bottom:1.6rem;
   box-shadow: var(--shadow);
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
 }
 .stat-card-title{
   font-family:'Bebas Neue', sans-serif; letter-spacing:.03em; font-size:1.5rem;
