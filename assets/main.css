@@ -1580,6 +1580,30 @@ body.page-preloader{ background: var(--ink); }
   .verlauf-svg{ min-width:56rem; }
 }
 
+.points-table-wrap{ overflow-x:auto; border-radius:.6rem; }
+.points-table{
+  width:100%; min-width:62rem; border-collapse:collapse; font-size:.8rem;
+}
+.points-table th, .points-table td{
+  padding:.6rem .75rem; text-align:right; white-space:nowrap;
+  border-bottom:1px solid rgba(243,247,255,0.08);
+}
+.points-table th{
+  font-family:'JetBrains Mono', monospace; font-size:.66rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.05em; color: var(--slate);
+}
+.points-table td{ font-family:'JetBrains Mono', monospace; color: var(--white); }
+.points-table th:first-child, .points-table td:first-child{
+  text-align:left; position:sticky; left:0; background: var(--panel-strong);
+}
+.points-table td:first-child{ font-weight:700; }
+.points-table td.total{ font-weight:800; color: var(--cyan-soft); }
+.points-table th.total{ color: var(--cyan-soft); }
+.points-table tbody tr:nth-child(even) td{ background: rgba(243,247,255,0.025); }
+.points-table tbody tr:nth-child(even) td:first-child{ background: color-mix(in srgb, var(--panel-strong) 96%, rgba(243,247,255,0.025)); }
+.points-table tbody tr:hover td{ background: rgba(34,211,238,0.08); }
+.points-table tbody tr:hover td:first-child{ background: rgba(34,211,238,0.14); }
+
 /* ---------- Footer ---------- */
 .footer-feelo{ background: var(--ink); padding: 1.8rem 0; font-size:.85rem; }
 .footer-feelo a{ color: var(--slate); }

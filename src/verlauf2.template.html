@@ -2,7 +2,7 @@
 <html lang="de">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Feelochamp – Spielstand</title>
+<title>Feelochamp – Verlauf nach Punkten</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="{{ALLETIPS_URL}}">Alle Tipps</a></li>
-        <li class="nav-item"><a class="nav-link active-mark" href="#" aria-current="page">Spielstand</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{SPIELSTAND_URL}}">Spielstand</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
@@ -50,10 +50,10 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
+          <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
             <li><a class="dropdown-item" href="{{STATISTIK_URL}}">Statistik</a></li>
-            <li><a class="dropdown-item" href="{{VERLAUF2_URL}}">Verlauf nach Punkten</a></li>
+            <li><a class="dropdown-item" href="{{VERLAUF2_URL}}" aria-current="page">Verlauf nach Punkten</a></li>
             <li><a class="dropdown-item" href="{{VERLAUF_URL}}">Verlauf nach Positionen</a></li>
             <li><a class="dropdown-item demo-link" href="#">Quoten der Spiele</a></li>
           </ul>
@@ -90,8 +90,8 @@
   </svg>
   <div class="container page-header-content">
     <div class="hero-panel">
-      <span class="eyebrow d-block mb-1">Ergebnisse &middot; FeeloChamp</span>
-      <h1>Der <span class="accent">Spielstand</span></h1>
+      <span class="eyebrow d-block mb-1">Statistik &middot; FeeloChamp</span>
+      <h1>Verlauf nach <span class="accent">Punkten</span></h1>
     </div>
   </div>
 </header>
@@ -99,38 +99,53 @@
 <!-- ================= CONTENT ================= -->
 <main>
   <div class="container">
-    <div class="content-card">
-      <div class="content-card-toolbar">
-        <span class="toolbar-title">Gesamtwertung</span>
-        <span style="color:#5a6c8c; font-size:.82rem; font-weight:600;">Stand: 19.07.2026, 23:00 Uhr</span>
-      </div>
+    <p class="stat-intro">
+      Wie viele Punkte jede:r Teilnehmer:in in jeder Runde eingefahren hat &ndash; Demodaten,
+      die Spalte <b>Gesamt</b> entspricht dem <a href="{{SPIELSTAND_URL}}">Spielstand</a>.
+    </p>
 
-      <div class="table-responsive">
-        <table class="table-feelo standings">
+    <section class="stat-card">
+      <h2 class="stat-card-title">Punkte je Runde</h2>
+      <div class="points-table-wrap">
+        <table class="points-table" id="pointsTable">
           <thead>
             <tr>
-              <th style="width:3rem;"><span class="visually-hidden">Tendenz</span></th>
-              <th style="width:4.5rem;">Platz</th>
               <th>Name</th>
-              <th class="col-pts" style="width:8.5rem;">Punkte</th>
+              <th>MD1-3</th>
+              <th>MD4-6</th>
+              <th>MD7-8</th>
+              <th>PO</th>
+              <th>AUF</th>
+              <th>1/8</th>
+              <th>AUF</th>
+              <th>1/4</th>
+              <th>AUF</th>
+              <th>1/2</th>
+              <th>AUF</th>
+              <th>F</th>
+              <th>CHAMP</th>
+              <th class="total">Gesamt</th>
             </tr>
           </thead>
-          <tbody id="standingsRows"><!-- rows injected by JS from STANDINGS --></tbody>
+          <tbody id="pointsTableRows"><!-- injected by JS from PLAYERS --></tbody>
         </table>
       </div>
+    </section>
 
-      <div class="table-footbar">
-        <span class="row-count"><span id="playerCount">15</span> Teilnehmer</span>
-        <button type="button" class="btn-ghost-cyan demo-link">Spielstand inkl. Aufsteigerpunkte</button>
-      </div>
+    <div class="bracket-note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/>
+      </svg>
+      <div>Klick auf einen Namen unter dem Chart, blendet die jeweilige Linie ein/aus.</div>
     </div>
 
-    <p class="standings-legend">
-      <span class="trend up"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M6 11l6-6 6 6"/></svg> nach oben</span>
-      <span class="trend down"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M6 13l6 6 6-6"/></svg> nach unten</span>
-      <span class="trend even"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M4 12h16"/></svg> unver&auml;ndert</span>
-      <span class="legend-note">Zahl in Klammern = noch exklusive Aufsteigerpunkte</span>
-    </p>
+    <section class="stat-card">
+      <h2 class="stat-card-title">Verlauf der Punkte</h2>
+      <div class="verlauf-chart-wrap">
+        <div id="punkteChart"></div>
+      </div>
+      <div class="verlauf-legend" id="punkteChartLegend"></div>
+    </section>
   </div>
 </main>
 
@@ -165,7 +180,7 @@
           <h3>Ergebnisse</h3>
           <ul>
             <li><a href="{{ALLETIPS_URL}}">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="spielstand.html" aria-current="page">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{SPIELSTAND_URL}}">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
       </div>
@@ -195,7 +210,7 @@
           <h3>Statistik</h3>
           <ul>
             <li><a href="{{STATISTIK_URL}}">Statistik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="{{VERLAUF2_URL}}">Verlauf nach Punkten <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{VERLAUF2_URL}}" aria-current="page">Verlauf nach Punkten <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a href="{{VERLAUF_URL}}">Verlauf nach Positionen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Quoten der Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
@@ -226,60 +241,103 @@
 <script src="assets/datenschutz.js"></script>
 
 <script>
-  // Gesamtwertung – Demodaten in Anlehnung an einseitensprung.at/wm/spielstand.asp
-  // [Tendenz ('up'|'down'|'even'), Platz, Name, Punkte, exklusive Aufsteigerpunkte]
-  var STANDINGS = [
-    ["even","1","BONO",164,10],
-    ["up","2","BABSI",155,10],
-    ["up","-","MO",155,10],
-    ["down","4","ROMARIO11",153,0],
-    ["down","-","WALCHI",153,2],
-    ["up","6","RIOT",152,10],
-    ["down","7","HONS",151,2],
-    ["down","-","STE",151,0],
-    ["up","9","JAKOB",145,10],
-    ["down","10","HERWIG",144,0],
-    ["down","11","HILLARY",142,0],
-    ["down","12","GUNZ",138,2],
-    ["even","13","VUX",132,0],
-    ["even","14","BULLY",130,0],
-    ["even","15","SONNEHAMMER",127,2]
+  // Verlauf nach Punkten – Inhalt von einseitensprung.at/wm/verlauf2.asp.
+  // Tabelle + Chart.js-Chart im Original zeigen die PRO RUNDE erzielten Punkte
+  // (nicht kumuliert). Hier: Tabelle als reines HTML/CSS, Chart als Inline-SVG
+  // im Feelochamp-Design (kein Library nötig). Demodaten, Gesamt-Spalte
+  // passend zur Spielstand-Tabelle (spielstand.html). Gleiche Teilnehmer +
+  // Farben wie auf der Verlauf-nach-Positionen-Seite (verlauf.html).
+  var NAMES = ['BONO','BABSI','MO','ROMARIO11','WALCHI','RIOT','HONS','STE','JAKOB','HERWIG','HILLARY','GUNZ','VUX','BULLY','SONNEHAMMER'];
+  var STAGE_LABELS = ['MD1-3','MD4-6','MD7-8','PO','AUF','1/8','AUF','1/4','AUF','1/2','AUF','F','CHAMP'];
+  var CHART_LABELS = ['START'].concat(STAGE_LABELS);
+  var ROUND_DATA = [
+    [44,40,4,11,26,4,10,4,8,0,2,1,10],
+    [47,40,4,7,18,6,12,2,6,1,2,0,10],
+    [45,36,3,8,22,5,10,3,6,2,4,1,10],
+    [45,40,4,11,26,5,12,2,8,0,0,0,0],
+    [52,38,3,8,22,4,12,2,8,0,2,0,2],
+    [42,38,3,9,20,6,12,2,6,1,2,1,10],
+    [41,40,0,9,30,5,12,4,8,0,0,0,2],
+    [47,34,2,12,28,4,10,2,8,1,2,1,0],
+    [43,36,3,7,20,6,12,2,6,0,0,0,10],
+    [45,38,3,6,22,5,14,3,8,0,0,0,0],
+    [42,38,3,9,22,5,10,2,6,1,2,2,0],
+    [42,34,2,7,18,7,16,2,8,0,0,0,2],
+    [38,32,3,8,26,5,10,2,8,0,0,0,0],
+    [43,36,4,6,18,6,8,2,6,0,0,1,0],
+    [31,36,1,8,22,5,14,2,6,0,0,0,2]
   ];
+  var PLAYERS = NAMES.map(function(name, i){
+    var rounds = ROUND_DATA[i];
+    var total = rounds.reduce(function(a, v){ return a + v; }, 0);
+    return { name: name, color: 'hsl(' + (i * 24) + ',72%,62%)', rounds: rounds, total: total };
+  });
 
-  function trendIcon(t){
-    if (t === 'up')   return '<span class="trend up" title="nach oben"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span>';
-    if (t === 'down') return '<span class="trend down" title="nach unten"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>';
-    return '<span class="trend even" title="unverändert"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M4 12h16"/></svg></span>';
-  }
+  // ---- Tabelle ----
+  (function(){
+    var html = PLAYERS.map(function(p){
+      var cells = p.rounds.map(function(v){ return '<td>' + v + '</td>'; }).join('');
+      return '<tr><td style="color:' + p.color + '">' + p.name + '</td>' + cells +
+        '<td class="total">' + p.total + '</td></tr>';
+    }).join('');
+    document.getElementById('pointsTableRows').innerHTML = html;
+  })();
 
-  function moodIcon(i){
-    var mouth;
-    if (i === 0)      mouth = '<path d="M8 13.5c1.4 2.4 6.6 2.4 8 0" fill="currentColor" stroke="none"/>';
-    else if (i <= 2)  mouth = '<path d="M8.5 14c1 1.5 6 1.5 7 0"/>';
-    else              mouth = '<path d="M9 15h6"/>';
-    return '<svg class="mood" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">' +
-      '<circle cx="12" cy="12" r="9"/>' +
-      '<circle cx="9" cy="10" r="1.1" fill="currentColor" stroke="none"/>' +
-      '<circle cx="15" cy="10" r="1.1" fill="currentColor" stroke="none"/>' + mouth + '</svg>';
-  }
+  // ---- Chart ----
+  function punkteChart(id, labels, players){
+    var VBW = 1000, VBH = 460;
+    var x0 = 34, x1 = VBW - 12, y0 = 16, y1 = VBH - 46;
+    var minV = 0, maxV = 55, step = 10;
+    function xAt(i){ return x0 + (i / (labels.length - 1)) * (x1 - x0); }
+    function yAt(v){ return y1 - ((v - minV) / (maxV - minV)) * (y1 - y0); }
 
-  function renderStandings(){
-    var tbody = document.getElementById('standingsRows');
-    var html = '';
-    STANDINGS.forEach(function(r, i){
-      var trend = r[0], platz = r[1], name = r[2], pts = r[3], bonus = r[4];
-      var tied = platz === '-';
-      html += '<tr' + (i === 0 ? ' class="is-leader"' : '') + '>' +
-        '<td>' + trendIcon(trend) + '</td>' +
-        '<td><span class="rank' + (tied ? ' is-tied' : '') + '">' + platz + '</span></td>' +
-        '<td><div class="player">' + moodIcon(i) + '<span class="player-name">' + name + '</span></div></td>' +
-        '<td class="pts"><span class="pts-main">' + pts + '</span><span class="pts-sub">(' + bonus + ')</span></td>' +
-      '</tr>';
+    var svg = '<svg viewBox="0 0 ' + VBW + ' ' + VBH + '" class="verlauf-svg" role="img" aria-label="Verlauf der Punkte je Runde">';
+
+    for (var v = minV; v <= maxV; v += step){
+      var gy = yAt(v);
+      svg += '<line class="verlauf-grid-line" x1="' + x0 + '" y1="' + gy + '" x2="' + x1 + '" y2="' + gy + '"/>';
+      svg += '<text class="verlauf-axis-label" x="' + (x0 - 8) + '" y="' + (gy + 3) + '" text-anchor="end">' + v + '</text>';
+    }
+
+    labels.forEach(function(lb, i){
+      var gx = xAt(i);
+      svg += '<line class="verlauf-grid-line" x1="' + gx + '" y1="' + y0 + '" x2="' + gx + '" y2="' + y1 + '"/>';
+      svg += '<text class="verlauf-axis-label" x="' + gx + '" y="' + (y1 + 18) + '" text-anchor="middle">' + lb + '</text>';
     });
-    tbody.innerHTML = html;
-    document.getElementById('playerCount').textContent = STANDINGS.length;
+
+    players.forEach(function(p){
+      var vals = [0].concat(p.rounds);
+      var pts = vals.map(function(v, i){ return xAt(i).toFixed(1) + ',' + yAt(v).toFixed(1); }).join(' ');
+      svg += '<polyline class="verlauf-line" data-name="' + p.name + '" points="' + pts + '" stroke="' + p.color + '"/>';
+      vals.forEach(function(v, i){
+        svg += '<circle class="verlauf-point" data-name="' + p.name + '" cx="' + xAt(i).toFixed(1) + '" cy="' + yAt(v).toFixed(1) +
+          '" r="3" fill="' + p.color + '"><title>' + p.name + ' &middot; ' + labels[i] + ': ' + v + '</title></circle>';
+      });
+    });
+
+    svg += '</svg>';
+    document.getElementById(id).innerHTML = svg;
+
+    var sorted = players.slice().sort(function(a, b){ return b.total - a.total; });
+    var legendHtml = sorted.map(function(p){
+      return '<button type="button" class="verlauf-chip" data-name="' + p.name + '">' +
+        '<span class="verlauf-chip-dot" style="background:' + p.color + '"></span>' +
+        p.name + ' <span class="verlauf-chip-pos">' + p.total + '</span></button>';
+    }).join('');
+    document.getElementById(id + 'Legend').innerHTML = legendHtml;
+
+    document.querySelectorAll('#' + id + 'Legend .verlauf-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var name = chip.getAttribute('data-name');
+        var isOff = chip.classList.toggle('is-off');
+        document.querySelectorAll('[data-name="' + name + '"]').forEach(function(el){
+          el.classList.toggle('is-hidden', isOff);
+        });
+      });
+    });
   }
-  renderStandings();
+
+  punkteChart('punkteChart', CHART_LABELS, PLAYERS);
 
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
@@ -293,7 +351,6 @@
     });
   });
 
-  // Scroll-reveal für die "Rund um den Tippbewerb"-Karten
   (function(){
     var cards = document.querySelectorAll('.card-feelo');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
