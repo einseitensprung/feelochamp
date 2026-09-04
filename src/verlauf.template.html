@@ -2,7 +2,7 @@
 <html lang="de">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Feelochamp – Statistik</title>
+<title>Feelochamp – Verlauf nach Positionen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 <!-- ================= NAVBAR (logged in) ================= -->
 <nav class="navbar navbar-expand-lg navbar-feelo sticky-top py-2">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="{{HOME_URL}}">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.6" aria-hidden="true">
         <circle cx="12" cy="12" r="9"/>
         <path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4L12 7.2z"/>
@@ -31,30 +31,30 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tippen</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item" href="spiele.html">Spiele</a></li>
-            <li><a class="dropdown-item" href="aufsteiger.html">8 Fix Aufsteiger</a></li>
+            <li><a class="dropdown-item" href="{{SPIELE_URL}}">Spiele</a></li>
+            <li><a class="dropdown-item" href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger</a></li>
             <li><a class="dropdown-item demo-link" href="#">Champion</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="alletips.html">Alle Tipps</a></li>
-        <li class="nav-item"><a class="nav-link" href="spielstand.html">Spielstand</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ALLETIPS_URL}}">Alle Tipps</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{SPIELSTAND_URL}}">Spielstand</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infos</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item" href="regeln.html">Regeln</a></li>
-            <li><a class="dropdown-item" href="tabelle.html">Ligaphase Tabelle</a></li>
-            <li><a class="dropdown-item" href="playoff.html">Playoffs</a></li>
-            <li><a class="dropdown-item" href="turnierbaum.html">Turnierbaum</a></li>
-            <li><a class="dropdown-item" href="teams.html">Teams</a></li>
-            <li><a class="dropdown-item" href="kalender.html">Kalender</a></li>
+            <li><a class="dropdown-item" href="{{REGELN_URL}}">Regeln</a></li>
+            <li><a class="dropdown-item" href="{{TABELLE_URL}}">Ligaphase Tabelle</a></li>
+            <li><a class="dropdown-item" href="{{PLAYOFF_URL}}">Playoffs</a></li>
+            <li><a class="dropdown-item" href="{{TURNIERBAUM_URL}}">Turnierbaum</a></li>
+            <li><a class="dropdown-item" href="{{TEAMS_URL}}">Teams</a></li>
+            <li><a class="dropdown-item" href="{{KALENDER_URL}}">Kalender</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active-mark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Statistik</a>
           <ul class="dropdown-menu dropdown-menu-feelo">
-            <li><a class="dropdown-item" href="statistik.html" aria-current="page">Statistik</a></li>
+            <li><a class="dropdown-item" href="{{STATISTIK_URL}}">Statistik</a></li>
             <li><a class="dropdown-item demo-link" href="#">Verlauf nach Punkten</a></li>
-            <li><a class="dropdown-item" href="verlauf.html">Verlauf nach Positionen</a></li>
+            <li><a class="dropdown-item" href="{{VERLAUF_URL}}" aria-current="page">Verlauf nach Positionen</a></li>
             <li><a class="dropdown-item demo-link" href="#">Quoten der Spiele</a></li>
           </ul>
         </li>
@@ -91,7 +91,7 @@
   <div class="container page-header-content">
     <div class="hero-panel">
       <span class="eyebrow d-block mb-1">Statistik &middot; FeeloChamp</span>
-      <h1>Die <span class="accent">Statistik</span></h1>
+      <h1>Verlauf nach <span class="accent">Positionen</span></h1>
     </div>
   </div>
 </header>
@@ -100,47 +100,20 @@
 <main>
   <div class="container">
     <p class="stat-intro">
-      Auswertung der Ligaphase &ndash; Demodaten (Endstand nach dem 8.&nbsp;Spieltag),
-      passend zur <a href="tabelle.html">Ligaphase-Tabelle</a>.
+      Wie sich der Gesamtrang aller Teilnehmer &uuml;ber die Saison entwickelt hat &ndash; Demodaten,
+      Endstand passend zum <a href="{{SPIELSTAND_URL}}">Spielstand</a>. Rang&nbsp;1 liegt oben, Rang&nbsp;15 unten.
     </p>
 
-    <section class="stat-card">
-      <h2 class="stat-card-title">Anzahl an Punkten Gesamt</h2>
-      <div id="chartPunkte"></div>
-    </section>
+    <div class="alert bg-info text-white p-2 rounded mb-4">
+      Klick auf einen Namen unter dem Chart, blendet die jeweilige Linie ein/aus.
+    </div>
 
     <section class="stat-card">
-      <h2 class="stat-card-title">Anzahl an Punkten &#8960; pro Spiel</h2>
-      <div id="chartSchnitt"></div>
-    </section>
-
-    <section class="stat-card">
-      <h2 class="stat-card-title">Anzahl an geschossenen Toren</h2>
-      <div id="chartTore"></div>
-    </section>
-
-    <section class="stat-card">
-      <h2 class="stat-card-title">Anzahl an bekommenen Toren</h2>
-      <div id="chartGegentore"></div>
-    </section>
-
-    <section class="stat-card">
-      <h2 class="stat-card-title">Anzahl an richtigen Tipps</h2>
-      <div id="chartTipps"></div>
-    </section>
-
-    <section class="stat-card">
-      <h2 class="stat-card-title">Verteilung der Tipps</h2>
-      <div class="stat-donut-grid">
-        <div>
-          <h3 class="stat-sub">1 / X / 2</h3>
-          <div id="donut12x"></div>
-        </div>
-        <div>
-          <h3 class="stat-sub">Richtig / Falsch</h3>
-          <div id="donutRF"></div>
-        </div>
+      <h2 class="stat-card-title">Verlauf der Positionen</h2>
+      <div class="verlauf-chart-wrap">
+        <div id="verlaufChart"></div>
       </div>
+      <div class="verlauf-legend" id="verlaufChartLegend"></div>
     </section>
   </div>
 </main>
@@ -161,8 +134,8 @@
           </div>
           <h3>Tippen</h3>
           <ul>
-            <li><a href="spiele.html">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="aufsteiger.html">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{SPIELE_URL}}">Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{AUFSTEIGER_URL}}">8 Fix Aufsteiger <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Champion <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
@@ -175,8 +148,8 @@
           </div>
           <h3>Ergebnisse</h3>
           <ul>
-            <li><a href="alletips.html">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="spielstand.html">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{ALLETIPS_URL}}">Alle Tipps <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{SPIELSTAND_URL}}">Spielstand <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
       </div>
@@ -188,12 +161,12 @@
           </div>
           <h3>Infos</h3>
           <ul>
-            <li><a href="regeln.html">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="tabelle.html">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="playoff.html">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="turnierbaum.html">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="teams.html">Teams <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="kalender.html">Kalender <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{REGELN_URL}}">Regeln <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{TABELLE_URL}}">Ligaphase Tabelle <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{PLAYOFF_URL}}">Playoffs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{TURNIERBAUM_URL}}">Turnierbaum <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{TEAMS_URL}}">Teams <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{KALENDER_URL}}">Kalender <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
       </div>
@@ -205,9 +178,9 @@
           </div>
           <h3>Statistik</h3>
           <ul>
-            <li><a href="statistik.html" aria-current="page">Statistik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{STATISTIK_URL}}">Statistik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Verlauf nach Punkten <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
-            <li><a href="verlauf.html">Verlauf nach Positionen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="{{VERLAUF_URL}}" aria-current="page">Verlauf nach Positionen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
             <li><a class="demo-link" href="#">Quoten der Spiele <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a></li>
           </ul>
         </div>
@@ -237,88 +210,96 @@
 <script src="assets/datenschutz.js"></script>
 
 <script>
-  // Statistik – Inhalt von einseitensprung.at/cl/statistik.asp.
-  // Das Original nutzt Chart.js; hier als reine Inline-SVG-Balken/Donuts gebaut
-  // (keine Library nötig, im Feelochamp-Design). Werte = Demodaten passend zur
-  // Ligaphase-Tabelle. [Name, Farbe, Punkte, Tore, Gegentore, richtige Tipps]
-  var TEAMS = [
-    ["AEK Athen","#c9a227",5,5,13,3],   ["Arsenal","#d71920",20,18,5,6],
-    ["Aston Villa","#7a1f3d",11,11,11,4],["Atletico","#d71920",15,12,7,5],
-    ["Barcelona","#a50044",19,22,10,6],  ["Bayern","#dc052d",22,24,6,7],
-    ["Bodö/Glimt","#f4c300",7,8,15,3],   ["Club Brügge","#123a8f",12,11,10,4],
-    ["Como","#003c7d",8,9,13,3],         ["Dortmund","#f4d117",14,18,12,5],
-    ["Fenerbahce","#14226b",9,10,12,4],  ["Feyenoord","#c8102e",15,14,10,5],
-    ["Galatasaray","#a90432",11,10,11,4],["Inter","#1c2b6b",17,15,6,6],
-    ["LASK","#1a1a1a",1,3,20,2],         ["Leipzig","#d0011b",14,13,11,5],
-    ["Lens","#ffcc00",6,8,12,3],         ["Lille","#c8102e",9,8,10,4],
-    ["Liverpool","#c8102e",18,17,6,6],   ["Man City","#6cabdd",16,17,9,5],
-    ["Man Utd","#da291c",5,11,17,3],     ["Napoli","#1c6dd0",17,16,9,6],
-    ["Porto","#1f4e8c",10,9,9,4],        ["PSG","#0a2240",17,19,9,6],
-    ["PSV","#d2122e",10,15,16,4],        ["Real Betis","#0b6a3d",8,9,14,3],
-    ["Real Madrid","#1b3a6b",19,19,9,6], ["Roma","#8e1b3a",10,9,9,4],
-    ["Sabah","#d6336c",3,4,14,2],        ["Shakhtar","#e2711d",4,6,16,2],
-    ["Slavia Prag","#c8102e",6,6,12,3],  ["Slovan Bratislava","#1e88c7",4,5,19,2],
-    ["Sporting","#007a3d",13,12,12,5],   ["Stuttgart","#e30613",7,10,15,3],
-    ["Viking","#b71c2b",2,4,17,2],       ["Villareal","#f2c14e",11,12,13,4]
+  // Verlauf nach Positionen – Inhalt von einseitensprung.at/wm/verlauf.asp.
+  // Das Original zeichnet den Rang-Verlauf mit Chart.js auf weißem Canvas;
+  // hier als reines Inline-SVG im Feelochamp-Design (kein Library nötig).
+  // Teilnehmer + Rang-Verlauf sind Demodaten, Endstand passend zur
+  // Spielstand-Tabelle (spielstand.html). Positive Rang-Zahlen statt der
+  // im Original invertierten negativen Chart.js-Werte.
+  var NAMES = ['BONO','BABSI','MO','ROMARIO11','WALCHI','RIOT','HONS','STE','JAKOB','HERWIG','HILLARY','GUNZ','VUX','BULLY','SONNEHAMMER'];
+  var LABELS = ['START','MD1-3','MD4-6','MD7-8','PO','AUF','1/8','AUF','1/4','AUF','1/2','AUF','F','CHAMP'];
+  var POS_DATA = [
+    [1,7,4,4,3,2,2,2,2,2,2,1,1,1],
+    [1,2,2,2,4,6,6,6,6,7,7,6,6,2],
+    [1,4,6,6,6,7,7,9,8,8,8,7,6,2],
+    [1,4,3,3,2,1,1,1,1,1,1,1,2,4],
+    [1,1,1,1,1,3,3,2,3,3,3,3,3,4],
+    [1,10,9,7,6,10,10,8,8,8,9,9,9,6],
+    [1,13,6,12,10,5,5,4,3,3,3,5,5,7],
+    [1,2,6,7,5,3,3,4,5,5,5,4,3,7],
+    [1,8,11,11,11,11,11,11,11,12,12,12,12,9],
+    [1,4,5,5,6,7,7,7,6,6,6,7,8,10],
+    [1,10,9,7,6,7,7,9,10,10,10,10,9,11],
+    [1,10,13,13,13,14,14,12,12,11,11,11,11,12],
+    [1,14,14,14,14,12,13,13,13,13,13,13,13,13],
+    [1,8,11,7,11,12,12,14,14,14,14,14,14,14],
+    [1,15,15,15,15,15,15,15,15,15,15,15,15,15]
   ];
-  var GAMES = 8;
+  var SERIES = NAMES.map(function(name, i){
+    return { name: name, color: 'hsl(' + (i * 24) + ',72%,62%)', pos: POS_DATA[i] };
+  });
 
-  function barChart(id, get, o){
-    o = o || {};
-    var vals = TEAMS.map(get);
-    var max = o.max || Math.max.apply(null, vals) || 1;
-    var html = '<div class="stat-bars">';
-    TEAMS.forEach(function(t, i){
-      var v = vals[i];
-      var pct = Math.max(0, v / max * 100);
-      var disp = o.decimals != null ? v.toFixed(o.decimals) : v;
-      html += '<div class="stat-bar-row">' +
-        '<span class="stat-bar-label" title="' + t[0] + '">' + t[0] + '</span>' +
-        '<span class="stat-bar-track"><span class="stat-bar-fill" style="width:' + pct.toFixed(1) +
-          '%; background:' + t[1] + ';"></span></span>' +
-        '<span class="stat-bar-val">' + disp + '</span>' +
-      '</div>';
+  function verlaufChart(id, labels, series){
+    var VBW = 1000, VBH = 620;
+    var x0 = 34, x1 = VBW - 130, y0 = 16, y1 = VBH - 70;
+    var minPos = 1, maxPos = 15;
+    function xAt(i){ return x0 + (i / (labels.length - 1)) * (x1 - x0); }
+    function yAt(p){ return y0 + ((p - minPos) / (maxPos - minPos)) * (y1 - y0); }
+
+    var svg = '<svg viewBox="0 0 ' + VBW + ' ' + VBH + '" class="verlauf-svg" role="img" aria-label="Verlauf der Positionen">';
+
+    svg += '<rect x="' + x0 + '" y="' + (yAt(1) - 9) + '" width="' + (x1 - x0) + '" height="18" fill="rgba(34,211,238,0.07)"/>';
+
+    for (var p = minPos; p <= maxPos; p++){
+      var gy = yAt(p);
+      svg += '<line class="verlauf-grid-line" x1="' + x0 + '" y1="' + gy + '" x2="' + x1 + '" y2="' + gy + '"/>';
+      svg += '<text class="verlauf-axis-label" x="' + (x0 - 8) + '" y="' + (gy + 3) + '" text-anchor="end">' + p + '</text>';
+    }
+
+    labels.forEach(function(lb, i){
+      var gx = xAt(i);
+      svg += '<line class="verlauf-grid-line" x1="' + gx + '" y1="' + y0 + '" x2="' + gx + '" y2="' + y1 + '"/>';
+      svg += '<text class="verlauf-axis-label" x="' + gx + '" y="' + (y1 + 18) + '" text-anchor="middle">' + lb + '</text>';
     });
-    html += '</div>';
-    document.getElementById(id).innerHTML = html;
+
+    var posCount = {};
+    series.forEach(function(s){
+      var pts = s.pos.map(function(p, i){ return xAt(i).toFixed(1) + ',' + yAt(p).toFixed(1); }).join(' ');
+      svg += '<polyline class="verlauf-line" data-name="' + s.name + '" points="' + pts + '" stroke="' + s.color + '"/>';
+
+      var lastP = s.pos[s.pos.length - 1];
+      var lx = xAt(labels.length - 1), ly = yAt(lastP);
+      svg += '<circle class="verlauf-point" data-name="' + s.name + '" cx="' + lx + '" cy="' + ly + '" r="4" fill="' + s.color + '"/>';
+
+      var stack = posCount[lastP] || 0;
+      posCount[lastP] = stack + 1;
+      var ly2 = ly + stack * 11;
+      svg += '<text class="verlauf-end-label" data-name="' + s.name + '" x="' + (lx + 9) + '" y="' + (ly2 + 4) + '" fill="' + s.color + '">' + s.name + '</text>';
+    });
+
+    svg += '</svg>';
+    document.getElementById(id).innerHTML = svg;
+
+    var sorted = series.slice().sort(function(a, b){ return a.pos[a.pos.length - 1] - b.pos[b.pos.length - 1]; });
+    var legendHtml = sorted.map(function(s){
+      return '<button type="button" class="verlauf-chip" data-name="' + s.name + '">' +
+        '<span class="verlauf-chip-dot" style="background:' + s.color + '"></span>' +
+        s.name + ' <span class="verlauf-chip-pos">#' + s.pos[s.pos.length - 1] + '</span></button>';
+    }).join('');
+    document.getElementById(id + 'Legend').innerHTML = legendHtml;
+
+    document.querySelectorAll('#' + id + 'Legend .verlauf-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var name = chip.getAttribute('data-name');
+        var isOff = chip.classList.toggle('is-off');
+        document.querySelectorAll('[data-name="' + name + '"]').forEach(function(el){
+          el.classList.toggle('is-hidden', isOff);
+        });
+      });
+    });
   }
 
-  function donut(id, segs){
-    var total = segs.reduce(function(a, s){ return a + s.v; }, 0);
-    var R = 42, C = 2 * Math.PI * R, off = 0;
-    var arcs = segs.map(function(s){
-      var dash = (s.v / total) * C;
-      var el = '<circle class="stat-donut-arc" r="' + R + '" cx="60" cy="60" fill="none" stroke="' + s.c +
-        '" stroke-width="15" stroke-dasharray="' + dash.toFixed(2) + ' ' + (C - dash).toFixed(2) +
-        '" stroke-dashoffset="' + (-off).toFixed(2) + '"/>';
-      off += dash;
-      return el;
-    }).join('');
-    var legend = segs.map(function(s){
-      return '<span class="stat-donut-key"><span class="stat-donut-dot" style="background:' + s.c + '"></span>' +
-        s.l + ' <b>' + Math.round(s.v / total * 100) + '%</b></span>';
-    }).join('');
-    document.getElementById(id).innerHTML =
-      '<div class="stat-donut"><svg viewBox="0 0 120 120" aria-hidden="true">' +
-        '<circle r="' + R + '" cx="60" cy="60" fill="none" stroke="rgba(243,247,255,0.08)" stroke-width="15"/>' +
-        arcs + '</svg><div class="stat-donut-legend">' + legend + '</div></div>';
-  }
-
-  barChart('chartPunkte',    function(t){ return t[2]; });
-  barChart('chartSchnitt',   function(t){ return t[2] / GAMES; }, { decimals: 2, max: 3 });
-  barChart('chartTore',      function(t){ return t[3]; });
-  barChart('chartGegentore', function(t){ return t[4]; });
-  barChart('chartTipps',     function(t){ return t[5]; }, { max: GAMES });
-
-  donut('donut12x', [
-    { l: '1 &middot; Heimsieg', v: 812, c: 'var(--cyan)' },
-    { l: 'X &middot; Remis',    v: 344, c: '#e8a72e' },
-    { l: '2 &middot; Auswärts', v: 588, c: '#8e6bf0' }
-  ]);
-  donut('donutRF', [
-    { l: 'Richtig', v: 723,  c: 'var(--green)' },
-    { l: 'Falsch',  v: 1021, c: '#da3a49' }
-  ]);
+  verlaufChart('verlaufChart', LABELS, SERIES);
 
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
