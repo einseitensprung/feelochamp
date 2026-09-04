@@ -973,12 +973,25 @@ body.page-default #resTable, body.page-default #resTable2, body.page-default #re
 .zone-dot.playoffs{ background:#e8a72e; }
 .zone-dot.raus{ background:#da3a49; }
 
+/* table.ligaphase (Typ+Klasse) schlägt die generische .table-feelo-Regel
+   weiter unten per Spezifität, unabhängig von der Reihenfolge im
+   Stylesheet - analog zu table.spielplan/table.alltips/table.standings.
+   Die 7 Spalten sind auf Desktop-Breiten ausgelegt (#, Team, S, U, N,
+   T, Pt) und brauchen auf schmalen Screens deutlich schmalere feste
+   Spalten, damit für den Team-Namen genug Platz bleibt. */
 @media (max-width: 575.98px){
-  .ligaphase thead{ display:table-header-group; }
-  .ligaphase tbody tr{ display:table-row; }
-  .ligaphase td{ display:table-cell; }
-  .ligaphase td, .ligaphase th{ padding-left:.5rem; padding-right:.5rem; }
-  .ligaphase .team-name{ font-size:.85rem; }
+  table.ligaphase thead{ display:table-header-group; }
+  table.ligaphase tbody tr{ display:table-row; }
+  table.ligaphase td{ display:table-cell; }
+  table.ligaphase td, table.ligaphase th{ padding:.5rem .3rem; }
+  table.ligaphase th.col-num, table.ligaphase td.col-num{ width:1.4rem !important; }
+  table.ligaphase th.col-stat, table.ligaphase td.col-stat{ width:1.3rem !important; font-size:.78rem; }
+  table.ligaphase th.col-goals, table.ligaphase td.col-goals{ width:2.6rem !important; font-size:.78rem; }
+  table.ligaphase th.col-pts, table.ligaphase td.col-pts{ width:2rem !important; font-size:.9rem; }
+  table.ligaphase .pos{ font-size:.82rem; }
+  table.ligaphase .team-cell{ gap:.4rem; }
+  table.ligaphase .crest-sm{ width:1.3rem; height:1.3rem; font-size:.44rem; }
+  table.ligaphase .team-name{ font-size:.78rem; }
 }
 
 /* ---------- Turnierbaum / Playoffs (playoff.html) ---------- */
