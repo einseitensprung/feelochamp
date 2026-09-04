@@ -1613,11 +1613,15 @@ body.page-preloader{ background: var(--ink); }
 
 /* ---------- Responsive: Spiele-Tabelle ---------- */
 @media (max-width: 575.98px){
-  .table-feelo thead{ display:none; }
-  .table-feelo td{ display:block; padding:.4rem 1rem; }
-  .table-feelo tbody tr{ display:block; padding:.9rem 0; border-bottom:1px solid rgba(12,25,48,0.1); }
-  .team-cell.reverse{ flex-direction:row; text-align:left; }
-  .col-res{ text-align:left !important; }
+  .table-feelo thead{ display:table-header-group; }
+  .table-feelo tbody tr{ display:table-row; }
+  .table-feelo td{ display:table-cell; padding:.6rem .5rem; vertical-align:middle; }
+  .spielplan{ min-width:34rem; }
+  .spielplan .kickoff-date{ font-size:.8rem; }
+  .spielplan .kickoff-time{ font-size:.72rem; }
+  .spielplan .team-name{ font-size:.82rem; }
+  .spielplan .crest{ width:1.7rem !important; height:1.7rem !important; font-size:.54rem !important; }
+  .spielplan .pick-group label{ padding:.35rem .55rem; min-width:2rem; }
 }
 
 /* ---------- Responsive: Aufsteiger-Multiselect ---------- */
