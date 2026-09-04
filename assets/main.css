@@ -1675,6 +1675,16 @@ body.page-preloader{ background: var(--ink); }
   table.alltips td{ display:table-cell; }
 }
 
+/* #resTable ("Die einzelnen Spiele"): auf Mobile nur die Crests statt
+   Crest+Vereinsname zeigen (spart Breite), Datum/Uhrzeit in der dt-Spalte
+   auf zwei Zeilen stapeln statt nebeneinander. */
+@media (max-width: 575.98px){
+  #resTable .team-name{ display:none; }
+  #resTable .team-cell{ justify-content:center; }
+  #resTable td.dt{ white-space:normal; line-height:1.3; }
+  #resTable .dt-time{ display:block; font-size:.78rem; opacity:.8; }
+}
+
 /* ---------- Responsive: Spiele-Tabelle (Teams je Zeile untereinander, kein Scrollen) ---------- */
 @media (max-width: 575.98px){
   table.spielplan thead{ display:none; }
