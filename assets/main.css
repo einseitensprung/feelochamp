@@ -474,19 +474,18 @@ body.page-default .programme-head h2{
    blutet unten/rechts aus dem Kartenrand aus. */
 .champ-trophy{
   position:absolute;
-  right:-16%; bottom:-18%;
-  width:128%; height:auto;
+  right:-8%; bottom:-6%;
+  width:78%; height:auto;
   max-height:none;
   z-index:-1;
   pointer-events:none;
-  transform: rotate(-8deg);
-  filter: drop-shadow(0 6px 18px rgba(34,211,238,0.25));
-  opacity:.9;
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 6px 18px rgba(34,211,238,0.28));
 }
-.champ-trophy .champ-trophy-fill{ opacity:.22; }
-.champ-trophy .champ-trophy-line{ opacity:.55; }
+.champ-trophy .champ-trophy-fill{ opacity:.28; }
+.champ-trophy .champ-trophy-line{ opacity:.6; }
 @media (max-width: 991.98px){
-  .champ-trophy{ width:70%; right:-6%; bottom:-14%; }
+  .champ-trophy{ width:58%; right:-2%; bottom:-4%; }
 }
 .champ-avatar{
   width:4.6rem; height:4.6rem; border-radius:50%;
