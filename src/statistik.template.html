@@ -296,19 +296,18 @@
 
   function donut(id, segs){
     var total = segs.reduce(function(a, s){ return a + s.v; }, 0);
-    var pct = segs.map(function(s){ return Math.round(s.v / total * 100); });
     var R = 42, C = 2 * Math.PI * R, off = 0;
-    var arcs = segs.map(function(s, i){
-      var dash = (pct[i] / 100) * C;
+    var arcs = segs.map(function(s){
+      var dash = (s.v / total) * C;
       var el = '<circle class="stat-donut-arc" r="' + R + '" cx="60" cy="60" fill="none" stroke="' + s.c +
         '" stroke-width="15" stroke-dasharray="' + dash.toFixed(2) + ' ' + (C - dash).toFixed(2) +
         '" stroke-dashoffset="' + (-off).toFixed(2) + '"/>';
       off += dash;
       return el;
     }).join('');
-    var legend = segs.map(function(s, i){
+    var legend = segs.map(function(s){
       return '<span class="stat-donut-key"><span class="stat-donut-dot" style="background:' + s.c + '"></span>' +
-        s.l + ' <b>' + pct[i] + '%</b></span>';
+        s.l + ' <b>' + Math.round(s.v / total * 100) + '%</b></span>';
     }).join('');
     document.getElementById(id).innerHTML =
       '<div class="stat-donut"><svg viewBox="0 0 120 120" aria-hidden="true">' +
