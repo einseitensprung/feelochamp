@@ -279,7 +279,7 @@
     STANDINGS.forEach(function(r, i){
       var trend = r[0], platz = r[1], name = r[2], pts = r[3], bonus = r[4];
       var tied = platz === '-';
-      html += '<tr' + (i === 0 ? ' class="is-leader"' : '') + '>' +
+      html += '<tr' + (ranks[i] === 1 ? ' class="is-leader"' : '') + '>' +
         '<td>' + trendIcon(trend) + '</td>' +
         '<td><span class="rank' + (tied ? ' is-tied' : '') + '">' + platz + '</span></td>' +
         '<td><div class="player">' + moodIcon(ranks[i], maxRank) + '<span class="player-name">' + name + '</span></div></td>' +
