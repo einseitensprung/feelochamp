@@ -1682,7 +1682,7 @@ body.page-preloader{ background: var(--ink); }
   table.standings th:nth-child(1){ width:1.8rem !important; }
   table.standings th:nth-child(2){ width:3rem !important; }
   table.standings th.col-pts{ width:6rem !important; }
-  table.standings .mood{ width:1.15rem; height:1.15rem; }
+  table.standings .mood{ width:1.6rem; height:1.6rem; }
   table.standings .player{ gap:.4rem; }
   table.standings .player-name{ font-size:.82rem; }
   table.standings .rank{ font-size:.85rem; min-width:1.4rem; padding:.1rem .3rem; }
