@@ -596,6 +596,23 @@ body.page-default .programme-head h2{
 .ds-table th{ text-transform:uppercase; letter-spacing:.06em; font-size:.7rem; color:#5a6c8c; }
 .ds-table td{ color:#33415c; }
 
+/* Portrait-Variante der Lightbox (Spieler-Icon, Spielstand-Seite) */
+.player-lightbox-card{
+  display:flex; flex-direction:column; align-items:center; gap:1.1rem;
+}
+.player-lightbox-avatar{
+  width:9rem; height:9rem; border-radius:50%;
+  background: linear-gradient(160deg, var(--cyan), var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:2.4rem; color:#04131c;
+  border:1px solid var(--line-cyan);
+  box-shadow: var(--shadow);
+}
+.player-lightbox-name{
+  font-family:'Bebas Neue', sans-serif; letter-spacing:.04em;
+  font-size:1.6rem; color: var(--white);
+}
+
 /* Frame-Variante der Lightbox (Spiel-Info per iframe, Spiele-Seite) */
 .lightbox-frame{
   position:relative;
@@ -963,6 +980,22 @@ body.page-default #resTableCard, body.page-default #resTable2Card, body.page-def
 .trend.even{ color:#e8a72e; }
 
 .standings .player{ display:flex; align-items:center; gap:.7rem; }
+.standings .player-avatar{
+  width:1.9rem; height:1.9rem; flex:none; border-radius:50%;
+  padding:0; border:0; cursor:pointer;
+  background: linear-gradient(160deg, var(--cyan), var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.66rem; color:#04131c;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.standings .player-avatar:hover, .standings .player-avatar:focus-visible{
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px rgba(34,211,238,0.35);
+}
+@media (prefers-reduced-motion: reduce){
+  .standings .player-avatar{ transition:none; }
+  .standings .player-avatar:hover{ transform:none; }
+}
 .standings .mood{ flex:none; color:#5a6c8c; }
 .standings .player-name{ font-weight:700; font-size:.95rem; letter-spacing:.02em; color:#0c1930; }
 .standings .pts-main{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size:1.15rem; color:#0c1930; }
@@ -1683,6 +1716,7 @@ body.page-preloader{ background: var(--ink); }
   table.standings th:nth-child(2){ width:3rem !important; }
   table.standings th.col-pts{ width:6rem !important; }
   table.standings .mood{ width:1.6rem; height:1.6rem; }
+  table.standings .player-avatar{ width:1.5rem; height:1.5rem; font-size:.55rem; }
   table.standings .player{ gap:.4rem; }
   table.standings .player-name{ font-size:.82rem; }
   table.standings .rank{ font-size:.85rem; min-width:1.4rem; padding:.1rem .3rem; }

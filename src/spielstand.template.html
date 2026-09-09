@@ -220,6 +220,15 @@
   </div>
 </div>
 
+<!-- ================= LIGHTBOX: Spieler-Icon ================= -->
+<div class="lightbox" id="playerLightbox" role="dialog" aria-modal="true" aria-label="Spieler-Icon">
+  <button type="button" class="lightbox-close" id="playerLightboxClose" aria-label="Schließen">&times;</button>
+  <div class="player-lightbox-card">
+    <div class="player-lightbox-avatar" id="playerLightboxAvatar"></div>
+    <span class="player-lightbox-name" id="playerLightboxName"></span>
+  </div>
+</div>
+
 <script src="assets/bootstrap.bundle.min.js"></script>
 <script src="assets/datenschutz.js"></script>
 
@@ -267,6 +276,8 @@
       '<circle cx="15" cy="10" r="1.1" fill="currentColor" stroke="none"/>' + mouth + '</svg>';
   }
 
+  function initials(name){ return (name || '').slice(0, 2).toUpperCase(); }
+
   function renderStandings(){
     var tbody = document.getElementById('standingsRows');
     var html = '';
@@ -282,7 +293,9 @@
       html += '<tr' + (ranks[i] === 1 ? ' class="is-leader"' : '') + '>' +
         '<td>' + trendIcon(trend) + '</td>' +
         '<td><span class="rank' + (tied ? ' is-tied' : '') + '">' + platz + '</span></td>' +
-        '<td><div class="player">' + moodIcon(ranks[i], maxRank) + '<span class="player-name">' + name + '</span></div></td>' +
+        '<td><div class="player">' +
+          '<button type="button" class="player-avatar" data-name="' + name + '" aria-haspopup="dialog" aria-label="Icon von ' + name + ' vergr&ouml;&szlig;ern">' + initials(name) + '</button>' +
+          moodIcon(ranks[i], maxRank) + '<span class="player-name">' + name + '</span></div></td>' +
         '<td class="pts"><span class="pts-main">' + pts + '</span><span class="pts-sub">(' + bonus + ')</span></td>' +
       '</tr>';
     });
@@ -290,6 +303,40 @@
     document.getElementById('playerCount').textContent = STANDINGS.length;
   }
   renderStandings();
+
+  // Lightbox: Klick auf ein Spieler-Icon zeigt es vergrössert mit Namen
+  (function(){
+    var box = document.getElementById('playerLightbox');
+    var closeBtn = document.getElementById('playerLightboxClose');
+    var avatarEl = document.getElementById('playerLightboxAvatar');
+    var nameEl = document.getElementById('playerLightboxName');
+    if (!box) return;
+    var lastFocus = null;
+
+    function onKey(e){ if (e.key === 'Escape') close(); }
+    function open(trigger){
+      avatarEl.textContent = trigger.textContent;
+      nameEl.textContent = trigger.getAttribute('data-name') || '';
+      lastFocus = document.activeElement;
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close(){
+      box.classList.remove('is-open');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    document.getElementById('standingsRows').addEventListener('click', function(e){
+      var trigger = e.target.closest('.player-avatar');
+      if (trigger) open(trigger);
+    });
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', function(e){ if (e.target === box) close(); });
+  })();
 
   function showToast(text){
     var toastEl = document.getElementById('demoToast');
