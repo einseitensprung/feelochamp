@@ -250,11 +250,11 @@
     return '<span class="trend even" title="unverändert"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M4 12h16"/></svg></span>';
   }
 
-  function moodIcon(i){
+  function moodIcon(i, total){
     var mouth;
-    if (i === 0)      mouth = '<path d="M8 13.5c1.4 2.4 6.6 2.4 8 0" fill="currentColor" stroke="none"/>';
-    else if (i <= 2)  mouth = '<path d="M8.5 14c1 1.5 6 1.5 7 0"/>';
-    else              mouth = '<path d="M9 15h6"/>';
+    if (i === 0)             mouth = '<path d="M8 13.5c1.4 2.4 6.6 2.4 8 0" fill="currentColor" stroke="none"/>';
+    else if (i >= total - 3) mouth = '<path d="M8.5 15.5c1-1.5 6-1.5 7 0"/>';
+    else                     mouth = '<path d="M9 15h6"/>';
     return '<svg class="mood" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">' +
       '<circle cx="12" cy="12" r="9"/>' +
       '<circle cx="9" cy="10" r="1.1" fill="currentColor" stroke="none"/>' +
@@ -270,7 +270,7 @@
       html += '<tr' + (i === 0 ? ' class="is-leader"' : '') + '>' +
         '<td>' + trendIcon(trend) + '</td>' +
         '<td><span class="rank' + (tied ? ' is-tied' : '') + '">' + platz + '</span></td>' +
-        '<td><div class="player">' + moodIcon(i) + '<span class="player-name">' + name + '</span></div></td>' +
+        '<td><div class="player">' + moodIcon(i, STANDINGS.length) + '<span class="player-name">' + name + '</span></div></td>' +
         '<td class="pts"><span class="pts-main">' + pts + '</span><span class="pts-sub">(' + bonus + ')</span></td>' +
       '</tr>';
     });
