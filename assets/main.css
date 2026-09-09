@@ -1448,7 +1448,7 @@ body.page-preloader{ background: var(--ink); }
 .cal-day.is-out{ background: rgba(3,7,18,0.35); }
 .cal-day.is-out .cal-day-num{ color: rgba(168,183,214,0.4); }
 .cal-day-num{
-  align-self:flex-end; font-family:'JetBrains Mono', monospace; font-weight:700;
+  align-self:flex-start; font-family:'JetBrains Mono', monospace; font-weight:700;
   font-size:.8rem; color: var(--slate); margin-bottom:.1rem;
 }
 .cal-day-week{ min-height: 12rem; }
