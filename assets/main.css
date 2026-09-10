@@ -687,6 +687,12 @@ body.page-default .programme-head h2{
   color:#fff2f4;
   box-shadow: 0 10px 26px rgba(179,36,59,0.35);
 }
+.notice-feelo.notice-danger a{
+  color:#fff; text-decoration:underline; text-underline-offset:2px;
+  font-weight:700;
+}
+.notice-feelo.notice-danger a:hover,
+.notice-feelo.notice-danger a:focus-visible{ color:#ffe3e7; }
 
 /* ---------- Content card (hell, wie die Login-Karte) ---------- */
 .content-card{
