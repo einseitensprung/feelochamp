@@ -698,6 +698,9 @@ body.page-default .programme-head h2{
 }
 /* Spiele: Karte überlappt den Header wie die Login-Karte, Tabelle wird geclippt */
 body.page-spiele .content-card{ margin-top: -2.2rem; overflow:hidden; }
+/* … außer es steht eine Hinweisbox davor – dann sitzt die Karte darunter */
+body.page-spiele .notice-feelo{ z-index:3; }
+body.page-spiele .notice-feelo + .content-card{ margin-top: .9rem; }
 /* Aufsteiger: Karte sitzt unter der Notice-Bar, Multiselect-Panel darf überstehen */
 body.page-aufsteiger .content-card{ margin-top: 1.4rem; overflow:visible; }
 /* Default-Unterseite (z. B. regeln.html): Karte überlappt den Header wie auf der Spiele-Seite */
