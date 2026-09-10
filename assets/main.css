@@ -682,6 +682,11 @@ body.page-default .programme-head h2{
   margin-top:-1.4rem; box-shadow: 0 10px 26px rgba(12,143,154,0.35);
 }
 .notice-feelo svg{ flex:none; }
+.notice-feelo.notice-danger{
+  background: linear-gradient(90deg, #b3243b, #d64553);
+  color:#fff2f4;
+  box-shadow: 0 10px 26px rgba(179,36,59,0.35);
+}
 
 /* ---------- Content card (hell, wie die Login-Karte) ---------- */
 .content-card{
