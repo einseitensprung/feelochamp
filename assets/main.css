@@ -1712,7 +1712,16 @@ body.page-preloader{ background: var(--ink); }
 .footer-feelo a{ color: var(--slate); }
 .footer-feelo a:hover{ color: var(--cyan-soft); }
 
-.toast-feelo{ background: var(--ink-2); border:1px solid var(--line-cyan); color: var(--white); }
+/* Gelb statt dunkelblau, damit der Toast sich vom dunklen Hintergrund abhebt
+   und als Bestätigung ins Auge springt; dunkler Text statt --white für Kontrast. */
+.toast-feelo{
+  background: linear-gradient(135deg, #ffd23f, #f5a300);
+  border:1px solid rgba(255,210,63,0.5);
+  color:#231a00; font-weight:600;
+  box-shadow: 0 14px 34px rgba(245,163,0,0.45);
+}
+.toast-feelo .btn-close{ filter:none; opacity:.6; }
+.toast-feelo .btn-close:hover, .toast-feelo .btn-close:focus{ opacity:1; }
 
 /* ---------- Responsive: Tabellen allgemein (Spielstand, ...) ---------- */
 @media (max-width: 575.98px){
