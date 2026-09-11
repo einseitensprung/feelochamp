@@ -1468,9 +1468,18 @@ body.page-preloader{ background: var(--ink); }
 .cal-day:nth-child(7n+1){ border-left:0; }
 .cal-day.is-out{ background: rgba(3,7,18,0.35); }
 .cal-day.is-out .cal-day-num{ color: rgba(168,183,214,0.4); }
+.cal-day.is-today{
+  background: rgba(34,211,238,0.09);
+  box-shadow: inset 0 0 0 1px rgba(34,211,238,0.5);
+}
 .cal-day-num{
   align-self:flex-start; font-family:'JetBrains Mono', monospace; font-weight:700;
   font-size:.8rem; color: var(--slate); margin-bottom:.1rem;
+}
+.cal-day.is-today .cal-day-num{
+  display:flex; align-items:center; justify-content:center;
+  width:1.35rem; height:1.35rem; margin-bottom:.05rem;
+  border-radius:50%; background: var(--cyan); color:#04131c;
 }
 .cal-day-week{ min-height: 12rem; }
 
@@ -1536,6 +1545,13 @@ body.page-preloader{ background: var(--ink); }
   padding:.6rem 1rem; background: var(--ink-2);
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.82rem;
   color: var(--cyan-soft);
+}
+.cal-list-day.is-today{ background: rgba(34,211,238,0.16); }
+.cal-today-tag{
+  display:inline-block; margin-left:.5rem; padding:.1rem .45rem;
+  border-radius:1rem; background: var(--cyan); color:#04131c;
+  font-family:'Inter', sans-serif; font-weight:700; font-size:.66rem;
+  letter-spacing:.04em; text-transform:uppercase; vertical-align:middle;
 }
 .cal-list-wd{ color: var(--slate); font-weight:600; }
 .cal-list-row{

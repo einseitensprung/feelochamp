@@ -298,6 +298,8 @@
 
   function pad(n){ return (n < 10 ? '0' : '') + n; }
   function iso(y, m, d){ return y + '-' + pad(m) + '-' + pad(d); }
+  var TODAY = new Date();
+  var TODAY_ISO = iso(TODAY.getFullYear(), TODAY.getMonth() + 1, TODAY.getDate());
   function ligaISO(dm){
     var p = dm.split('.').filter(Boolean);
     var d = +p[0], mo = +p[1];
@@ -370,9 +372,11 @@
       for (var d = 0; d < 7; d++){
         var cur = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + w * 7 + d);
         var inMonth = cur.getMonth() === m;
-        var evs = eventsOn(iso(cur.getFullYear(), cur.getMonth() + 1, cur.getDate()));
+        var curISO = iso(cur.getFullYear(), cur.getMonth() + 1, cur.getDate());
+        var isToday = curISO === TODAY_ISO;
+        var evs = eventsOn(curISO);
         var shown = evs.slice(0, 3);
-        html += '<div class="cal-day' + (inMonth ? '' : ' is-out') + '">' +
+        html += '<div class="cal-day' + (inMonth ? '' : ' is-out') + (isToday ? ' is-today' : '') + '">' +
           '<div class="cal-day-num">' + cur.getDate() + '</div>' +
           shown.map(eventChip).join('') +
           (evs.length > 3 ? '<button type="button" class="cal-more" data-date="' +
@@ -398,8 +402,10 @@
       WEEKDAYS.map(function(w){ return '<div>' + w + '</div>'; }).join('') + '</div><div class="cal-week">';
     for (var d = 0; d < 7; d++){
       var cur = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + d);
-      var evs = eventsOn(iso(cur.getFullYear(), cur.getMonth() + 1, cur.getDate()));
-      html += '<div class="cal-day cal-day-week">' +
+      var curISO = iso(cur.getFullYear(), cur.getMonth() + 1, cur.getDate());
+      var isToday = curISO === TODAY_ISO;
+      var evs = eventsOn(curISO);
+      html += '<div class="cal-day cal-day-week' + (isToday ? ' is-today' : '') + '">' +
         '<div class="cal-day-num">' + cur.getDate() + '</div>' +
         (evs.length ? evs.map(eventChip).join('') : '<span class="cal-empty">–</span>') +
       '</div>';
@@ -425,7 +431,9 @@
     Object.keys(byDay).sort().forEach(function(dk){
       var p = dk.split('-'); var dt = new Date(+p[0], +p[1] - 1, +p[2]);
       var wd = (dt.getDay() + 6) % 7;
-      html += '<div class="cal-list-day"><span>' + dt.getDate() + '. ' + MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() +
+      var isToday = dk === TODAY_ISO;
+      html += '<div class="cal-list-day' + (isToday ? ' is-today' : '') + '"><span>' + dt.getDate() + '. ' + MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() +
+        (isToday ? ' <span class="cal-today-tag">Heute</span>' : '') +
         '</span><span class="cal-list-wd">' + WEEKDAYS_LONG[wd] + '</span></div>';
       byDay[dk].forEach(function(e){
         html += '<div class="cal-list-row ph-' + e.phase + '">' +
