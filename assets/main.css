@@ -71,6 +71,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible, 
   padding:.5rem .85rem !important; transition: color .15s ease;
 }
 .navbar-feelo .nav-link:hover, .navbar-feelo .nav-link:focus{ color: var(--cyan-soft); }
+.navbar-feelo .nav-link.nav-link-admin{ color:#e2596b; }
+.navbar-feelo .nav-link.nav-link-admin:hover, .navbar-feelo .nav-link.nav-link-admin:focus{ color:#ff8a97; }
 .navbar-feelo .nav-link.active-mark{ color: var(--white); position:relative; }
 .navbar-feelo .nav-link.active-mark::after{
   content:""; position:absolute; left:.85rem; right:.85rem; bottom:.1rem;
