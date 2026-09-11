@@ -707,6 +707,10 @@ body.page-spiele .content-card{ margin-top: -2.2rem; overflow:hidden; }
 /* … außer es steht eine Hinweisbox davor – dann sitzt die Karte darunter */
 body.page-spiele .notice-feelo{ z-index:3; }
 body.page-spiele .notice-feelo + .content-card{ margin-top: .9rem; }
+/* .notice-feelo liegt hier auf gleicher z-index-Ebene (3) wie .page-header-content
+   und gewinnt bei Gleichstand als später im DOM stehendes Element – das ausgeklappte
+   MD-Dropdown im Header landete dadurch unter der roten Hinweisbox. */
+body.page-spiele .page-header-content{ z-index:4; }
 /* Aufsteiger: Karte sitzt unter der Notice-Bar, Multiselect-Panel darf überstehen */
 body.page-aufsteiger .content-card{ margin-top: 1.4rem; overflow:visible; }
 /* Default-Unterseite (z. B. regeln.html): Karte überlappt den Header wie auf der Spiele-Seite */
