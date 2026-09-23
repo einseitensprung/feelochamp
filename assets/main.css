@@ -157,6 +157,41 @@ body.page-home .navbar-feelo .nav-link{ font-size:.86rem; padding:.5rem .9rem !i
   font-family:'JetBrains Mono', monospace; font-weight:700; font-size:.72rem; color:#04131c;
 }
 
+/* Mobile: Menü fährt als Panel von rechts herein statt nach unten aufzuklappen.
+   Gesteuert über aria-expanded des Togglers (setzt Bootstrap sofort beim Klick),
+   nicht über .show/.collapsing — die Collapse-Höhenanimation wird neutralisiert.
+   Die Navbar hat backdrop-filter und ist damit Containing Block für position:fixed,
+   daher top:100% = direkt unter der Navbar. */
+@media (max-width: 991.98px){
+  /* geschlossenes Panel rechts ausserhalb darf keine horizontale Scrollbreite erzeugen */
+  .navbar-feelo{ overflow-x: clip; }
+  .navbar-feelo .navbar-collapse .nav-link.active-mark::after{ right: auto; width: 1.5rem; }
+  .navbar-feelo .navbar-collapse,
+  .navbar-feelo .navbar-collapse.collapsing{
+    display: block !important;
+    position: fixed; top: 100%; right: 0;
+    width: min(20rem, 85vw);
+    height: calc(100dvh - var(--nav-h)) !important;
+    overflow-y: auto; overscroll-behavior: contain;
+    padding: 1rem .75rem 1.5rem;
+    background: var(--ink-2);
+    border-left: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform .32s cubic-bezier(.4,.05,.2,1), visibility 0s linear .32s;
+  }
+  .navbar-feelo .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse{
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform .32s cubic-bezier(.4,.05,.2,1), visibility 0s;
+  }
+}
+@media (max-width: 991.98px) and (prefers-reduced-motion: reduce){
+  .navbar-feelo .navbar-collapse,
+  .navbar-feelo .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse{ transition: none; }
+}
+
 /* Mobile: das User-Dropdown genau wie die anderen Nav-Dropdowns
    (inline aufklappen statt rechts überlagern) */
 @media (max-width: 991.98px){
